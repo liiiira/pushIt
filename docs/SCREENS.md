@@ -61,9 +61,12 @@ Navigation: bottom tabs Home, Calendar, [create], Library, Accounts. Settings op
 | 53 | I2 | Loading | SkeletonList in every list page | A (widget); all pages | — | slow scenario | 53 / 107 |
 | 54 | I3 | Error | ErrorStateView in every list page | A (widget); all pages | — | error scenario | 54 / 108 |
 
-## Extra routes (debug builds only, Agent A)
+## Extra routes (Agent A)
 
-- `/settings/appearance`: System, Light or Dark. **A deliberate deviation:** H1 in the design has no Appearance row.
+**Every build:**
+- `/settings/appearance`: System, Light or Dark, persisted. **A deliberate deviation:** H1 in the design has no Appearance row.
+
+**Debug builds only** (registered under `kDebugMode`):
 - `/settings/developer`: switch scenario, skip to signed in, simulate an assisted reminder (G1).
 - `/dev/components`: the design-system gallery.
 
