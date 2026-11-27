@@ -175,5 +175,155 @@
   "devComponentsTopBars": "Top bars",
   "@devComponentsTopBars": {
     "description": "Debug gallery section: top bars."
+  },
+  "libraryEmptyAction": "New post",
+  "@libraryEmptyAction": {
+    "description": "F2: button that opens the composer from the empty library."
+  },
+  "libraryEmptyBody": "Every video you schedule appears here, with its status on each platform.",
+  "@libraryEmptyBody": {
+    "description": "F2: explanation under the empty-library title."
+  },
+  "libraryEmptyTitle": "No videos yet",
+  "@libraryEmptyTitle": {
+    "description": "F2: title of the empty library."
+  },
+  "libraryErrorBody": "We could not load your library. Your scheduled posts are not affected.",
+  "@libraryErrorBody": {
+    "description": "I3 on the Library: what failed, and that nothing is lost."
+  },
+  "libraryErrorRetry": "Try again",
+  "@libraryErrorRetry": {
+    "description": "I3 on the Library: reloads the list."
+  },
+  "libraryErrorTitle": "Something went wrong",
+  "@libraryErrorTitle": {
+    "description": "I3 on the Library: title of the error state."
+  },
+  "libraryFilterAll": "All",
+  "@libraryFilterAll": {
+    "description": "F1 tab: every post."
+  },
+  "libraryFilterFailed": "Failed",
+  "@libraryFilterFailed": {
+    "description": "F1 tab: posts that failed on at least one platform."
+  },
+  "libraryFilterNoMatch": "Nothing here yet.",
+  "@libraryFilterNoMatch": {
+    "description": "F1: shown when the selected tab has no posts."
+  },
+  "libraryFilterPublished": "Published",
+  "@libraryFilterPublished": {
+    "description": "F1 tab: posts published everywhere."
+  },
+  "libraryFilterScheduled": "Scheduled",
+  "@libraryFilterScheduled": {
+    "description": "F1 tab: posts still to go out."
+  },
+  "libraryRowFailedMany": "{count, plural, other{Failed on {count} platforms}}",
+  "@libraryRowFailedMany": {
+    "description": "F1 row status: the post failed on several platforms.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryRowFailedOne": "Failed on {platform}",
+  "@libraryRowFailedOne": {
+    "description": "F1 row status: the post failed on one platform, e.g. 'Failed on TikTok'.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "libraryRowPublished": "Published",
+  "@libraryRowPublished": {
+    "description": "F1 row status: published everywhere, no statistics."
+  },
+  "libraryRowPublishedViews": "{count, plural, =1{Published · 1 view} other{Published · {views} views}}",
+  "@libraryRowPublishedViews": {
+    "description": "F1 row status: published everywhere, with the total views. 'views' is the formatted count.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "views": {
+        "type": "String",
+        "example": "8,204"
+      }
+    }
+  },
+  "libraryRowPublishing": "Publishing",
+  "@libraryRowPublishing": {
+    "description": "F1 row status: being posted right now."
+  },
+  "libraryRowScheduled": "Scheduled",
+  "@libraryRowScheduled": {
+    "description": "F1 row status: still to go out."
+  },
+  "libraryRowWithTime": "{status} · {when}",
+  "@libraryRowWithTime": {
+    "description": "F1 row: a status followed by when, e.g. 'Scheduled · today 19:00'.",
+    "placeholders": {
+      "status": {
+        "type": "String",
+        "example": "Scheduled"
+      },
+      "when": {
+        "type": "String",
+        "example": "today 19:00"
+      }
+    }
+  },
+  "libraryTitle": "Library",
+  "@libraryTitle": {
+    "description": "F1: title of the Library tab."
+  },
+  "libraryWhenDate": "{date}, {time}",
+  "@libraryWhenDate": {
+    "description": "A date and time that is not yesterday, today or tomorrow.",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "Tue 17 Nov"
+      },
+      "time": {
+        "type": "String",
+        "example": "19:00"
+      }
+    }
+  },
+  "libraryWhenToday": "today {time}",
+  "@libraryWhenToday": {
+    "description": "A time today, e.g. 'today 19:00'.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "19:00"
+      }
+    }
+  },
+  "libraryWhenTomorrow": "tomorrow {time}",
+  "@libraryWhenTomorrow": {
+    "description": "A time tomorrow.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "09:00"
+      }
+    }
+  },
+  "libraryWhenYesterday": "yesterday {time}",
+  "@libraryWhenYesterday": {
+    "description": "A time yesterday.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "18:30"
+      }
+    }
   }
 }
