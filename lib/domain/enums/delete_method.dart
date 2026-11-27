@@ -1,0 +1,1 @@
+enum DeleteMethod { automatic, assisted }

@@ -1,0 +1,1 @@
+enum BillingPeriod { monthly, yearly }
