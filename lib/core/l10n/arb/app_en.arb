@@ -1,0 +1,33 @@
+{
+  "@@locale": "en",
+  "commonAppName": "pushIt",
+  "@commonAppName": {
+    "description": "The product name, shown on the splash screen and in the app switcher."
+  },
+  "commonNavAccounts": "Accounts",
+  "@commonNavAccounts": {
+    "description": "Bottom nav tab: connected accounts."
+  },
+  "commonNavCalendar": "Calendar",
+  "@commonNavCalendar": {
+    "description": "Bottom nav tab: the posting calendar."
+  },
+  "commonNavHome": "Home",
+  "@commonNavHome": {
+    "description": "Bottom nav tab: the dashboard."
+  },
+  "commonNavLibrary": "Library",
+  "@commonNavLibrary": {
+    "description": "Bottom nav tab: every video and its platforms."
+  },
+  "commonPlaceholderBody": "Screen {screenId} is coming soon.",
+  "@commonPlaceholderBody": {
+    "description": "Temporary body of a route whose screen is not built yet.",
+    "placeholders": {
+      "screenId": {
+        "type": "String",
+        "example": "F1"
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+#!/bin/sh
+# pushIt commit-msg hook. Enable once per clone with:
+#   git config core.hooksPath .githooks
+#
+# 1. Rejects AI attribution lines (team rule: no AI co-authoring).
+# 2. Enforces Conventional Commits on the subject line.
+
+msg_file="$1"
+
+# Ignore comment lines that git strips anyway.
+content=$(grep -v '^#' "$msg_file")
+
+if printf '%s\n' "$content" | grep -qiE '^co-authored-by:.*(claude|anthropic)|^claude-session:|generated with \[?claude'; then
+  echo "commit-msg: remove AI attribution lines (Co-Authored-By Claude/Anthropic, Claude-Session, 'Generated with Claude Code')." >&2
+  exit 1
+fi
+
+subject=$(printf '%s\n' "$content" | sed -n '/./{p;q;}')
+
+case "$subject" in
+  Merge\ *|Revert\ *|fixup!\ *|squash!\ *) exit 0 ;;
+esac
+
+if ! printf '%s' "$subject" | grep -qE '^(feat|fix|refactor|test|docs|chore|build|ci|style|perf)(\([a-z0-9-]+\))?!?: .+$'; then
+  echo "commit-msg: subject must follow Conventional Commits, e.g. 'feat(library): show per-platform status'." >&2
+  echo "            got: $subject" >&2
+  exit 1
+fi
+
+if [ "${#subject}" -gt 72 ]; then
+  echo "commit-msg: subject is longer than 72 characters." >&2
+  exit 1
+fi
+
+exit 0
