@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:pushit/core/design_system/theme/app_theme.dart';
 import 'package:pushit/core/l10n/l10n.dart';
 
 import 'test_across_layouts.dart';
@@ -23,7 +24,7 @@ extension PumpApp on WidgetTester {
     final brightness = layout?.brightness ?? Brightness.light;
     final textScale = layout?.textScale ?? 1;
     final app = MaterialApp(
-      theme: _themeFor(brightness),
+      theme: brightness == Brightness.dark ? AppTheme.dark() : AppTheme.light(),
       localizationsDelegates: appLocalizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       builder: (context, child) => MediaQuery(
@@ -42,6 +43,3 @@ extension PumpApp on WidgetTester {
     );
   }
 }
-
-// Phase 1 replaces this with AppTheme.light() / AppTheme.dark().
-ThemeData _themeFor(Brightness brightness) => ThemeData(brightness: brightness);
