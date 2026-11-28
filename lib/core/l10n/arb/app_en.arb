@@ -28,6 +28,20 @@
   "@commonNavLibrary": {
     "description": "Bottom nav tab: every video and its platforms."
   },
+  "commonPageIndicator": "Page {current} of {count}",
+  "@commonPageIndicator": {
+    "description": "Screen-reader label of the onboarding page dots.",
+    "placeholders": {
+      "current": {
+        "type": "int",
+        "example": "1"
+      },
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
   "commonPlaceholderBody": "Screen {screenId} is coming soon.",
   "@commonPlaceholderBody": {
     "description": "Temporary body of a route whose screen is not built yet.",
@@ -37,6 +51,38 @@
         "example": "F1"
       }
     }
+  },
+  "commonPlatformBluesky": "Bluesky",
+  "@commonPlatformBluesky": {
+    "description": "Platform name."
+  },
+  "commonPlatformFacebook": "Facebook",
+  "@commonPlatformFacebook": {
+    "description": "Platform name."
+  },
+  "commonPlatformInstagram": "Instagram",
+  "@commonPlatformInstagram": {
+    "description": "Platform name."
+  },
+  "commonPlatformLinkedIn": "LinkedIn",
+  "@commonPlatformLinkedIn": {
+    "description": "Platform name."
+  },
+  "commonPlatformThreads": "Threads",
+  "@commonPlatformThreads": {
+    "description": "Platform name."
+  },
+  "commonPlatformTikTok": "TikTok",
+  "@commonPlatformTikTok": {
+    "description": "Platform name."
+  },
+  "commonPlatformX": "X",
+  "@commonPlatformX": {
+    "description": "Platform name (formerly Twitter)."
+  },
+  "commonPlatformYouTube": "YouTube",
+  "@commonPlatformYouTube": {
+    "description": "Platform name."
   },
   "devComponentsButtons": "Buttons",
   "@devComponentsButtons": {
@@ -49,6 +95,10 @@
   "devComponentsDark": "Dark",
   "@devComponentsDark": {
     "description": "Debug gallery: the dark theme sample."
+  },
+  "devComponentsDisplay": "Platforms, media and display",
+  "@devComponentsDisplay": {
+    "description": "Debug gallery section: logos, thumbnails, avatars, progress, stats and page dots."
   },
   "devComponentsInputs": "Inputs",
   "@devComponentsInputs": {

@@ -50,6 +50,7 @@ void main() {
     expect(AppSizes.platformGlyphLarge, 24);
     expect(AppSizes.platformGlyphSmall, 14);
     expect(AppSizes.ringWidth, 1.5);
+    expect(AppSizes.selectionRingWidth, 2.5);
     expect(AppSizes.avatar, 36);
     expect(AppSizes.avatarLarge, 56);
     expect(AppSizes.switchTrack, const Size(52, 32));
@@ -62,6 +63,8 @@ void main() {
     expect(AppSizes.galleryColumns, 3);
     expect(AppSizes.galleryGap, 8);
     expect(AppSizes.progressBar, 6);
+    expect(AppSizes.pageDot, 8);
+    expect(AppSizes.pageDotActiveWidth, 24);
   });
 
   test('durations', () {

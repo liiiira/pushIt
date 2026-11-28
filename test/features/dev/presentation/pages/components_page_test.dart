@@ -4,14 +4,20 @@ import 'package:pushit/core/design_system/tokens/app_colors.dart';
 import 'package:pushit/core/design_system/widgets/app_card.dart';
 import 'package:pushit/core/design_system/widgets/app_checkbox.dart';
 import 'package:pushit/core/design_system/widgets/app_list_row.dart';
+import 'package:pushit/core/design_system/widgets/app_progress_bar.dart';
 import 'package:pushit/core/design_system/widgets/app_radio.dart';
 import 'package:pushit/core/design_system/widgets/app_segmented_control.dart';
 import 'package:pushit/core/design_system/widgets/app_switch.dart';
 import 'package:pushit/core/design_system/widgets/app_text_field.dart';
 import 'package:pushit/core/design_system/widgets/app_top_bar.dart';
+import 'package:pushit/core/design_system/widgets/initials_avatar.dart';
+import 'package:pushit/core/design_system/widgets/page_indicator.dart';
+import 'package:pushit/core/design_system/widgets/platform_logo.dart';
 import 'package:pushit/core/design_system/widgets/primary_button.dart';
 import 'package:pushit/core/design_system/widgets/secondary_button.dart';
+import 'package:pushit/core/design_system/widgets/stat_tile.dart';
 import 'package:pushit/core/design_system/widgets/text_action_button.dart';
+import 'package:pushit/core/design_system/widgets/video_thumbnail.dart';
 import 'package:pushit/core/l10n/l10n.dart';
 import 'package:pushit/features/dev/presentation/pages/components_page.dart';
 
@@ -57,6 +63,12 @@ void main() {
       AppRadio<int>,
       AppSegmentedControl<int>,
       AppTextField,
+      PlatformLogo,
+      VideoThumbnail,
+      InitialsAvatar,
+      AppProgressBar,
+      StatTile,
+      PageIndicator,
     ]) {
       for (final sample in [light, dark]) {
         expect(

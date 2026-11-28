@@ -33,3 +33,7 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - Text-field errors add a `text` outline plus an icon and message, never colour alone.
 - Disabled controls use `sub`/`line`.
 - New tokens: `AppRadii.checkbox` 6 and `AppSizes.radioDot` 12, also added to DESIGN_TOKENS.md.
+2026-11-28 · #6 · Shared widgets, part 3: `PlatformLogo` (uses B's `PlatformId`), `VideoThumbnail`, `InitialsAvatar`, `AppProgressBar`, `StatTile`, `PageIndicator`; `formatClipDuration`/`initialsOf`; `l10n.platformName` · Decisions:
+- `lib/core` imports `lib/domain` for `PlatformId`. This is not a file-level cycle, and the docs require logos for the 8 platforms.
+- Lucide has no solid play icon, so the play triangle is painted.
+- New tokens: `selectionRingWidth` 2.5 and `pageDot` 8 / 24, also added to DESIGN_TOKENS.md.
