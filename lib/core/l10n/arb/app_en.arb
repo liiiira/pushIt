@@ -257,6 +257,218 @@
       }
     }
   },
+  "calendarActionFailed": "Publishing has started, so this post can no longer change.",
+  "@calendarActionFailed": {
+    "description": "E4: reschedule or cancel was refused."
+  },
+  "calendarAssistedMany": "{count, plural, other{Assisted · {count} platforms}}",
+  "@calendarAssistedMany": {
+    "description": "E1 card: posted by the creator on several platforms.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "calendarAssistedOne": "Assisted · {platform}",
+  "@calendarAssistedOne": {
+    "description": "E1 card: the creator posts it on this platform.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "Instagram"
+      }
+    }
+  },
+  "calendarCancelBody": "It will not go out on any platform, and leaves the calendar.",
+  "@calendarCancelBody": {
+    "description": "E4: what cancelling does."
+  },
+  "calendarCancelConfirm": "Cancel the post",
+  "@calendarCancelConfirm": {
+    "description": "E4 dialog: confirms."
+  },
+  "calendarCancelKeep": "Keep it",
+  "@calendarCancelKeep": {
+    "description": "E4 dialog: keeps the post."
+  },
+  "calendarCancelPost": "Cancel post",
+  "@calendarCancelPost": {
+    "description": "E4 action."
+  },
+  "calendarCancelTitle": "Cancel this post?",
+  "@calendarCancelTitle": {
+    "description": "E4 dialog title."
+  },
+  "calendarDay": "Day",
+  "@calendarDay": {
+    "description": "Calendar tab: one day."
+  },
+  "calendarDayHeading": "{count, plural, =1{{date} · 1 post} other{{date} · {count} posts}}",
+  "@calendarDayHeading": {
+    "description": "E1: the day and its number of posts.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "date": {
+        "type": "String",
+        "example": "Thursday 12"
+      }
+    }
+  },
+  "calendarEditPost": "Edit post",
+  "@calendarEditPost": {
+    "description": "E4 action: edit everywhere (F5)."
+  },
+  "calendarEmptyBody": "Schedule a video for this day, or pick another day.",
+  "@calendarEmptyBody": {
+    "description": "E3: an empty day."
+  },
+  "calendarEmptyTitle": "Nothing on {date}",
+  "@calendarEmptyTitle": {
+    "description": "E3 title.",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "Tuesday 10"
+      }
+    }
+  },
+  "calendarFailedMany": "{count, plural, other{Failed on {count} platforms}}",
+  "@calendarFailedMany": {
+    "description": "E1 card.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "calendarFailedOne": "Failed on {platform}",
+  "@calendarFailedOne": {
+    "description": "E1 card.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "calendarNewPost": "New post",
+  "@calendarNewPost": {
+    "description": "E3: opens the composer."
+  },
+  "calendarNothingScheduled": "Nothing scheduled",
+  "@calendarNothingScheduled": {
+    "description": "E2: a day without posts."
+  },
+  "calendarPublished": "{count, plural, =1{Published · 1 platform} other{Published · {count} platforms}}",
+  "@calendarPublished": {
+    "description": "E1 card.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "calendarPublishing": "Publishing",
+  "@calendarPublishing": {
+    "description": "E1 card: going out now."
+  },
+  "calendarReschedule": "Reschedule",
+  "@calendarReschedule": {
+    "description": "E4 action: opens the When sheet."
+  },
+  "calendarScheduled": "{count, plural, =1{Scheduled · 1 platform} other{Scheduled · {count} platforms}}",
+  "@calendarScheduled": {
+    "description": "E1 card.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "calendarSheetFooter": "You can change or cancel a post until publishing starts.",
+  "@calendarSheetFooter": {
+    "description": "E4: footnote."
+  },
+  "calendarSheetLine": "{count, plural, =1{Scheduled · {when} · 1 platform} other{Scheduled · {when} · {count} platforms}}",
+  "@calendarSheetLine": {
+    "description": "E4: under the title.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "when": {
+        "type": "String",
+        "example": "today 19:00"
+      }
+    }
+  },
+  "calendarTitle": "Calendar",
+  "@calendarTitle": {
+    "description": "Calendar tab title."
+  },
+  "calendarWeek": "Week",
+  "@calendarWeek": {
+    "description": "Calendar tab: the whole week."
+  },
+  "calendarWeekFailed": "{title} · failed",
+  "@calendarWeekFailed": {
+    "description": "E2: a failed post.",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "Mic test"
+      }
+    }
+  },
+  "calendarWeekRange": "{start} to {end}",
+  "@calendarWeekRange": {
+    "description": "E2 header: the week, e.g. '9 to 15 Nov'.",
+    "placeholders": {
+      "start": {
+        "type": "String",
+        "example": "9"
+      },
+      "end": {
+        "type": "String",
+        "example": "15 Nov"
+      }
+    }
+  },
+  "calendarWhenDate": "{date}, {time}",
+  "@calendarWhenDate": {
+    "description": "A date and time.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "calendarWhenToday": "today {time}",
+  "@calendarWhenToday": {
+    "description": "A time today.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "19:00"
+      }
+    }
+  },
+  "calendarWhenTomorrow": "tomorrow {time}",
+  "@calendarWhenTomorrow": {
+    "description": "A time tomorrow.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "09:00"
+      }
+    }
+  },
   "commonAppName": "pushIt",
   "@commonAppName": {
     "description": "The product name, shown on the splash screen and in the app switcher."
