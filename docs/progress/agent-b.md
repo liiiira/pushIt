@@ -81,3 +81,8 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - "Assisted · <platform>" when every platform of a scheduled post publishes assisted (capability table).
 - Only posts that can still change (every target scheduled) open E4; the others open F3/F4.
 - Reschedule reuses the composer's When sheet (exported from the composer barrel).
+
+2026-11-28 · #32 · G2 assisted posting and G3 assisted delete; G1 requested from A (#31) · Decisions:
+- The checklist can be ticked by hand; "Open <platform>" ticks the steps it does (caption copied, app opened).
+- G2 opens the platform's home (`platformHomeUri`); G3 opens the post's own link when known.
+- G1 needs flutter_local_notifications and Android setup (A's area); the fakes' `triggerAssistedReminder` already drives the flow.
