@@ -15,6 +15,12 @@ abstract final class AppSizes {
   static const double iconSmall = 20;
   static const double iconTiny = 16;
 
+  /// Empty and error state illustrations.
+  static const double iconLarge = 32;
+
+  /// The drag handle on top of bottom sheets.
+  static const sheetHandle = Size(40, 4);
+
   /// Every tappable element is at least this wide and high.
   static const double minTapTarget = 48;
 

@@ -37,3 +37,8 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - `lib/core` imports `lib/domain` for `PlatformId`. This is not a file-level cycle, and the docs require logos for the 8 platforms.
 - Lucide has no solid play icon, so the play triangle is painted.
 - New tokens: `selectionRingWidth` 2.5 and `pageDot` 8 / 24, also added to DESIGN_TOKENS.md.
+2026-11-28 · #8 · Shared widgets, part 4: `showAppBottomSheet`, `showAppDialog` (`AppDialogAction`), `EmptyStateView`, `ErrorStateView` (I3), `OfflineBanner` (I1), `SkeletonList` (I2) · Decisions:
+- Dialogs take declarative actions that pop with a value, so callers never handle the dialog's context.
+- `ErrorStateView` falls back to a generic message.
+- The skeletons are static (no shimmer, since gradients are not allowed).
+- New tokens: `iconLarge` 32 and `sheetHandle` 40 × 4, also added to DESIGN_TOKENS.md.

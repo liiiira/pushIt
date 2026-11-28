@@ -79,7 +79,8 @@ Font: **Hanken Grotesk**, bundled under `assets/fonts` (OFL). The colour comes f
 | `topBarHeight` | 56 |
 | `bottomNavHeight` | 64 (plus the system gesture inset) |
 | `createButton` | 56 × 40 |
-| `icon` | 24 (small 20, tiny 16) |
+| `icon` | 24 (small 20, tiny 16, large 32 for empty and error states) |
+| `sheetHandle` | 40 × 4 |
 | `minTapTarget` | 48 |
 | `platformLogoLarge` / `Small` | 48 / 28 (glyph 24 / 14) |
 | `avatar` | 36 (settings 56) |

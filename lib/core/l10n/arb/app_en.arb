@@ -12,6 +12,18 @@
   "@commonClose": {
     "description": "Tooltip of the close cross in the top bar."
   },
+  "commonErrorBody": "Please try again in a moment.",
+  "@commonErrorBody": {
+    "description": "Generic body of the error state (I3) when the page gives no message."
+  },
+  "commonErrorTitle": "Something went wrong",
+  "@commonErrorTitle": {
+    "description": "Title of the error state (I3)."
+  },
+  "commonLoading": "Loading",
+  "@commonLoading": {
+    "description": "Screen-reader label of the loading skeletons (I2)."
+  },
   "commonNavAccounts": "Accounts",
   "@commonNavAccounts": {
     "description": "Bottom nav tab: connected accounts."
@@ -27,6 +39,10 @@
   "commonNavLibrary": "Library",
   "@commonNavLibrary": {
     "description": "Bottom nav tab: every video and its platforms."
+  },
+  "commonOfflineBanner": "No connection. Scheduled posts still go out.",
+  "@commonOfflineBanner": {
+    "description": "Offline banner (I1)."
   },
   "commonPageIndicator": "Page {current} of {count}",
   "@commonPageIndicator": {
@@ -84,6 +100,10 @@
   "@commonPlatformYouTube": {
     "description": "Platform name."
   },
+  "commonRetry": "Try again",
+  "@commonRetry": {
+    "description": "Retry button of the error state (I3)."
+  },
   "devComponentsButtons": "Buttons",
   "@devComponentsButtons": {
     "description": "Debug gallery section: buttons."
@@ -108,6 +128,18 @@
   "@devComponentsLight": {
     "description": "Debug gallery: the light theme sample."
   },
+  "devComponentsOpenDialog": "Open a dialog",
+  "@devComponentsOpenDialog": {
+    "description": "Debug gallery: button that opens a sample dialog."
+  },
+  "devComponentsOpenSheet": "Open a bottom sheet",
+  "@devComponentsOpenSheet": {
+    "description": "Debug gallery: button that opens a sample bottom sheet."
+  },
+  "devComponentsOverlays": "Overlays",
+  "@devComponentsOverlays": {
+    "description": "Debug gallery section: bottom sheet and dialog."
+  },
   "devComponentsSampleError": "Something is not right.",
   "@devComponentsSampleError": {
     "description": "Debug gallery: sample field error."
@@ -131,6 +163,10 @@
   "devComponentsSampleValue": "Value",
   "@devComponentsSampleValue": {
     "description": "Debug gallery: sample row value."
+  },
+  "devComponentsStates": "States",
+  "@devComponentsStates": {
+    "description": "Debug gallery section: empty, error, offline and loading."
   },
   "devComponentsTitle": "Components",
   "@devComponentsTitle": {

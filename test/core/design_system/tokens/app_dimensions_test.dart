@@ -44,6 +44,8 @@ void main() {
     expect(AppSizes.icon, 24);
     expect(AppSizes.iconSmall, 20);
     expect(AppSizes.iconTiny, 16);
+    expect(AppSizes.iconLarge, 32);
+    expect(AppSizes.sheetHandle, const Size(40, 4));
     expect(AppSizes.minTapTarget, 48);
     expect(AppSizes.platformLogoLarge, 48);
     expect(AppSizes.platformLogoSmall, 28);
