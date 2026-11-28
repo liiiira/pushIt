@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:pushit/core/design_system/tokens/app_colors.dart';
 
 import 'helpers.dart';
 
@@ -38,5 +39,10 @@ void main() {
     expect(media?.size, layout.size);
     expect(media?.textScaler, TextScaler.linear(layout.textScale));
     expect(theme?.brightness, layout.brightness);
+    expect(
+      theme?.extension<AppColors>(),
+      layout.brightness == Brightness.dark ? AppColors.dark : AppColors.light,
+      reason: 'pumpApp uses AppTheme',
+    );
   });
 }

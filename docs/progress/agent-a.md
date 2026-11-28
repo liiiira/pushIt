@@ -14,3 +14,12 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - Tab sub-routes are full screen (`parentNavigatorKey: root`).
 - Cross-feature nesting (activity under home; plans and developer under settings) is composed in `app_router.dart`.
 - Deviation: `/settings/appearance` is available in every build (SCREENS.md updated); only the Developer menu and `/dev/components` are debug-only.
+2026-11-28 · #2 · Design tokens and themes: `AppColors`/`AppTypography` ThemeExtensions, spacing, radii, sizes, durations, `AppTheme.light()/dark()`, `context.colors`/`context.textStyles` · Decisions:
+- Every Material surface slot maps to `surface`; tint and shadow use `AppColors.transparent`; elevation 0.
+- `error` maps to `text` (greys only).
+- `context.colors` falls back to the tokens of the theme brightness outside an `AppTheme`.
+- `themeMode: light` until the theme-mode cubit lands.
+- Extra tokens beyond DESIGN_TOKENS.md:
+  - `AppSpacing.screenMargin`/`cardPadding`
+  - `AppSizes.ringWidth`, `galleryColumns`/`galleryGap`, `platformGlyph*`
+  - `AppDurations.fakeLatencySlow`
