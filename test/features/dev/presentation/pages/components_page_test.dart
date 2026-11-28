@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:pushit/core/design_system/tokens/app_colors.dart';
+import 'package:pushit/core/design_system/widgets/app_bottom_sheet.dart';
 import 'package:pushit/core/design_system/widgets/app_card.dart';
 import 'package:pushit/core/design_system/widgets/app_checkbox.dart';
 import 'package:pushit/core/design_system/widgets/app_list_row.dart';
@@ -10,11 +11,15 @@ import 'package:pushit/core/design_system/widgets/app_segmented_control.dart';
 import 'package:pushit/core/design_system/widgets/app_switch.dart';
 import 'package:pushit/core/design_system/widgets/app_text_field.dart';
 import 'package:pushit/core/design_system/widgets/app_top_bar.dart';
+import 'package:pushit/core/design_system/widgets/empty_state_view.dart';
+import 'package:pushit/core/design_system/widgets/error_state_view.dart';
 import 'package:pushit/core/design_system/widgets/initials_avatar.dart';
+import 'package:pushit/core/design_system/widgets/offline_banner.dart';
 import 'package:pushit/core/design_system/widgets/page_indicator.dart';
 import 'package:pushit/core/design_system/widgets/platform_logo.dart';
 import 'package:pushit/core/design_system/widgets/primary_button.dart';
 import 'package:pushit/core/design_system/widgets/secondary_button.dart';
+import 'package:pushit/core/design_system/widgets/skeleton_list.dart';
 import 'package:pushit/core/design_system/widgets/stat_tile.dart';
 import 'package:pushit/core/design_system/widgets/text_action_button.dart';
 import 'package:pushit/core/design_system/widgets/video_thumbnail.dart';
@@ -69,6 +74,10 @@ void main() {
       AppProgressBar,
       StatTile,
       PageIndicator,
+      EmptyStateView,
+      ErrorStateView,
+      OfflineBanner,
+      SkeletonList,
     ]) {
       for (final sample in [light, dark]) {
         expect(
@@ -81,5 +90,30 @@ void main() {
         );
       }
     }
+  });
+
+  testWidgets('opens a sample bottom sheet and dialog', (tester) async {
+    await tester.pumpApp(const ComponentsPage());
+
+    final openSheet = find.text(_l10n.devComponentsOpenSheet).first;
+    await tester.scrollUntilVisible(
+      openSheet,
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.tap(openSheet);
+    await tester.pumpAndSettle();
+    expect(find.byType(AppBottomSheetFrame), findsOneWidget);
+    await tester.tap(find.text(_l10n.devComponentsSampleLabel).last);
+    await tester.pumpAndSettle();
+    expect(find.byType(AppBottomSheetFrame), findsNothing);
+
+    final openDialog = find.text(_l10n.devComponentsOpenDialog).first;
+    await tester.tap(openDialog);
+    await tester.pumpAndSettle();
+    expect(find.byType(Dialog), findsOneWidget);
+    await tester.tap(find.text(_l10n.devComponentsSampleLabel).last);
+    await tester.pumpAndSettle();
+    expect(find.byType(Dialog), findsNothing);
   });
 }

@@ -3,9 +3,11 @@ import 'package:material_ui/material_ui.dart';
 import 'package:pushit/core/design_system/theme/app_theme.dart';
 import 'package:pushit/core/design_system/tokens/app_sizes.dart';
 import 'package:pushit/core/design_system/tokens/app_spacing.dart';
+import 'package:pushit/core/design_system/widgets/app_bottom_sheet.dart';
 import 'package:pushit/core/design_system/widgets/app_button_size.dart';
 import 'package:pushit/core/design_system/widgets/app_card.dart';
 import 'package:pushit/core/design_system/widgets/app_checkbox.dart';
+import 'package:pushit/core/design_system/widgets/app_dialog.dart';
 import 'package:pushit/core/design_system/widgets/app_list_row.dart';
 import 'package:pushit/core/design_system/widgets/app_progress_bar.dart';
 import 'package:pushit/core/design_system/widgets/app_radio.dart';
@@ -13,11 +15,15 @@ import 'package:pushit/core/design_system/widgets/app_segmented_control.dart';
 import 'package:pushit/core/design_system/widgets/app_switch.dart';
 import 'package:pushit/core/design_system/widgets/app_text_field.dart';
 import 'package:pushit/core/design_system/widgets/app_top_bar.dart';
+import 'package:pushit/core/design_system/widgets/empty_state_view.dart';
+import 'package:pushit/core/design_system/widgets/error_state_view.dart';
 import 'package:pushit/core/design_system/widgets/initials_avatar.dart';
+import 'package:pushit/core/design_system/widgets/offline_banner.dart';
 import 'package:pushit/core/design_system/widgets/page_indicator.dart';
 import 'package:pushit/core/design_system/widgets/platform_logo.dart';
 import 'package:pushit/core/design_system/widgets/primary_button.dart';
 import 'package:pushit/core/design_system/widgets/secondary_button.dart';
+import 'package:pushit/core/design_system/widgets/skeleton_list.dart';
 import 'package:pushit/core/design_system/widgets/stat_tile.dart';
 import 'package:pushit/core/design_system/widgets/text_action_button.dart';
 import 'package:pushit/core/design_system/widgets/video_thumbnail.dart';
@@ -92,6 +98,8 @@ class _ThemeSample extends StatelessWidget {
                 const _CardsSection(),
                 const _InputsSection(),
                 const _DisplaySection(),
+                const _OverlaysSection(),
+                const _StatesSection(),
               ],
             ),
           ),
@@ -407,6 +415,95 @@ class _DisplaySection extends StatelessWidget {
             ),
           ],
         ),
+      ],
+    );
+  }
+}
+
+class _OverlaysSection extends StatelessWidget {
+  const new();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final label = l10n.devComponentsSampleLabel;
+    return _Section(
+      title: l10n.devComponentsOverlays,
+      children: [
+        SecondaryButton(
+          label: l10n.devComponentsOpenSheet,
+          onPressed: () => showAppBottomSheet<void>(
+            context: context,
+            title: l10n.devComponentsSampleTitle,
+            builder: (context) => Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  l10n.devComponentsSampleSubtitle,
+                  style: context.textStyles.body.copyWith(
+                    color: context.colors.sub,
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.lg),
+                PrimaryButton(
+                  label: label,
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
+            ),
+          ),
+        ),
+        SecondaryButton(
+          label: l10n.devComponentsOpenDialog,
+          onPressed: () => showAppDialog<bool>(
+            context: context,
+            title: l10n.devComponentsSampleTitle,
+            message: l10n.devComponentsSampleSubtitle,
+            actions: [
+              AppDialogAction(label: label, value: true),
+              AppDialogAction(
+                label: label,
+                value: false,
+                kind: AppDialogActionKind.text,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _StatesSection extends StatelessWidget {
+  const new();
+
+  // Enough room for each state to lay out as on a page.
+  static const _stateHeight = 320.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return _Section(
+      title: l10n.devComponentsStates,
+      margin: false,
+      children: [
+        SizedBox(
+          height: _stateHeight,
+          child: EmptyStateView(
+            icon: LucideIcons.layers,
+            title: l10n.devComponentsSampleTitle,
+            message: l10n.devComponentsSampleSubtitle,
+            actionLabel: l10n.devComponentsSampleLabel,
+            onAction: () {},
+          ),
+        ),
+        SizedBox(
+          height: _stateHeight,
+          child: ErrorStateView(onRetry: () {}),
+        ),
+        const OfflineBanner(),
+        const SizedBox(height: _stateHeight, child: SkeletonList()),
       ],
     );
   }
