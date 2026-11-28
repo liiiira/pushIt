@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:mocktail/mocktail.dart';
@@ -12,6 +14,7 @@ final class InMemoryAppPreferences implements AppPreferences {
 
   ThemeMode _themeMode;
   bool _isOnboarded;
+  final StreamController<bool> _onboardedChanges = StreamController.broadcast();
 
   @override
   ThemeMode get themeMode => _themeMode;
@@ -23,5 +26,15 @@ final class InMemoryAppPreferences implements AppPreferences {
   Future<void> setThemeMode(ThemeMode mode) async => _themeMode = mode;
 
   @override
-  Future<void> setOnboarded() async => _isOnboarded = true;
+  Stream<bool> watchOnboarded() => Stream.multi((controller) {
+    controller.add(_isOnboarded);
+    final subscription = _onboardedChanges.stream.listen(controller.add);
+    controller.onCancel = subscription.cancel;
+  });
+
+  @override
+  Future<void> setOnboarded() async {
+    _isOnboarded = true;
+    _onboardedChanges.add(true);
+  }
 }

@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:pushit/app/app.dart';
-import 'package:pushit/app/router/app_redirect.dart';
+import 'package:pushit/app/router/app_access_notifier.dart';
 import 'package:pushit/app/router/app_router.dart';
 import 'package:pushit/core/clock.dart';
 import 'package:pushit/core/preferences/app_preferences.dart';
@@ -22,10 +22,10 @@ Future<void> main() async {
     scenario: Scenario.fromName(scenarioName),
     clock: const SystemClock(),
   );
-  // Phase 0: a fresh, signed-out user. Phase 2 feeds this from
-  // AppPreferences and AuthRepository.
-  final access = ValueNotifier(
-    const AppAccess(isOnboarded: false, isSignedIn: false),
+  // Unknown until the auth state arrives (the splash shows meanwhile).
+  final access = AppAccessNotifier(
+    preferences: preferences,
+    auth: dependencies.auth,
   );
   runApp(
     PushItApp(

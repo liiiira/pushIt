@@ -17,6 +17,7 @@ import 'package:pushit/features/dev/presentation/pages/components_page.dart';
 
 import '../../helpers/helpers.dart';
 
+const _launching = AppAccess.unknown(isOnboarded: true);
 const _newUser = AppAccess(isOnboarded: false, isSignedIn: false);
 const _signedOut = AppAccess(isOnboarded: true, isSignedIn: false);
 const _signedIn = AppAccess(isOnboarded: true, isSignedIn: true);
@@ -70,9 +71,22 @@ Future<void> _expectScreen(
 
 void main() {
   testWidgets('starts on the splash', (tester) async {
-    final router = await _pumpRouter(tester, access: ValueNotifier(_newUser));
+    final router = await _pumpRouter(tester, access: ValueNotifier(_launching));
 
     _expectAt(router, RoutePaths.splash, 'A1');
+  });
+
+  testWidgets('leaves the splash once the sign-in state is known', (
+    tester,
+  ) async {
+    final access = ValueNotifier(_launching);
+    addTearDown(access.dispose);
+    final router = await _pumpRouter(tester, access: access);
+
+    access.value = _signedIn;
+    await tester.pumpAndSettle();
+
+    _expectAt(router, RoutePaths.home, 'B1');
   });
 
   testWidgets('serves the onboarding to a new user', (tester) async {
@@ -140,8 +154,8 @@ void main() {
       tester,
       router,
       RoutePaths.root,
-      'A1',
-      redirectedTo: RoutePaths.splash,
+      'A5',
+      redirectedTo: RoutePaths.signIn,
     );
     await _expectScreen(
       tester,
