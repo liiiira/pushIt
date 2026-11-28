@@ -34,3 +34,9 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - View counts use the locale's grouping ("8,204"); the mock-up shows "8 204".
 - `/library` still routes to `PlaceholderPage` until `app_router_test` provides repositories (issue #9).
 - Reported to A on #9: `AppSegmentedControl` truncates "Scheduled" and "Published" at 412 dp.
+
+2026-11-28 · #14 · F3 post detail (totals, per-platform status, links, refresh age) and F4 failure card with reconnect and retry · Decisions:
+- Statistics (totals, per-platform views and likes, refresh age) show only on plans with statistics; otherwise rows show the publish time.
+- F4 header reads "Failed Thu 12 Nov, 13:30" (F3's absolute style) instead of "Today, 13:30".
+- "Reconnect and retry" reconnects directly until A exports `showReconnectDialog` (C5, issue #9).
+- The "···" button opens a sheet with Edit everywhere and Delete everywhere.
