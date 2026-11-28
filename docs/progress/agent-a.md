@@ -43,3 +43,6 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - The skeletons are static (no shimmer, since gradients are not allowed).
 - New tokens: `iconLarge` 32 and `sheetHandle` 40 × 4, also added to DESIGN_TOKENS.md.
 2026-11-28 · #10 · App wiring: `main` builds B's `Dependencies.fake` for the `SCENARIO` define; `PushItApp(dependencies:)` provides every repository interface and `Clock` (`repositoryProvidersOf`); test helper `testDependencies({scenario})` at `testNow` with no latency · Decision: `AppAccess` stays a fixed signed-out value until the splash and auth screens (Phase 2) feed it from preferences and `AuthRepository`.
+2026-11-28 · #11 · Theme mode: `AppPreferences` (`SharedAppPreferences`, theme mode and onboarded flag), `ThemeModeCubit`, provided by `PushItApp` · Decisions:
+- The default mode is light (Fog), not system.
+- Deviation from ARCHITECTURE.md: both live in `lib/core/` instead of `lib/app/`, so features (Appearance, onboarding, splash) can use them. The doc is updated.
