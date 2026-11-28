@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:material_ui/material_ui.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,6 +10,9 @@ abstract interface class AppPreferences {
   ThemeMode get themeMode;
 
   bool get isOnboarded;
+
+  /// [isOnboarded] now, then on every change.
+  Stream<bool> watchOnboarded();
 
   Future<void> setThemeMode(ThemeMode mode);
 
@@ -27,6 +32,7 @@ final class SharedAppPreferences implements AppPreferences {
       SharedAppPreferences._(await SharedPreferences.getInstance());
 
   final SharedPreferences _store;
+  final StreamController<bool> _onboardedChanges = StreamController.broadcast();
 
   @override
   ThemeMode get themeMode {
@@ -39,9 +45,23 @@ final class SharedAppPreferences implements AppPreferences {
   bool get isOnboarded => _store.getBool(onboardedKey) ?? false;
 
   @override
+  Stream<bool> watchOnboarded() => _watch(isOnboarded, _onboardedChanges);
+
+  @override
   Future<void> setThemeMode(ThemeMode mode) =>
       _store.setString(themeModeKey, mode.name);
 
   @override
-  Future<void> setOnboarded() => _store.setBool(onboardedKey, true);
+  Future<void> setOnboarded() async {
+    await _store.setBool(onboardedKey, true);
+    _onboardedChanges.add(true);
+  }
 }
+
+/// [current], then every value of [changes].
+Stream<T> _watch<T>(T current, StreamController<T> changes) =>
+    Stream.multi((controller) {
+      controller.add(current);
+      final subscription = changes.stream.listen(controller.add);
+      controller.onCancel = subscription.cancel;
+    });

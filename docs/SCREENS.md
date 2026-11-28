@@ -6,7 +6,7 @@ Navigation: bottom tabs Home, Calendar, [create], Library, Accounts. Settings op
 
 | # | ID | Screen | Route / kind | Owner | Features | States and notes | PDF light / dark |
 |---|---|---|---|---|---|---|---|
-| 1 | A1 | Splash | `/splash` | A | F17 | Wordmark; decides onboarding, sign-in or home | 1 / 55 |
+| 1 | A1 | Splash | `/splash` | A | F17 | Wordmark while the sign-in state loads; the router then leads to onboarding, sign-in or home | 1 / 55 |
 | 2 | A2 | Onboarding 1 | `/onboarding (page 0)` | A | F17 | Pager, Skip | 2 / 56 |
 | 3 | A3 | Onboarding 2 | `/onboarding (page 1)` | A | F17 | Pager, Skip | 3 / 57 |
 | 4 | A4 | Onboarding 3 | `/onboarding (page 2)` | A | F17 | CTA: Connect an account | 4 / 58 |

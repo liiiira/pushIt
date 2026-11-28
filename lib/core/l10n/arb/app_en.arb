@@ -843,6 +843,10 @@
       }
     }
   },
+  "onboardingSplashTagline": "Schedule once, post everywhere.",
+  "@onboardingSplashTagline": {
+    "description": "A1: the promise under the wordmark."
+  },
   "plansLimitReachedBody": "The {plan} plan schedules {limit, plural, =1{1 video} other{{limit} videos}} a month. It resets on {date}. {upgrade} removes the limit.",
   "@plansLimitReachedBody": {
     "description": "H3: the current plan's limit, when it resets, and the plan without a limit.",

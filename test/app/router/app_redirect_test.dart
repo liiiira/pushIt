@@ -6,7 +6,13 @@ void main() {
   const newUser = AppAccess(isOnboarded: false, isSignedIn: false);
   const signedOut = AppAccess(isOnboarded: true, isSignedIn: false);
   const signedIn = AppAccess(isOnboarded: true, isSignedIn: true);
-  const everyone = [newUser, signedOut, signedIn];
+  const unverified = AppAccess(
+    isOnboarded: true,
+    isSignedIn: true,
+    isEmailVerified: false,
+  );
+  const unknown = AppAccess.unknown(isOnboarded: true);
+  const everyone = [unknown, newUser, signedOut, signedIn, unverified];
 
   const authPaths = [
     RoutePaths.signIn,
@@ -21,12 +27,42 @@ void main() {
     }
   });
 
-  test('the splash and the dev routes are never redirected', () {
+  test('the dev routes are never redirected', () {
     for (final access in everyone) {
-      expect(appRedirect(RoutePaths.splash, access), isNull);
       expect(appRedirect(RoutePaths.devComponents, access), isNull);
       expect(appRedirect(RoutePaths.developer, access), isNull);
     }
+  });
+
+  group('before the sign-in state is known', () {
+    test('stays on the splash', () {
+      expect(appRedirect(RoutePaths.splash, unknown), isNull);
+      expect(
+        appRedirect(
+          RoutePaths.splash,
+          const AppAccess.unknown(isOnboarded: false),
+        ),
+        isNull,
+      );
+    });
+
+    test('is sent to the splash from anywhere else', () {
+      for (final path in [
+        RoutePaths.home,
+        RoutePaths.onboarding,
+        RoutePaths.signIn,
+        RoutePaths.libraryPostFor('p1'),
+      ]) {
+        expect(appRedirect(path, unknown), RoutePaths.splash, reason: path);
+      }
+    });
+  });
+
+  test('the splash, once the state is known, leads where the user starts', () {
+    expect(appRedirect(RoutePaths.splash, newUser), RoutePaths.onboarding);
+    expect(appRedirect(RoutePaths.splash, signedOut), RoutePaths.signIn);
+    expect(appRedirect(RoutePaths.splash, signedIn), RoutePaths.home);
+    expect(appRedirect(RoutePaths.splash, unverified), RoutePaths.home);
   });
 
   group('not onboarded', () {
@@ -87,6 +123,36 @@ void main() {
       ]) {
         expect(appRedirect(path, signedIn), RoutePaths.home, reason: path);
       }
+    });
+  });
+
+  group('signed in, email not verified yet', () {
+    test('may open the app and verify email', () {
+      for (final path in [
+        RoutePaths.home,
+        RoutePaths.libraryPostFor('p1'),
+        RoutePaths.verifyEmail,
+      ]) {
+        expect(appRedirect(path, unverified), isNull, reason: path);
+      }
+    });
+
+    test('is sent to verify email from sign-in, register and reset', () {
+      for (final path in [
+        RoutePaths.signIn,
+        RoutePaths.register,
+        RoutePaths.resetPassword,
+      ]) {
+        expect(
+          appRedirect(path, unverified),
+          RoutePaths.verifyEmail,
+          reason: path,
+        );
+      }
+    });
+
+    test('is sent home from the onboarding', () {
+      expect(appRedirect(RoutePaths.onboarding, unverified), RoutePaths.home);
     });
   });
 }

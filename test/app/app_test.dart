@@ -3,15 +3,19 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:pushit/app/app.dart';
+import 'package:pushit/app/router/app_access_notifier.dart';
 import 'package:pushit/app/router/app_redirect.dart';
 import 'package:pushit/app/router/app_router.dart';
+import 'package:pushit/app/router/route_paths.dart';
 import 'package:pushit/core/clock.dart';
 import 'package:pushit/core/design_system/tokens/app_colors.dart';
-import 'package:pushit/core/design_system/widgets/placeholder_page.dart';
 import 'package:pushit/core/preferences/app_preferences.dart';
 import 'package:pushit/core/theme_mode/theme_mode_cubit.dart';
+import 'package:pushit/data/dependencies.dart';
+import 'package:pushit/data/fake/fake_database.dart';
 import 'package:pushit/data/fake/scenario.dart';
 import 'package:pushit/domain/domain.dart';
+import 'package:pushit/features/onboarding/presentation/pages/splash_page.dart';
 
 import '../helpers/helpers.dart';
 
@@ -33,9 +37,42 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.byType(PlaceholderPage), findsOneWidget);
+    expect(router.state.uri.path, RoutePaths.onboarding);
     final title = tester.widget<Title>(find.byType(Title));
     expect(title.title, 'pushIt');
+  });
+
+  testWidgets('shows the splash until the sign-in state is known', (
+    tester,
+  ) async {
+    final preferences = InMemoryAppPreferences(isOnboarded: true);
+    final dependencies = Dependencies.fake(
+      scenario: Scenario.slow,
+      clock: FixedClock(testNow),
+    );
+    final access = AppAccessNotifier(
+      preferences: preferences,
+      auth: dependencies.auth,
+    );
+    addTearDown(access.dispose);
+    final router = buildAppRouter(access: access);
+    addTearDown(router.dispose);
+
+    await tester.pumpWidget(
+      PushItApp(
+        dependencies: dependencies,
+        preferences: preferences,
+        router: router,
+      ),
+    );
+    await tester.pump();
+    expect(find.byType(SplashPage), findsOneWidget);
+    expect(router.state.uri.path, RoutePaths.splash);
+
+    await tester.pump(FakeDatabase.defaultLatencyFor(Scenario.slow));
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, RoutePaths.signIn);
   });
 
   testWidgets('uses the light and dark app themes', (tester) async {
@@ -143,7 +180,7 @@ void main() {
         tester.widget<MaterialApp>(find.byType(MaterialApp)).themeMode!;
     expect(modeOfApp(), ThemeMode.dark);
 
-    final context = tester.element(find.byType(PlaceholderPage));
+    final context = tester.element(find.byType(MaterialApp));
     await context.read<ThemeModeCubit>().themeModeSelected(ThemeMode.system);
     await tester.pump();
 

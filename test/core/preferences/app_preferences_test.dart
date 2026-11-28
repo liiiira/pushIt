@@ -26,6 +26,20 @@ void main() {
       expect(second.isOnboarded, isTrue);
     });
 
+    test('emits the onboarded flag, then its changes', () async {
+      SharedPreferences.setMockInitialValues({});
+      final preferences = await SharedAppPreferences.load();
+      final seen = <bool>[];
+      final subscription = preferences.watchOnboarded().listen(seen.add);
+      addTearDown(subscription.cancel);
+      await pumpEventQueue();
+
+      await preferences.setOnboarded();
+      await pumpEventQueue();
+
+      expect(seen, [false, true]);
+    });
+
     test('reads every theme mode back', () async {
       for (final mode in ThemeMode.values) {
         SharedPreferences.setMockInitialValues({});

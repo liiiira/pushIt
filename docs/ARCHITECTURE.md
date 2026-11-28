@@ -31,6 +31,7 @@ lib/
     router/
       route_paths.dart                 every path constant (all 54 screens): RoutePaths + RouteSegments
       app_redirect.dart                AppAccess + appRedirect(path, access), pure
+      app_access_notifier.dart         AppAccessNotifier: live AppAccess from AppPreferences + AuthRepository
       app_router.dart                  buildAppRouter: composes <feature>_routes.dart; StatefulShellRoute (4 tabs)
       app_shell.dart                   bottom nav + centre create button + offline banner (top of the tab area)
     connectivity/connectivity_cubit.dart   online or not, from ConnectivityRepository; drives the shell's banner
@@ -93,9 +94,10 @@ tool/check.sh                          local gate
 - A `StatefulShellRoute.indexedStack` holds 4 branches: Home `/home`, Calendar `/calendar`, Library `/library`, Accounts `/accounts`.
 - The centre create button pushes `/compose` on the root navigator (full screen, no bottom nav).
 - Redirects:
+  - `/` → `/splash`
+  - sign-in state not known yet (launch) → `/splash`; once known, `/splash` → onboarding, sign-in or home
   - not onboarded → `/onboarding`
   - signed out → `/sign-in`
-  - `/` → `/splash`
 - Bottom sheets and dialogs are not routes. They are opened with the shared `showAppBottomSheet` / `showAppDialog` from the page that owns them.
 - Route paths live in `route_paths.dart` only.
   - Navigate with `RoutePaths` and its helpers, e.g. `context.go(RoutePaths.libraryPostFor(id))`, never with string literals.
@@ -106,8 +108,12 @@ tool/check.sh                          local gate
   - activity under `/home`: `homeRoutes(children: activityRoutes(...))`
   - plans and the Developer menu under `/settings`
 - **Redirects** are the pure function `appRedirect(path, AppAccess)` in `app_redirect.dart`. The router re-runs it whenever its `AppAccess` listenable changes.
-  - The splash and the dev routes are never redirected.
+  - `main.dart` passes an `AppAccessNotifier`. It reads the onboarded flag (`AppPreferences.watchOnboarded`) and the user (`AuthRepository.watchUser`).
+  - It starts as `AppAccess.unknown` and becomes known on the first auth event. An auth error counts as signed out.
+  - The splash (A1) holds no logic. It shows while the access is unknown, and the redirect then leads away from it.
+  - The dev routes are never redirected.
   - Verify email stays reachable when signed in.
+  - While the email is not verified, the signed-out auth screens lead to `/verify-email` instead of home. The rest of the app is not gated: the fake has no way to verify an email.
 - Debug-only routes (`/settings/developer`, `/dev/components`) are registered under `kDebugMode`.
 
 ## Shared widgets (A, `lib/core/design_system/widgets`)

@@ -65,3 +65,8 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 2026-11-28 · #19 · H3 exported: `showLimitReachedSheet({context, plan, usage})` → `LimitReachedChoice` (`seePlans`, `saveDraft`, `dismissed`); `l10n.planName(tier)`; `context.usdLabel` ("$6") · Decisions:
 - `LimitReachedFailure` carries no data, so the composer passes the plan and usage.
 - The upgrade offered is always Pro (`proPlan`), the cheapest plan with no monthly limit.
+2026-11-28 · #22 · A1 splash, and a live `AppAccess`: `AppAccessNotifier` (from `AppPreferences.watchOnboarded` and `AuthRepository.watchUser`), wired in `main.dart` · Decisions and deviations:
+- `AppAccess.unknown` until the first auth event. Every route but the dev ones goes to `/splash` meanwhile; once known, `/splash` redirects to onboarding, sign-in or home.
+- The splash has no cubit and does not "decide", as SCREENS.md said: the redirect does, so nothing races the router. ARCHITECTURE.md and SCREENS.md are updated.
+- An auth error counts as signed out, so the splash never hangs.
+- `AppAccess.isEmailVerified`: a signed-in user who has not verified their email is sent from sign-in, register and reset to `/verify-email`, not home. The app is not gated on it, because `AuthRepository` has no way to verify, so the fake would be stuck.
