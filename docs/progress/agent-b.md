@@ -75,3 +75,9 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - A D8 row shows its platform's first problem (sign-in before TikTok privacy).
 - The schedule sheet proposes an hour from now on the next quarter; the day strip starts today (the mock-up shows a Mon–Sun week); 15-minute steps.
 - D13 splits automatic and assisted platforms from each account's mode.
+
+2026-11-28 · #30 · Calendar: E1 day, E2 week, E3 empty day, E4 reschedule, edit or cancel · Decisions:
+- A post appears once per day, at its earliest target time that day; drafts never appear.
+- "Assisted · <platform>" when every platform of a scheduled post publishes assisted (capability table).
+- Only posts that can still change (every target scheduled) open E4; the others open F3/F4.
+- Reschedule reuses the composer's When sheet (exported from the composer barrel).
