@@ -53,6 +53,7 @@ export 'rules/check_platforms.dart';
 export 'rules/plans.dart';
 export 'rules/platform_capabilities.dart';
 export 'rules/post_status.dart';
+export 'rules/relative_day.dart';
 export 'rules/schedule_rules.dart';
 export 'rules/tiktok_rules.dart';
 export 'rules/video_limits.dart';
