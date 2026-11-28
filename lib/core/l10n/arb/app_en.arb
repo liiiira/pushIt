@@ -233,6 +233,257 @@
       }
     }
   },
+  "composerContinue": "Continue",
+  "@composerContinue": {
+    "description": "D2/D3: goes on to the composer (D4) while the upload runs."
+  },
+  "composerDraftActions": "Draft actions",
+  "@composerDraftActions": {
+    "description": "D12: tooltip of the ··· button of a draft."
+  },
+  "composerDraftDiscard": "Discard",
+  "@composerDraftDiscard": {
+    "description": "D12 menu: deletes the draft."
+  },
+  "composerDraftEdited": "Edited {when}",
+  "@composerDraftEdited": {
+    "description": "D12: when the draft was last edited.",
+    "placeholders": {
+      "when": {
+        "type": "String",
+        "example": "2 h ago"
+      }
+    }
+  },
+  "composerDraftLine": "{edited} · {schedule}",
+  "@composerDraftLine": {
+    "description": "D12 row: when edited, then the schedule.",
+    "placeholders": {
+      "edited": {
+        "type": "String",
+        "example": "Edited 2 h ago"
+      },
+      "schedule": {
+        "type": "String",
+        "example": "no time set"
+      }
+    }
+  },
+  "composerDraftNoTime": "no time set",
+  "@composerDraftNoTime": {
+    "description": "D12 row: the draft has no schedule yet."
+  },
+  "composerDraftResume": "Resume",
+  "@composerDraftResume": {
+    "description": "D12 menu: opens the draft in the composer."
+  },
+  "composerDraftsEmptyBody": "Unfinished posts are kept here.",
+  "@composerDraftsEmptyBody": {
+    "description": "D12: explanation when there are no drafts."
+  },
+  "composerDraftsEmptyTitle": "No drafts",
+  "@composerDraftsEmptyTitle": {
+    "description": "D12: there are no drafts."
+  },
+  "composerDraftsFooter": "Drafts are saved automatically while you write.",
+  "@composerDraftsFooter": {
+    "description": "D12: footnote under the list."
+  },
+  "composerDraftsTitle": "Drafts",
+  "@composerDraftsTitle": {
+    "description": "D12: top bar title."
+  },
+  "composerEditedDaysAgo": "{count, plural, =1{1 day ago} other{{count} days ago}}",
+  "@composerEditedDaysAgo": {
+    "description": "Age of a draft.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composerEditedHoursAgo": "{count, plural, other{{count} h ago}}",
+  "@composerEditedHoursAgo": {
+    "description": "Age of a draft.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composerEditedJustNow": "just now",
+  "@composerEditedJustNow": {
+    "description": "Age of a draft under a minute."
+  },
+  "composerEditedMinutesAgo": "{count, plural, other{{count} min ago}}",
+  "@composerEditedMinutesAgo": {
+    "description": "Age of a draft.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composerEditedYesterday": "yesterday",
+  "@composerEditedYesterday": {
+    "description": "A draft last edited yesterday."
+  },
+  "composerGalleryEmptyBody": "Record or save a vertical video on this phone, then come back.",
+  "@composerGalleryEmptyBody": {
+    "description": "D1: the gallery has no videos."
+  },
+  "composerGalleryEmptyTitle": "No videos on this phone",
+  "@composerGalleryEmptyTitle": {
+    "description": "D1: the gallery has no videos."
+  },
+  "composerGalleryHint": "You can also share a video to pushIt from another app. Up to {limit}.",
+  "@composerGalleryHint": {
+    "description": "D1: footnote under the gallery; 'limit' is the maximum file size.",
+    "placeholders": {
+      "limit": {
+        "type": "String",
+        "example": "300 MB"
+      }
+    }
+  },
+  "composerMegabytes": "{count} MB",
+  "@composerMegabytes": {
+    "description": "A file size in megabytes.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composerNewPost": "New post",
+  "@composerNewPost": {
+    "description": "D1–D4: top bar title."
+  },
+  "composerTabDrafts": "{count, plural, =0{Drafts} other{Drafts · {count}}}",
+  "@composerTabDrafts": {
+    "description": "D1 tab with the number of drafts.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composerTabGallery": "Gallery",
+  "@composerTabGallery": {
+    "description": "D1 tab: videos on the phone."
+  },
+  "composerUploadAmount": "{sent} of {total} MB",
+  "@composerUploadAmount": {
+    "description": "D2: how much is uploaded.",
+    "placeholders": {
+      "sent": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "composerUploadCancel": "Cancel",
+  "@composerUploadCancel": {
+    "description": "D2/D3: stops the upload."
+  },
+  "composerUploadDone": "Uploaded",
+  "@composerUploadDone": {
+    "description": "D2: the upload finished."
+  },
+  "composerUploadDoneBody": "{fileName} is ready.",
+  "@composerUploadDoneBody": {
+    "description": "D2: the uploaded file is ready.",
+    "placeholders": {
+      "fileName": {
+        "type": "String",
+        "example": "studio_tour_p2.mp4"
+      }
+    }
+  },
+  "composerUploadFailed": "Upload failed",
+  "@composerUploadFailed": {
+    "description": "D2: the upload stopped with an error."
+  },
+  "composerUploadFailedBody": "The upload stopped. Try again to start it over.",
+  "@composerUploadFailedBody": {
+    "description": "D2: what to do after a failed upload."
+  },
+  "composerUploadHint": "You can keep writing. The upload continues if you leave the app.",
+  "@composerUploadHint": {
+    "description": "D2: footnote under the progress."
+  },
+  "composerUploadNoneBody": "Pick a video to upload first.",
+  "@composerUploadNoneBody": {
+    "description": "D2 opened without a video."
+  },
+  "composerUploadNoneTitle": "No video yet",
+  "@composerUploadNoneTitle": {
+    "description": "D2 opened without a video."
+  },
+  "composerUploadPause": "Pause",
+  "@composerUploadPause": {
+    "description": "D2: pauses the upload."
+  },
+  "composerUploadPaused": "Upload paused",
+  "@composerUploadPaused": {
+    "description": "D3: title of the paused upload."
+  },
+  "composerUploadPausedBody": "No connection. The upload resumes by itself from {sent} MB when you are back online.",
+  "@composerUploadPausedBody": {
+    "description": "D3: why the upload paused.",
+    "placeholders": {
+      "sent": {
+        "type": "int"
+      }
+    }
+  },
+  "composerUploadPercent": "{percent}%",
+  "@composerUploadPercent": {
+    "description": "D2: upload progress in percent.",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "composerUploadPick": "Pick a video",
+  "@composerUploadPick": {
+    "description": "D2 opened without a video: back to D1."
+  },
+  "composerUploadRetry": "Try again",
+  "@composerUploadRetry": {
+    "description": "D2: starts a failed upload over."
+  },
+  "composerUploadRetryNow": "Retry now",
+  "@composerUploadRetryNow": {
+    "description": "D3: resumes the paused upload."
+  },
+  "composerUploading": "Uploading {fileName}",
+  "@composerUploading": {
+    "description": "D2: title of the upload card.",
+    "placeholders": {
+      "fileName": {
+        "type": "String",
+        "example": "studio_tour_p2.mp4"
+      }
+    }
+  },
+  "composerUseVideo": "Use this video",
+  "@composerUseVideo": {
+    "description": "D1: uploads the selected video."
+  },
+  "composerVideoLabel": "Video, {duration}",
+  "@composerVideoLabel": {
+    "description": "D1: screen reader label of a gallery video.",
+    "placeholders": {
+      "duration": {
+        "type": "String",
+        "example": "1:42"
+      }
+    }
+  },
   "devComponentsButtons": "Buttons",
   "@devComponentsButtons": {
     "description": "Debug gallery section: buttons."

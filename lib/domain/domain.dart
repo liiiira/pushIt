@@ -50,6 +50,8 @@ export 'repositories/posts_repository.dart';
 export 'repositories/referral_repository.dart';
 export 'repositories/subscription_repository.dart';
 export 'rules/check_platforms.dart';
+export 'rules/draft_from_post.dart';
+export 'rules/elapsed.dart';
 export 'rules/plans.dart';
 export 'rules/platform_capabilities.dart';
 export 'rules/post_status.dart';
