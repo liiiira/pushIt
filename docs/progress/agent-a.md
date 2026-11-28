@@ -51,3 +51,17 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - The offline banner sits at the top of the tab area (shell), not under the page title as on the PDF, so it works on every tab with no per-page code. SCREENS.md and ARCHITECTURE.md are updated.
 - There is no active-tab indicator (the PDF has none): the current tab is `text`, the others `sub`.
 - Phase 1 (A) is complete with this PR.
+2026-11-28 · #15 · Router test checks each route's path, and that any `PlaceholderPage` still shown names the expected screen; it pumps `PushItApp` · Decision: real pages replace placeholders in `*_routes.dart` without touching the router test (unblocks B, issue #9).
+2026-11-28 · #16 · `AppSegmentedControl` keeps labels whole (issue #9, F1 at 412 dp) · Decisions:
+- Label padding is 4 dp.
+- Widths come from `segmentWidths` (pure): an even split when every label fits; otherwise long labels get their natural width and the rest share what is left.
+- Segments keep a 48 dp floor.
+- Deviation: when nothing fits (360 dp at text scale 1.3), the labels scale down together (`FittedBox`) rather than being cut.
+2026-11-28 · #18 · C5 exported: `showReconnectDialog({context, account, risk})` → `bool`; `reconnectRiskOf(account, posts, now:)` → `ReconnectRisk`; shared `context.dayAndTimeLabel` ("today, 19:00", `commonWhen…` keys) · Decisions:
+- The dialog never reconnects; the caller's cubit does.
+- The message follows the account health (signed out, expiring at a time, or soon). The at-risk sentence is added only when posts are at risk, so F4 can call it with no risk.
+- The dialog reads `Clock` from context, like B's library views.
+- `date_labels.dart` is not exported from `l10n.dart`, to avoid clashing with library's `whenLabel`. The comma in "today, 19:00" follows C5, while F1 has none.
+2026-11-28 · #19 · H3 exported: `showLimitReachedSheet({context, plan, usage})` → `LimitReachedChoice` (`seePlans`, `saveDraft`, `dismissed`); `l10n.planName(tier)`; `context.usdLabel` ("$6") · Decisions:
+- `LimitReachedFailure` carries no data, so the composer passes the plan and usage.
+- The upgrade offered is always Pro (`proPlan`), the cheapest plan with no monthly limit.
