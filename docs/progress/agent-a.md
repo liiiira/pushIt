@@ -100,3 +100,8 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
   - Only signed-out accounts raise a reconnect alert, with `reconnectRiskOf`.
 - `HomeCubit` combines posts, accounts and plan by hand (no `rxdart`) and recomputes on a per-minute tick. Retry re-listens to everything.
 - A router test checks that pushing a route of another tab from Home and popping returns to Home, so B1's card and B2's button can `push`.
+2026-11-28 · #34 · B1 home and B2 first use, the view: the header (wordmark; bell → B3; avatar → H1), the next post (time, countdown, card → F3), "needs reconnecting · Fix" (C5, then reconnect), the last 7 days, and B2's steps card. Adds a shared `context.groupedNumber` · Decisions:
+- Numbers use the locale's grouping ("12,480", as in the library), not the PDF's thin space.
+- B2's steps are read-only rows (checked or not, no tap action), not `AppCheckbox`, which would look disabled. The button offers the next step (connect an account, then schedule a video).
+- The last-7-days block is hidden on plans without statistics.
+- Loading shows `SkeletonList` (I2), a failure shows `ErrorStateView` with retry (I3), and a failed reconnect shows a snack bar.
