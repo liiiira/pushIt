@@ -65,6 +65,8 @@ void main() {
         .thenAnswer((_) => Stream.value(_accounts));
     when(() => subscription.watchSubscription())
         .thenAnswer((_) => Stream.value(const Subscription(plan: proPlan)));
+    when(() => subscription.watchUsage())
+        .thenAnswer((_) => const Stream.empty());
     when(() => media.upload('g1'))
         .thenAnswer((_) => Stream.value(const Uploaded(_video)));
   });

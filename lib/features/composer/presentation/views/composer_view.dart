@@ -26,6 +26,7 @@ import 'package:pushit/features/composer/domain/composer_rules.dart';
 import 'package:pushit/features/composer/presentation/cubit/composer_cubit.dart';
 import 'package:pushit/features/composer/presentation/widgets/close_composer.dart';
 import 'package:pushit/features/composer/presentation/widgets/composer_labels.dart';
+import 'package:pushit/features/composer/presentation/widgets/schedule_sheet.dart';
 
 /// D4: the composer.
 class ComposerView extends StatelessWidget {
@@ -173,6 +174,9 @@ class _Content extends StatelessWidget {
                   ),
                   hasChevron: true,
                   padding: EdgeInsets.zero,
+                  onTap: draft.platforms.isEmpty
+                      ? null
+                      : () => unawaited(_chooseWhen(context)),
                 ),
               ],
             ),
@@ -198,6 +202,18 @@ class _Content extends StatelessWidget {
       ],
     );
   }
+}
+
+/// D4's When row: opens D9/D10 and keeps the choice.
+Future<void> _chooseWhen(BuildContext context) async {
+  final cubit = context.read<ComposerCubit>();
+  final draft = cubit.state.draft;
+  final choice = await showScheduleSheet(
+    context,
+    platforms: draft.platforms,
+    initial: draft.schedule,
+  );
+  if (choice != null) cubit.scheduleChosen(choice);
 }
 
 class _PlatformToggle extends StatelessWidget {

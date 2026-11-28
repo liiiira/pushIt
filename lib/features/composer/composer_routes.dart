@@ -1,12 +1,13 @@
 import 'package:go_router/go_router.dart';
 import 'package:pushit/app/router/route_paths.dart';
-import 'package:pushit/core/design_system/widgets/placeholder_page.dart';
 import 'package:pushit/features/composer/presentation/pages/composer_shell.dart';
 import 'package:pushit/features/composer/presentation/pages/drafts_page.dart';
 import 'package:pushit/features/composer/presentation/pages/pick_video_page.dart';
 import 'package:pushit/features/composer/presentation/views/captions_view.dart';
+import 'package:pushit/features/composer/presentation/views/check_view.dart';
 import 'package:pushit/features/composer/presentation/views/composer_view.dart';
 import 'package:pushit/features/composer/presentation/views/cover_view.dart';
+import 'package:pushit/features/composer/presentation/views/scheduled_view.dart';
 import 'package:pushit/features/composer/presentation/views/tiktok_settings_view.dart';
 import 'package:pushit/features/composer/presentation/views/upload_view.dart';
 
@@ -43,7 +44,7 @@ List<RouteBase> composerRoutes() => [
               ),
               GoRoute(
                 path: RouteSegments.check,
-                builder: (_, _) => const PlaceholderPage(screenId: 'D8'),
+                builder: (_, _) => const CheckView(),
               ),
             ],
           ),
@@ -53,7 +54,7 @@ List<RouteBase> composerRoutes() => [
           ),
           GoRoute(
             path: RouteSegments.scheduled,
-            builder: (_, _) => const PlaceholderPage(screenId: 'D13'),
+            builder: (_, _) => const ScheduledView(),
           ),
         ],
       ),

@@ -69,3 +69,9 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 2026-11-28 · #26 · Composer part 3: D5 text per platform (YouTube title and description, reset) and D11 caption variants · Decisions:
 - A platform text equal to the main caption, without a title, is not kept as a change.
 - D11 on a plan without variants offers "See plans" (H2) instead of the list.
+
+2026-11-28 · #28 · Composer part 4: D8 platform check with fixes, D9/D10 schedule sheet, D13 scheduled, H3 on the monthly limit; every composer route is real · Decisions:
+- "Continue with N platforms" drops the platforms with a problem, then asks When if no time is set.
+- A D8 row shows its platform's first problem (sign-in before TikTok privacy).
+- The schedule sheet proposes an hour from now on the next quarter; the day strip starts today (the mock-up shows a Mon–Sun week); 15-minute steps.
+- D13 splits automatic and assisted platforms from each account's mode.
