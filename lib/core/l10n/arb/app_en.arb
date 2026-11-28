@@ -69,6 +69,138 @@
       }
     }
   },
+  "assistedActionFailed": "That did not work. Try again.",
+  "@assistedActionFailed": {
+    "description": "G2/G3: confirming or snoozing failed."
+  },
+  "assistedCaptionCopied": "Caption copied to the clipboard",
+  "@assistedCaptionCopied": {
+    "description": "G2 step 1."
+  },
+  "assistedDeleteBody": "{platform} does not let apps delete videos. Open it, delete the video there, then confirm here.",
+  "@assistedDeleteBody": {
+    "description": "G3: why the creator deletes it.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "assistedDeleteHeading": "Remove {title} from {platform}",
+  "@assistedDeleteHeading": {
+    "description": "G3 heading.",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "Morning b-roll"
+      },
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "assistedDeleteMenu": "Delete it from the video menu",
+  "@assistedDeleteMenu": {
+    "description": "G3 step 2."
+  },
+  "assistedDeleteOpens": "{platform} opens on this video",
+  "@assistedDeleteOpens": {
+    "description": "G3 step 1.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "assistedDeleteTitle": "Delete on {platform}",
+  "@assistedDeleteTitle": {
+    "description": "G3 top bar.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "assistedDeleted": "I deleted it",
+  "@assistedDeleted": {
+    "description": "G3: confirms the deletion."
+  },
+  "assistedDone": "Thanks, pushIt is up to date.",
+  "@assistedDone": {
+    "description": "G2/G3: after confirming."
+  },
+  "assistedKeep": "Keep it on {platform}",
+  "@assistedKeep": {
+    "description": "G3: goes back without deleting.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "assistedNotFound": "There is nothing to do here any more.",
+  "@assistedNotFound": {
+    "description": "G2/G3: the post or platform is gone."
+  },
+  "assistedOpen": "Open {platform}",
+  "@assistedOpen": {
+    "description": "G2/G3: opens the platform.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "Instagram"
+      }
+    }
+  },
+  "assistedOpens": "{platform} opens with the video loaded",
+  "@assistedOpens": {
+    "description": "G2 step 2.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "Instagram"
+      }
+    }
+  },
+  "assistedPaste": "Paste the caption and post",
+  "@assistedPaste": {
+    "description": "G2 step 3."
+  },
+  "assistedPostHeading": "Post {title} on {platform}",
+  "@assistedPostHeading": {
+    "description": "G2 heading.",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "Behind the desk"
+      },
+      "platform": {
+        "type": "String",
+        "example": "Instagram"
+      }
+    }
+  },
+  "assistedPosted": "I posted it",
+  "@assistedPosted": {
+    "description": "G2: confirms the post."
+  },
+  "assistedRemind": "Remind me in 30 min",
+  "@assistedRemind": {
+    "description": "G2: snoozes the reminder."
+  },
+  "assistedReminded": "We will remind you in 30 minutes.",
+  "@assistedReminded": {
+    "description": "G2: after snoozing."
+  },
+  "assistedTitle": "Assisted posting",
+  "@assistedTitle": {
+    "description": "G2 top bar."
+  },
   "authCheckEmailTitle": "Check your email",
   "@authCheckEmailTitle": {
     "description": "A7, and A8 once the link is sent."
