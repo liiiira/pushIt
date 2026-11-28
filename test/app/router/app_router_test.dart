@@ -1,13 +1,20 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:pushit/app/app_repositories.dart';
 import 'package:pushit/app/router/app_redirect.dart';
 import 'package:pushit/app/router/app_router.dart';
 import 'package:pushit/app/router/route_paths.dart';
+import 'package:pushit/core/design_system/widgets/app_bottom_nav.dart';
+import 'package:pushit/core/design_system/widgets/offline_banner.dart';
 import 'package:pushit/core/design_system/widgets/placeholder_page.dart';
 import 'package:pushit/core/l10n/l10n.dart';
+import 'package:pushit/data/fake/scenario.dart';
 import 'package:pushit/features/dev/presentation/pages/components_page.dart';
+
+import '../../helpers/helpers.dart';
 
 const _newUser = AppAccess(isOnboarded: false, isSignedIn: false);
 const _signedOut = AppAccess(isOnboarded: true, isSignedIn: false);
@@ -21,14 +28,18 @@ Finder _placeholder(String screenId) => find.byWidgetPredicate(
 Future<GoRouter> _pumpRouter(
   WidgetTester tester, {
   required ValueListenable<AppAccess> access,
+  Scenario scenario = Scenario.populated,
 }) async {
   final router = buildAppRouter(access: access);
   addTearDown(router.dispose);
   await tester.pumpWidget(
-    MaterialApp.router(
-      routerConfig: router,
-      localizationsDelegates: appLocalizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+    MultiRepositoryProvider(
+      providers: repositoryProvidersOf(testDependencies(scenario: scenario)),
+      child: MaterialApp.router(
+        routerConfig: router,
+        localizationsDelegates: appLocalizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+      ),
     ),
   );
   await tester.pumpAndSettle();
@@ -146,7 +157,7 @@ void main() {
       ]) {
         router.go(tab);
         await tester.pumpAndSettle();
-        expect(find.byType(NavigationBar), findsOneWidget, reason: tab);
+        expect(find.byType(AppBottomNav), findsOneWidget, reason: tab);
       }
 
       for (final fullScreen in [
@@ -158,7 +169,7 @@ void main() {
       ]) {
         router.go(fullScreen);
         await tester.pumpAndSettle();
-        expect(find.byType(NavigationBar), findsNothing, reason: fullScreen);
+        expect(find.byType(AppBottomNav), findsNothing, reason: fullScreen);
       }
     });
 
@@ -186,6 +197,61 @@ void main() {
       await tester.tap(find.text(l10n.commonNavHome));
       await tester.pumpAndSettle();
       expect(_placeholder('B1'), findsOneWidget);
+    });
+
+    testWidgets('opens the composer full screen from the create button', (
+      tester,
+    ) async {
+      final router = await _pumpRouter(
+        tester,
+        access: ValueNotifier(_signedIn),
+      );
+      router.go(RoutePaths.library);
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(AppBottomNav.createKey));
+      await tester.pumpAndSettle();
+
+      expect(_placeholder('D1'), findsOneWidget);
+      expect(find.byType(AppBottomNav), findsNothing);
+
+      router.pop();
+      await tester.pumpAndSettle();
+      expect(_placeholder('F1'), findsOneWidget);
+      expect(find.byType(AppBottomNav), findsOneWidget);
+    });
+
+    testWidgets('shows the offline banner on the tabs while offline', (
+      tester,
+    ) async {
+      final router = await _pumpRouter(
+        tester,
+        access: ValueNotifier(_signedIn),
+        scenario: Scenario.offline,
+      );
+      router.go(RoutePaths.home);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OfflineBanner), findsOneWidget);
+      expect(
+        tester.getTopLeft(find.byType(OfflineBanner)).dy,
+        lessThan(tester.getTopLeft(find.byType(PlaceholderPage)).dy),
+      );
+      expect(
+        tester.getRect(find.byType(PlaceholderPage)).bottom,
+        lessThanOrEqualTo(tester.getTopLeft(find.byType(AppBottomNav)).dy),
+      );
+    });
+
+    testWidgets('shows no offline banner while online', (tester) async {
+      final router = await _pumpRouter(
+        tester,
+        access: ValueNotifier(_signedIn),
+      );
+      router.go(RoutePaths.home);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OfflineBanner), findsNothing);
     });
   });
 }

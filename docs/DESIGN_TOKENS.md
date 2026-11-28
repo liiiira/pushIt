@@ -6,8 +6,8 @@ Source: the Figma file https://www.figma.com/design/XrhR9MSOlAIvHqvaBGIz8X, vari
 
 | Token | Light (Fog) | Dark | Use |
 |---|---|---|---|
-| `bg` | `#EDEDED` | `#0B0B0B` | Screen background |
-| `surface` | `#FFFFFF` | `#1E1E1E` | Cards, inputs, sheets, dialogs, bottom nav |
+| `bg` | `#EDEDED` | `#0B0B0B` | Screen background, bottom nav (as on the PDF) |
+| `surface` | `#FFFFFF` | `#1E1E1E` | Cards, inputs, sheets, dialogs |
 | `block` | `#C6C6C6` | `#3A3A3A` | Video placeholders, switch off track, skeletons |
 | `text` | `#141414` | `#FFFFFF` | Primary text and icons |
 | `sub` | `#585858` | `#A3A3A3` | Secondary text and icons, unselected logos |
