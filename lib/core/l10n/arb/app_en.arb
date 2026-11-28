@@ -1,5 +1,74 @@
 {
   "@@locale": "en",
+  "accountsReconnectAtRisk": "{reason} {count, plural, =1{One scheduled post} other{{count} scheduled posts}} will fail unless you reconnect before {when}.",
+  "@accountsReconnectAtRisk": {
+    "description": "C5 message when posts are at risk: the reason sentence, then how many posts fail and the first one's time, e.g. 'TikTok signed this account out. One scheduled post will fail unless you reconnect before today, 19:00.'",
+    "placeholders": {
+      "reason": {
+        "type": "String",
+        "example": "TikTok signed this account out."
+      },
+      "count": {
+        "type": "int"
+      },
+      "when": {
+        "type": "String",
+        "example": "today, 19:00"
+      }
+    }
+  },
+  "accountsReconnectExpiresAt": "{platform} signs this account out {when}.",
+  "@accountsReconnectExpiresAt": {
+    "description": "C5 reason: the sign-in is about to expire, e.g. 'Facebook signs this account out tomorrow, 09:00.'",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "Facebook"
+      },
+      "when": {
+        "type": "String",
+        "example": "tomorrow, 09:00"
+      }
+    }
+  },
+  "accountsReconnectExpiresSoon": "{platform} signs this account out soon.",
+  "@accountsReconnectExpiresSoon": {
+    "description": "C5 reason: the sign-in is about to expire, at an unknown time.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "Facebook"
+      }
+    }
+  },
+  "accountsReconnectLater": "Later",
+  "@accountsReconnectLater": {
+    "description": "C5: closes the reconnect prompt without reconnecting."
+  },
+  "accountsReconnectPrimary": "Reconnect",
+  "@accountsReconnectPrimary": {
+    "description": "C5: reconnects the account."
+  },
+  "accountsReconnectSignedOut": "{platform} signed this account out.",
+  "@accountsReconnectSignedOut": {
+    "description": "C5 reason: the sign-in has expired.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "accountsReconnectTitle": "Reconnect {platform}",
+  "@accountsReconnectTitle": {
+    "description": "C5 title.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
   "commonAppName": "pushIt",
   "@commonAppName": {
     "description": "The product name, shown on the splash screen and in the app switcher."
@@ -107,6 +176,50 @@
   "commonRetry": "Try again",
   "@commonRetry": {
     "description": "Retry button of the error state (I3)."
+  },
+  "commonWhenDate": "{date}, {time}",
+  "@commonWhenDate": {
+    "description": "A day that is not yesterday, today or tomorrow, then a time.",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "Tue 17 Nov"
+      },
+      "time": {
+        "type": "String",
+        "example": "19:00"
+      }
+    }
+  },
+  "commonWhenToday": "today, {time}",
+  "@commonWhenToday": {
+    "description": "A time today, e.g. 'reconnect before today, 19:00'.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "19:00"
+      }
+    }
+  },
+  "commonWhenTomorrow": "tomorrow, {time}",
+  "@commonWhenTomorrow": {
+    "description": "A time tomorrow.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "09:00"
+      }
+    }
+  },
+  "commonWhenYesterday": "yesterday, {time}",
+  "@commonWhenYesterday": {
+    "description": "A time yesterday.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "23:30"
+      }
+    }
   },
   "devComponentsButtons": "Buttons",
   "@devComponentsButtons": {
