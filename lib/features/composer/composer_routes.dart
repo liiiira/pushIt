@@ -4,6 +4,7 @@ import 'package:pushit/core/design_system/widgets/placeholder_page.dart';
 import 'package:pushit/features/composer/presentation/pages/composer_shell.dart';
 import 'package:pushit/features/composer/presentation/pages/drafts_page.dart';
 import 'package:pushit/features/composer/presentation/pages/pick_video_page.dart';
+import 'package:pushit/features/composer/presentation/views/captions_view.dart';
 import 'package:pushit/features/composer/presentation/views/composer_view.dart';
 import 'package:pushit/features/composer/presentation/views/cover_view.dart';
 import 'package:pushit/features/composer/presentation/views/tiktok_settings_view.dart';
@@ -30,7 +31,7 @@ List<RouteBase> composerRoutes() => [
             routes: [
               GoRoute(
                 path: RouteSegments.captions,
-                builder: (_, _) => const PlaceholderPage(screenId: 'D5'),
+                builder: (_, _) => const CaptionsView(),
               ),
               GoRoute(
                 path: RouteSegments.cover,
