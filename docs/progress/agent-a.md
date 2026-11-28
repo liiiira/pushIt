@@ -92,3 +92,11 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - Deviation: "Send again in 0:42" is a disabled `TextActionButton` (`sub`), where the PDF shows `text`, so the disabled state stays visible.
 - A8 has no "sent" design. After sending, it reuses A7's look ("Check your email", where the link went, Open email app, Back to sign in). Back pops to A5, or goes there if A8 was opened directly.
 - New token: `AppSizes.iconCircle` 64, also added to DESIGN_TOKENS.md.
+2026-11-28 · #33 · Home logic: `BuildDashboard` (pure) and `HomeCubit`; the view follows in the next PR · Decisions:
+- `BuildDashboard`:
+  - First use means no post yet (drafts don't count).
+  - The next post is the earliest target still scheduled at or after now. The countdown rounds up to the minute (never "0 min") and shows days past 24 h.
+  - The last 7 days add up the targets published in the 7 days up to now; this matches B's fixtures (12 480 / 1 932 / 214). It is `null` on plans without statistics, following B's `PostDetailCubit` rule.
+  - Only signed-out accounts raise a reconnect alert, with `reconnectRiskOf`.
+- `HomeCubit` combines posts, accounts and plan by hand (no `rxdart`) and recomputes on a per-minute tick. Retry re-listens to everything.
+- A router test checks that pushing a route of another tab from Home and popping returns to Home, so B1's card and B2's button can `push`.
