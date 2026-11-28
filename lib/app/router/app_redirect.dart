@@ -50,7 +50,9 @@ const Set<String> _signedOutOnly = {
 /// - Until the sign-in state is known: the splash only (A1).
 /// - Then the splash leads to the onboarding, sign-in or home.
 /// - Not onboarded: the onboarding only.
-/// - Signed out: the auth screens only.
+/// - Signed out: sign-in, register and reset password only. Verify email
+///   needs an account, so signing out there (A7's back arrow) leads to
+///   sign-in.
 /// - Signed in: anything but the onboarding and the signed-out auth
 ///   screens, which lead home, or to verify email while the email is not
 ///   verified. Verify email stays reachable while signed in.
@@ -65,9 +67,9 @@ String? appRedirect(String location, AppAccess access) {
   final isOnboarding = location == RoutePaths.onboarding;
   if (!access.isOnboarded) return isOnboarding ? null : RoutePaths.onboarding;
 
-  final isAuth =
-      _signedOutOnly.contains(location) || location == RoutePaths.verifyEmail;
-  if (!access.isSignedIn) return isAuth ? null : RoutePaths.signIn;
+  if (!access.isSignedIn) {
+    return _signedOutOnly.contains(location) ? null : RoutePaths.signIn;
+  }
 
   if (_signedOutOnly.contains(location)) {
     return access.isEmailVerified ? RoutePaths.home : RoutePaths.verifyEmail;

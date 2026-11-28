@@ -95,18 +95,20 @@ void main() {
     await _expectScreen(tester, router, RoutePaths.onboarding, 'A2');
   });
 
-  testWidgets('serves every auth screen when signed out', (tester) async {
+  testWidgets('serves the signed-out auth screens when signed out', (
+    tester,
+  ) async {
     final router = await _pumpRouter(tester, access: ValueNotifier(_signedOut));
 
     await _expectScreen(tester, router, RoutePaths.signIn, 'A5');
     await _expectScreen(tester, router, RoutePaths.register, 'A6');
-    await _expectScreen(tester, router, RoutePaths.verifyEmail, 'A7');
     await _expectScreen(tester, router, RoutePaths.resetPassword, 'A8');
   });
 
   testWidgets('serves every app screen when signed in', (tester) async {
     final router = await _pumpRouter(tester, access: ValueNotifier(_signedIn));
     final screens = <String, String>{
+      RoutePaths.verifyEmail: 'A7',
       RoutePaths.home: 'B1',
       RoutePaths.activity: 'B3',
       RoutePaths.accounts: 'C1',

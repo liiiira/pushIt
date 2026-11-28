@@ -170,6 +170,29 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(router.state.uri.path, RoutePaths.verifyEmail);
+      expect(find.textContaining('lyes@example.com'), findsOneWidget);
+
+      await tester.tap(find.byTooltip('Back'));
+      await tester.pumpAndSettle();
+
+      expect(router.state.uri.path, RoutePaths.signIn);
+    });
+
+    testWidgets('reset password opens on top of sign-in and goes back', (
+      tester,
+    ) async {
+      final router = await pumpSignedOut(tester);
+      await tester.tap(find.text('Forgot password?'));
+      await tester.pumpAndSettle();
+      expect(router.state.uri.path, RoutePaths.resetPassword);
+
+      await tester.enterText(find.byType(TextField), 'lyes@example.com');
+      await tester.tap(find.text('Send reset link'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Back to sign in'));
+      await tester.pumpAndSettle();
+
+      expect(router.state.uri.path, RoutePaths.signIn);
     });
   });
 

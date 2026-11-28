@@ -85,3 +85,10 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - A6's terms box starts unticked (the PDF shows it ticked) and asks with an `InlineError`. Google needs no terms box.
 - A6's subtitle takes its numbers from `freePlan`.
 - App tests: sign in → home, Google → home, create account → verify email.
+2026-11-28 · #29 · A7 verify email and A8 reset password: `VerifyEmailCubit` (user's email, 60 s resend countdown), `ResetPasswordCubit` (form, then a "sent" state), and `AuthFormLayout` with an optional icon badge · Decisions and deviations:
+- `/verify-email` is now reachable only while signed in (it needs an account). A7's back arrow signs out, so the redirect leads to sign-in. A7 is reached by redirect, so there was nothing to pop, and the fake can never verify.
+- "Open email app" uses `url_launcher` with `mailto:`, as the library does for links. Android has no link to the inbox itself; opening it would need a new intent plugin.
+- The countdown is driven by an injected one-second tick, not `Clock`, so tests can advance it. `resendCooldown` is 60 s, and it starts at once because A6 just sent the link.
+- Deviation: "Send again in 0:42" is a disabled `TextActionButton` (`sub`), where the PDF shows `text`, so the disabled state stays visible.
+- A8 has no "sent" design. After sending, it reuses A7's look ("Check your email", where the link went, Open email app, Back to sign in). Back pops to A5, or goes there if A8 was opened directly.
+- New token: `AppSizes.iconCircle` 64, also added to DESIGN_TOKENS.md.
