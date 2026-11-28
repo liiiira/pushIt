@@ -59,3 +59,9 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - Continue (D2 → D4) stays available while uploading; it is disabled only after a failed upload.
 - D12 rows read "Edited <age> · <time or no time set>"; the mock-up's "3 platforms" variant is not used.
 - New domain rules: `draftFromPost` and `elapsedBetween` (moved from the library).
+
+2026-11-28 · #25 · Composer part 2: D4 composer, D6 cover, D7 TikTok settings; closing saves a draft · Decisions:
+- Default platforms: every connected platform the video fits (X only with a plan that has X), applied once; a resumed draft keeps its own.
+- D4 lists connected platforms only; an expired account (TikTok in the fixtures) stays selectable and is flagged by the D8 check.
+- The caption is an `AppTextField` with a "Caption" label (the mock-up shows plain text).
+- D6 frames are 52 dp wide and scroll under 412 dp, to keep 48 dp tap targets.
