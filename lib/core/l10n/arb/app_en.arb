@@ -192,14 +192,6 @@
   "@libraryErrorBody": {
     "description": "I3 on the Library: what failed, and that nothing is lost."
   },
-  "libraryErrorRetry": "Try again",
-  "@libraryErrorRetry": {
-    "description": "I3 on the Library: reloads the list."
-  },
-  "libraryErrorTitle": "Something went wrong",
-  "@libraryErrorTitle": {
-    "description": "I3 on the Library: title of the error state."
-  },
   "libraryFilterAll": "All",
   "@libraryFilterAll": {
     "description": "F1 tab: every post."

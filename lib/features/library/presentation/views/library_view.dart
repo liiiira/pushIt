@@ -7,13 +7,14 @@ import 'package:pushit/core/clock.dart';
 import 'package:pushit/core/design_system/theme/app_theme.dart';
 import 'package:pushit/core/design_system/tokens/app_spacing.dart';
 import 'package:pushit/core/design_system/widgets/app_segmented_control.dart';
+import 'package:pushit/core/design_system/widgets/empty_state_view.dart';
+import 'package:pushit/core/design_system/widgets/error_state_view.dart';
+import 'package:pushit/core/design_system/widgets/skeleton_list.dart';
 import 'package:pushit/core/l10n/l10n.dart';
 import 'package:pushit/core/view_status.dart';
 import 'package:pushit/features/library/domain/library_filter.dart';
 import 'package:pushit/features/library/presentation/cubit/library_cubit.dart';
-import 'package:pushit/features/library/presentation/widgets/library_message.dart';
 import 'package:pushit/features/library/presentation/widgets/library_post_tile.dart';
-import 'package:pushit/features/library/presentation/widgets/library_skeleton.dart';
 
 /// F1 (Library), F2 (empty), I2 (loading) and I3 (error).
 class LibraryView extends StatelessWidget {
@@ -60,20 +61,17 @@ class _Body extends StatelessWidget {
       (cubit) => cubit.state.status,
     );
     return switch (status) {
-      ViewStatus.initial || ViewStatus.loading => const LibrarySkeleton(),
-      ViewStatus.empty => LibraryMessage(
+      ViewStatus.initial || ViewStatus.loading => const SkeletonList(),
+      ViewStatus.empty => EmptyStateView(
         icon: LucideIcons.layers,
         title: l10n.libraryEmptyTitle,
-        body: l10n.libraryEmptyBody,
+        message: l10n.libraryEmptyBody,
         actionLabel: l10n.libraryEmptyAction,
         onAction: () => context.push(RoutePaths.compose),
       ),
-      ViewStatus.failure => LibraryMessage(
-        icon: LucideIcons.circleAlert,
-        title: l10n.libraryErrorTitle,
-        body: l10n.libraryErrorBody,
-        actionLabel: l10n.libraryErrorRetry,
-        onAction: cubit.retryTapped,
+      ViewStatus.failure => ErrorStateView(
+        message: l10n.libraryErrorBody,
+        onRetry: cubit.retryTapped,
       ),
       ViewStatus.ready => const _PostList(),
     };

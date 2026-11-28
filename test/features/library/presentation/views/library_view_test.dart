@@ -1,10 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:material_ui/material_ui.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pushit/app/router/route_paths.dart';
 import 'package:pushit/core/clock.dart';
+import 'package:pushit/core/design_system/widgets/skeleton_list.dart';
 import 'package:pushit/core/failures.dart';
 import 'package:pushit/core/view_status.dart';
 import 'package:pushit/data/fake/fixtures/fixture_ids.dart';
@@ -94,7 +94,7 @@ void main() {
 
   testAcrossLayouts('I2: loading shows skeleton rows', (tester, layout) async {
     await pump(tester, layout, const LibraryState(status: ViewStatus.loading));
-    expect(find.byKey(const ValueKey('library-skeleton')), findsOneWidget);
+    expect(find.byType(SkeletonList), findsOneWidget);
   });
 
   testAcrossLayouts('I3: a failure offers a retry', (tester, layout) async {
