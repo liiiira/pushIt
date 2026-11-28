@@ -76,3 +76,12 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - The page dots sit inside each page (between the card and the title, as on the PDF), so they slide with the page.
 - Icons: Lucide `layers2`, `power`, `galleryVerticalEnd`.
 - New tokens: `AppSizes.illustrationIcon` 48 and `illustrationAspectRatio` 364 / 330, also added to DESIGN_TOKENS.md. The card uses the `sheet` radius (28).
+2026-11-28 · #27 · A5 sign in and A6 create account: `SignInCubit`, `RegisterCubit`, pure validators (`validateEmail`, `validatePassword`, `validateNewPassword` with `minPasswordLength` 8, `validateName`), the shared `AuthFormLayout`, and a design-system `InlineError` (now also used by `AppTextField` and shown in the gallery) · Decisions:
+- Success needs no state: the redirect (#22) moves `/sign-in` to home and `/register` to verify email. Cubits check `isClosed` after each call.
+- Errors show after the first try, then live as the user types.
+- The sign-in password is only required, since older accounts may be shorter; 8 characters applies to new accounts.
+- `ValidationFailure` reads "That email and password do not match." (A5) or "could not be created" (A6). The fakes never fail a write, so this is covered by mock tests only.
+- Sign-in and register switch with `go`; "Forgot password?" uses `push`, so A8 can pop.
+- A6's terms box starts unticked (the PDF shows it ticked) and asks with an `InlineError`. Google needs no terms box.
+- A6's subtitle takes its numbers from `freePlan`.
+- App tests: sign in → home, Google → home, create account → verify email.

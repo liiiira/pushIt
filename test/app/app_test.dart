@@ -104,6 +104,75 @@ void main() {
     expect(preferences.isOnboarded, isTrue);
   });
 
+  group('from sign-in, with the real access', () {
+    Future<GoRouter> pumpSignedOut(WidgetTester tester) async {
+      final preferences = InMemoryAppPreferences(isOnboarded: true);
+      final dependencies = testDependencies();
+      final access = AppAccessNotifier(
+        preferences: preferences,
+        auth: dependencies.auth,
+      );
+      addTearDown(access.dispose);
+      final router = buildAppRouter(access: access);
+      addTearDown(router.dispose);
+      await tester.pumpWidget(
+        PushItApp(
+          dependencies: dependencies,
+          preferences: preferences,
+          router: router,
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(router.state.uri.path, RoutePaths.signIn);
+      return router;
+    }
+
+    Finder field(String label) => find.descendant(
+      of: find
+          .ancestor(of: find.text(label), matching: find.byType(Column))
+          .first,
+      matching: find.byType(TextField),
+    );
+
+    testWidgets('signing in opens home', (tester) async {
+      final router = await pumpSignedOut(tester);
+
+      await tester.enterText(field('Email'), 'lyes@example.com');
+      await tester.enterText(field('Password'), 'secret');
+      await tester.tap(find.widgetWithText(FilledButton, 'Sign in'));
+      await tester.pumpAndSettle();
+
+      expect(router.state.uri.path, RoutePaths.home);
+    });
+
+    testWidgets('Google opens home', (tester) async {
+      final router = await pumpSignedOut(tester);
+
+      await tester.tap(find.text('Continue with Google'));
+      await tester.pumpAndSettle();
+
+      expect(router.state.uri.path, RoutePaths.home);
+    });
+
+    testWidgets('creating an account opens verify email', (tester) async {
+      final router = await pumpSignedOut(tester);
+      await tester.tap(find.text('New here? Create an account'));
+      await tester.pumpAndSettle();
+      expect(router.state.uri.path, RoutePaths.register);
+
+      await tester.enterText(field('Name'), 'Lyes B.');
+      await tester.enterText(field('Email'), 'lyes@example.com');
+      await tester.enterText(field('Password'), 'longenough');
+      final terms = find.text('I agree to the terms and privacy policy');
+      await tester.ensureVisible(terms);
+      await tester.tap(terms);
+      await tester.tap(find.widgetWithText(FilledButton, 'Create account'));
+      await tester.pumpAndSettle();
+
+      expect(router.state.uri.path, RoutePaths.verifyEmail);
+    });
+  });
+
   testWidgets('uses the light and dark app themes', (tester) async {
     final router = buildAppRouter(
       access: ValueNotifier(

@@ -1,9 +1,9 @@
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:pushit/core/design_system/theme/app_theme.dart';
 import 'package:pushit/core/design_system/tokens/app_radii.dart';
 import 'package:pushit/core/design_system/tokens/app_sizes.dart';
 import 'package:pushit/core/design_system/tokens/app_spacing.dart';
+import 'package:pushit/core/design_system/widgets/inline_error.dart';
 
 /// A `small` label over a borderless `surface` field (radius 14), single
 /// line or multiline.
@@ -114,23 +114,7 @@ class _AppTextFieldState extends State<AppTextField> {
           ),
           if (error != null) ...[
             const SizedBox(height: AppSpacing.xs),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(
-                  LucideIcons.circleAlert,
-                  size: AppSizes.iconTiny,
-                  color: colors.text,
-                ),
-                const SizedBox(width: AppSpacing.xs),
-                Expanded(
-                  child: Text(
-                    error,
-                    style: styles.small.copyWith(color: colors.text),
-                  ),
-                ),
-              ],
-            ),
+            InlineError(error),
           ],
         ],
       ),

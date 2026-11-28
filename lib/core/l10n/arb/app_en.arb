@@ -69,6 +69,128 @@
       }
     }
   },
+  "authEmailEmpty": "Enter your email.",
+  "@authEmailEmpty": {
+    "description": "A5, A6, A8: the email field is empty."
+  },
+  "authEmailInvalid": "Enter a valid email, like name@example.com.",
+  "@authEmailInvalid": {
+    "description": "A5, A6, A8: the email is not an address."
+  },
+  "authEmailLabel": "Email",
+  "@authEmailLabel": {
+    "description": "A5, A6, A8: email field label."
+  },
+  "authErrorNetwork": "No connection. Try again when you are back online.",
+  "@authErrorNetwork": {
+    "description": "A5–A8: the request could not reach pushIt."
+  },
+  "authErrorUnknown": "Something went wrong. Please try again.",
+  "@authErrorUnknown": {
+    "description": "A5–A8: any other failure."
+  },
+  "authGoogle": "Continue with Google",
+  "@authGoogle": {
+    "description": "A5, A6: signs in with a Google account."
+  },
+  "authNameEmpty": "Enter your name.",
+  "@authNameEmpty": {
+    "description": "A6: the name field is empty."
+  },
+  "authNameLabel": "Name",
+  "@authNameLabel": {
+    "description": "A6: name field label."
+  },
+  "authNewPasswordEmpty": "Enter a password.",
+  "@authNewPasswordEmpty": {
+    "description": "A6: the new password field is empty."
+  },
+  "authPasswordEmpty": "Enter your password.",
+  "@authPasswordEmpty": {
+    "description": "A5: the password field is empty."
+  },
+  "authPasswordHint": "{count, plural, =1{At least 1 character} other{At least {count} characters}}",
+  "@authPasswordHint": {
+    "description": "A6: hint in the empty password field.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authPasswordLabel": "Password",
+  "@authPasswordLabel": {
+    "description": "A5, A6: password field label."
+  },
+  "authPasswordTooShort": "{count, plural, =1{Use at least 1 character.} other{Use at least {count} characters.}}",
+  "@authPasswordTooShort": {
+    "description": "A6: the new password is too short.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authRegisterButton": "Create account",
+  "@authRegisterButton": {
+    "description": "A6: creates the account."
+  },
+  "authRegisterRejected": "This account could not be created. Check your details and try again.",
+  "@authRegisterRejected": {
+    "description": "A6: pushIt refused the details."
+  },
+  "authRegisterSignIn": "Already have an account? Sign in",
+  "@authRegisterSignIn": {
+    "description": "A6: goes to sign-in (A5)."
+  },
+  "authRegisterSubtitle": "Free for {accounts, plural, =1{1 account} other{{accounts} accounts}} and {videos, plural, =1{1 video} other{{videos} videos}} a month.",
+  "@authRegisterSubtitle": {
+    "description": "A6: what the Free plan includes.",
+    "placeholders": {
+      "accounts": {
+        "type": "int"
+      },
+      "videos": {
+        "type": "int"
+      }
+    }
+  },
+  "authRegisterTerms": "I agree to the terms and privacy policy",
+  "@authRegisterTerms": {
+    "description": "A6: the terms checkbox."
+  },
+  "authRegisterTermsNeeded": "Agree to the terms and privacy policy to continue.",
+  "@authRegisterTermsNeeded": {
+    "description": "A6: the terms box is not ticked."
+  },
+  "authRegisterTitle": "Create account",
+  "@authRegisterTitle": {
+    "description": "A6 title."
+  },
+  "authSignInButton": "Sign in",
+  "@authSignInButton": {
+    "description": "A5: signs in."
+  },
+  "authSignInCreate": "New here? Create an account",
+  "@authSignInCreate": {
+    "description": "A5: goes to create account (A6)."
+  },
+  "authSignInForgot": "Forgot password?",
+  "@authSignInForgot": {
+    "description": "A5: opens reset password (A8)."
+  },
+  "authSignInRejected": "That email and password do not match.",
+  "@authSignInRejected": {
+    "description": "A5: wrong email or password."
+  },
+  "authSignInSubtitle": "Welcome back.",
+  "@authSignInSubtitle": {
+    "description": "A5 subtitle."
+  },
+  "authSignInTitle": "Sign in",
+  "@authSignInTitle": {
+    "description": "A5 title."
+  },
   "commonAppName": "pushIt",
   "@commonAppName": {
     "description": "The product name, shown on the splash screen and in the app switcher."
