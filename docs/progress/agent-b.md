@@ -65,3 +65,7 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - D4 lists connected platforms only; an expired account (TikTok in the fixtures) stays selectable and is flagged by the D8 check.
 - The caption is an `AppTextField` with a "Caption" label (the mock-up shows plain text).
 - D6 frames are 52 dp wide and scroll under 412 dp, to keep 48 dp tap targets.
+
+2026-11-28 · #26 · Composer part 3: D5 text per platform (YouTube title and description, reset) and D11 caption variants · Decisions:
+- A platform text equal to the main caption, without a title, is not kept as a change.
+- D11 on a plan without variants offers "See plans" (H2) instead of the list.
