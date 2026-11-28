@@ -345,6 +345,52 @@
   "@libraryDetailViews": {
     "description": "F3: label under the total views."
   },
+  "libraryEditApply": "{count, plural, =0{No platform can be edited} =1{Apply to 1 platform} other{Apply to {count} platforms}}",
+  "@libraryEditApply": {
+    "description": "F5: the apply button, with how many platforms the edit reaches.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryEditCaptionField": "Caption",
+  "@libraryEditCaptionField": {
+    "description": "F5: label of the caption field."
+  },
+  "libraryEditDone": "{count, plural, =0{Saved in pushIt} =1{Updated on 1 platform} other{Updated on {count} platforms}}",
+  "@libraryEditDone": {
+    "description": "F5: shown after applying, with how many platforms took the edit.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryEditScopeBeforePosting": "Not posted yet, updated before it goes out",
+  "@libraryEditScopeBeforePosting": {
+    "description": "F5 row: the platform has not received the video yet."
+  },
+  "libraryEditScopeCaption": "Caption",
+  "@libraryEditScopeCaption": {
+    "description": "F5 row: only the caption can change on this platform."
+  },
+  "libraryEditScopeNone": "Not editable by apps",
+  "@libraryEditScopeNone": {
+    "description": "F5 row: the platform does not let apps edit a posted video."
+  },
+  "libraryEditScopeTitleAndCaption": "Title and description",
+  "@libraryEditScopeTitleAndCaption": {
+    "description": "F5 row: YouTube takes the title and the description."
+  },
+  "libraryEditTitleField": "Title",
+  "@libraryEditTitleField": {
+    "description": "F5: label of the title field."
+  },
+  "libraryEditWhere": "Where this applies",
+  "@libraryEditWhere": {
+    "description": "F5: heading above the platform list."
+  },
   "libraryEmptyAction": "New post",
   "@libraryEmptyAction": {
     "description": "F2: button that opens the composer from the empty library."
