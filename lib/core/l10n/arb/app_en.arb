@@ -69,6 +69,168 @@
       }
     }
   },
+  "activityAssistedConfirmed": "Assisted · confirmed {time}",
+  "@activityAssistedConfirmed": {
+    "description": "B3: an assisted post the user confirmed.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "21:04"
+      }
+    }
+  },
+  "activityAssistedReminder": "Assisted · reminder {time}",
+  "@activityAssistedReminder": {
+    "description": "B3: an assisted post the user was reminded of.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "21:00"
+      }
+    }
+  },
+  "activityAssistedTitle": "Post {title} on {platform}",
+  "@activityAssistedTitle": {
+    "description": "B3: an assisted post, e.g. 'Post Behind the desk on Instagram'.",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "Behind the desk"
+      },
+      "platform": {
+        "type": "String",
+        "example": "Instagram"
+      }
+    }
+  },
+  "activityEarlier": "Earlier",
+  "@activityEarlier": {
+    "description": "B3: heading of activity older than yesterday."
+  },
+  "activityEmptyMessage": "Published posts, failures and reminders show here.",
+  "@activityEmptyMessage": {
+    "description": "B3: empty state text."
+  },
+  "activityEmptyTitle": "No activity yet",
+  "@activityEmptyTitle": {
+    "description": "B3: empty state title."
+  },
+  "activityFailedTitle": "{title} failed on {platform}",
+  "@activityFailedTitle": {
+    "description": "B3: a platform failed to publish a post.",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "Mic test"
+      },
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "activityKeptFor": "Activity is kept for {days} days.",
+  "@activityKeptFor": {
+    "description": "B3: footer.",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "activityPublishedSubtitle": "{count, plural, =1{1 platform} other{{count} platforms}} · {time}",
+  "@activityPublishedSubtitle": {
+    "description": "B3: on how many platforms a post went out, and when.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String",
+        "example": "09:02"
+      }
+    }
+  },
+  "activityPublishedTitle": "{title} published",
+  "@activityPublishedTitle": {
+    "description": "B3: a post went out.",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "Morning b-roll"
+      }
+    }
+  },
+  "activityReasonNetwork": "Connection lost",
+  "@activityReasonNetwork": {
+    "description": "B3: why a platform failed."
+  },
+  "activityReasonRejected": "Refused by the platform",
+  "@activityReasonRejected": {
+    "description": "B3: why a platform failed."
+  },
+  "activityReasonSessionExpired": "Session expired",
+  "@activityReasonSessionExpired": {
+    "description": "B3: why a platform failed."
+  },
+  "activityReasonUnknown": "Failed",
+  "@activityReasonUnknown": {
+    "description": "B3: a platform failed, reason unknown or already retried."
+  },
+  "activityReconnectSubtitle": "Before your next post · {time}",
+  "@activityReconnectSubtitle": {
+    "description": "B3: an account needs reconnecting before the next post.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "18:40"
+      }
+    }
+  },
+  "activityReconnectTitle": "{platform} needs reconnecting",
+  "@activityReconnectTitle": {
+    "description": "B3: an account was signed out.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "activityRetry": "Retry",
+  "@activityRetry": {
+    "description": "B3: posts a failed platform again."
+  },
+  "activityRetryFailed": "Could not retry. Please try again.",
+  "@activityRetryFailed": {
+    "description": "B3: the retry failed."
+  },
+  "activityTitle": "Activity",
+  "@activityTitle": {
+    "description": "B3 title."
+  },
+  "activityToday": "Today",
+  "@activityToday": {
+    "description": "B3: heading of today's activity."
+  },
+  "activityWithReason": "{reason} · {time}",
+  "@activityWithReason": {
+    "description": "B3: why a platform failed, and when, e.g. 'Session expired · 13:31'.",
+    "placeholders": {
+      "reason": {
+        "type": "String",
+        "example": "Session expired"
+      },
+      "time": {
+        "type": "String",
+        "example": "13:31"
+      }
+    }
+  },
+  "activityYesterday": "Yesterday",
+  "@activityYesterday": {
+    "description": "B3: heading of yesterday's activity."
+  },
   "assistedActionFailed": "That did not work. Try again.",
   "@assistedActionFailed": {
     "description": "G2/G3: confirming or snoozing failed."

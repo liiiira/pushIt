@@ -105,3 +105,9 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - B2's steps are read-only rows (checked or not, no tap action), not `AppCheckbox`, which would look disabled. The button offers the next step (connect an account, then schedule a video).
 - The last-7-days block is hidden on plans without statistics.
 - Loading shows `SkeletonList` (I2), a failure shows `ErrorStateView` with retry (I3), and a failed reconnect shows a snack bar.
+2026-11-28 · #35 · B3 activity: `GroupActivityByDay` (pure: today, yesterday, earlier, newest first), `ActivityCubit` (activity and posts combined; retry), `ActivityView` and `ActivityRow`, plus empty, loading and error states · Decisions and deviations:
+- `ActivityItem` has no failure reason, so the cubit joins it with the posts: a failed item shows its target's reason ("Session expired · 13:31"), and Retry shows only while that target is still failed. After a retry, the posts stream hides it.
+- Rows older than yesterday show the date with the time ("Mon 9 Nov, 12:02").
+- Rows are not tappable (the PDF has no chevrons); only Retry acts.
+- `activityRetention` (30 days) lives in `features/activity/domain` for the footer.
+- Deviation: row titles use `AppListRow`'s regular weight; the PDF looks semibold.
