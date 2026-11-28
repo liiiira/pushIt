@@ -28,3 +28,8 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - Small text actions have no side padding, so they align with the text around them.
 - `AppListRow` caps its value/trailing group at 60% of the width.
 - The gallery has no cubit (stateless), so `ComponentsPage` holds its layout.
+2026-11-28 · #5 · Shared widgets, part 2 (inputs): `AppSwitch`, `AppCheckbox`, `AppRadio<T>`, `AppSegmentedControl<T>`, `AppTextField`; `AppListRow.padding` · Decisions:
+- A null `groupValue` on a radio means "not chosen yet" (D7 privacy).
+- Text-field errors add a `text` outline plus an icon and message, never colour alone.
+- Disabled controls use `sub`/`line`.
+- New tokens: `AppRadii.checkbox` 6 and `AppSizes.radioDot` 12, also added to DESIGN_TOKENS.md.

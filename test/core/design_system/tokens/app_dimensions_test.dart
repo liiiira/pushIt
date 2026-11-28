@@ -32,6 +32,7 @@ void main() {
     expect(AppRadii.thumbnailSmall, 8);
     expect(AppRadii.pill, 999);
     expect(AppRadii.createButton, 14);
+    expect(AppRadii.checkbox, 6);
   });
 
   test('sizes', () {
@@ -55,6 +56,7 @@ void main() {
     expect(AppSizes.switchThumb, 24);
     expect(AppSizes.checkbox, 24);
     expect(AppSizes.radio, 24);
+    expect(AppSizes.radioDot, 12);
     expect(AppSizes.videoAspectRatio, 9 / 16);
     expect(AppSizes.composerPreview, const Size(126, 224));
     expect(AppSizes.galleryColumns, 3);

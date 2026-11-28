@@ -20,4 +20,7 @@ abstract final class AppRadii {
 
   /// The centre create button.
   static const double createButton = 14;
+
+  /// Checkbox corners.
+  static const double checkbox = 6;
 }
