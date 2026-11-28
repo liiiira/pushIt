@@ -32,8 +32,9 @@ class AppShell extends StatelessWidget {
               if (!isOnline)
                 const SafeArea(bottom: false, child: OfflineBanner()),
               Expanded(
-                // Always wrapped, so the tabs keep their state when the
-                // connection changes; the banner already took the inset.
+                // The banner already took the top inset. go_router keys the
+                // tab stack globally, so the tabs keep their state when the
+                // banner comes and goes.
                 child: MediaQuery.removePadding(
                   context: context,
                   removeTop: !isOnline,

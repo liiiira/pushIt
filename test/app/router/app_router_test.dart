@@ -11,6 +11,8 @@ import 'package:pushit/core/design_system/widgets/app_bottom_nav.dart';
 import 'package:pushit/core/design_system/widgets/offline_banner.dart';
 import 'package:pushit/core/design_system/widgets/placeholder_page.dart';
 import 'package:pushit/core/l10n/l10n.dart';
+import 'package:pushit/data/dependencies.dart';
+import 'package:pushit/data/fake/fake_connectivity_repository.dart';
 import 'package:pushit/data/fake/scenario.dart';
 import 'package:pushit/features/dev/presentation/pages/components_page.dart';
 
@@ -29,12 +31,15 @@ Future<GoRouter> _pumpRouter(
   WidgetTester tester, {
   required ValueListenable<AppAccess> access,
   Scenario scenario = Scenario.populated,
+  Dependencies? dependencies,
 }) async {
   final router = buildAppRouter(access: access);
   addTearDown(router.dispose);
   await tester.pumpWidget(
     MultiRepositoryProvider(
-      providers: repositoryProvidersOf(testDependencies(scenario: scenario)),
+      providers: repositoryProvidersOf(
+        dependencies ?? testDependencies(scenario: scenario),
+      ),
       child: MaterialApp.router(
         routerConfig: router,
         localizationsDelegates: appLocalizationsDelegates,
@@ -241,6 +246,30 @@ void main() {
         tester.getRect(find.byType(PlaceholderPage)).bottom,
         lessThanOrEqualTo(tester.getTopLeft(find.byType(AppBottomNav)).dy),
       );
+    });
+
+    testWidgets('keeps the tabs when the connection comes back', (
+      tester,
+    ) async {
+      final dependencies = testDependencies(scenario: Scenario.offline);
+      final router = await _pumpRouter(
+        tester,
+        access: ValueNotifier(_signedIn),
+        dependencies: dependencies,
+      );
+      router.go(RoutePaths.library);
+      await tester.pumpAndSettle();
+      final tabs = tester.state(find.byType(StatefulNavigationShell));
+      expect(find.byType(OfflineBanner), findsOneWidget);
+
+      (dependencies.connectivity as FakeConnectivityRepository).setOnline(
+        isOnline: true,
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OfflineBanner), findsNothing);
+      expect(tester.state(find.byType(StatefulNavigationShell)), same(tabs));
+      expect(_placeholder('F1'), findsOneWidget);
     });
 
     testWidgets('shows no offline banner while online', (tester) async {
