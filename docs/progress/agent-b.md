@@ -27,3 +27,10 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - Cancelling a scheduled post removes it and gives back one video of the month's usage.
 - Dev-menu hooks live on the fakes: `FakePostsRepository.triggerAssistedReminder`, `FakeConnectivityRepository.setOnline`.
 
+
+2026-11-28 · #12 · F1 Library (tabs, status lines, platform marks) and F2 empty, with the shared skeleton and error views · Decisions:
+- Domain rule `relativeDayOf` added for "today / yesterday / tomorrow" labels.
+- Tabs: Scheduled = scheduled or publishing; Failed = failed or partially failed; drafts never show.
+- View counts use the locale's grouping ("8,204"); the mock-up shows "8 204".
+- `/library` still routes to `PlaceholderPage` until `app_router_test` provides repositories (issue #9).
+- Reported to A on #9: `AppSegmentedControl` truncates "Scheduled" and "Published" at 412 dp.
