@@ -3,6 +3,7 @@ import 'package:pushit/app/app.dart';
 import 'package:pushit/app/router/app_redirect.dart';
 import 'package:pushit/app/router/app_router.dart';
 import 'package:pushit/core/clock.dart';
+import 'package:pushit/core/preferences/app_preferences.dart';
 import 'package:pushit/data/dependencies.dart';
 import 'package:pushit/data/fake/scenario.dart';
 
@@ -14,7 +15,9 @@ const scenarioName = String.fromEnvironment(
   defaultValue: 'populated',
 );
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final preferences = await SharedAppPreferences.load();
   final dependencies = Dependencies.fake(
     scenario: Scenario.fromName(scenarioName),
     clock: const SystemClock(),
@@ -27,6 +30,7 @@ void main() {
   runApp(
     PushItApp(
       dependencies: dependencies,
+      preferences: preferences,
       router: buildAppRouter(access: access),
     ),
   );

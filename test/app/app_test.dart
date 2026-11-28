@@ -8,6 +8,8 @@ import 'package:pushit/app/router/app_router.dart';
 import 'package:pushit/core/clock.dart';
 import 'package:pushit/core/design_system/tokens/app_colors.dart';
 import 'package:pushit/core/design_system/widgets/placeholder_page.dart';
+import 'package:pushit/core/preferences/app_preferences.dart';
+import 'package:pushit/core/theme_mode/theme_mode_cubit.dart';
 import 'package:pushit/data/fake/scenario.dart';
 import 'package:pushit/domain/domain.dart';
 
@@ -23,7 +25,11 @@ void main() {
     addTearDown(router.dispose);
 
     await tester.pumpWidget(
-      PushItApp(dependencies: testDependencies(), router: router),
+      PushItApp(
+        dependencies: testDependencies(),
+        preferences: InMemoryAppPreferences(),
+        router: router,
+      ),
     );
     await tester.pumpAndSettle();
 
@@ -41,7 +47,11 @@ void main() {
     addTearDown(router.dispose);
 
     await tester.pumpWidget(
-      PushItApp(dependencies: testDependencies(), router: router),
+      PushItApp(
+        dependencies: testDependencies(),
+        preferences: InMemoryAppPreferences(),
+        router: router,
+      ),
     );
 
     final app = tester.widget<MaterialApp>(find.byType(MaterialApp));
@@ -81,7 +91,11 @@ void main() {
     addTearDown(router.dispose);
 
     await tester.pumpWidget(
-      PushItApp(dependencies: dependencies, router: router),
+      PushItApp(
+        dependencies: dependencies,
+        preferences: InMemoryAppPreferences(),
+        router: router,
+      ),
     );
 
     expect(found, [
@@ -105,5 +119,35 @@ void main() {
 
     expect(dependencies.scenario, Scenario.firstUse);
     expect(dependencies.clock.now(), testNow);
+  });
+
+  testWidgets('follows the theme mode cubit, from the stored mode', (
+    tester,
+  ) async {
+    final router = buildAppRouter(
+      access: ValueNotifier(
+        const AppAccess(isOnboarded: false, isSignedIn: false),
+      ),
+    );
+    addTearDown(router.dispose);
+    final preferences = InMemoryAppPreferences(themeMode: ThemeMode.dark);
+
+    await tester.pumpWidget(
+      PushItApp(
+        dependencies: testDependencies(),
+        preferences: preferences,
+        router: router,
+      ),
+    );
+    ThemeMode modeOfApp() =>
+        tester.widget<MaterialApp>(find.byType(MaterialApp)).themeMode!;
+    expect(modeOfApp(), ThemeMode.dark);
+
+    final context = tester.element(find.byType(PlaceholderPage));
+    await context.read<ThemeModeCubit>().themeModeSelected(ThemeMode.system);
+    await tester.pump();
+
+    expect(modeOfApp(), ThemeMode.system);
+    expect(context.read<AppPreferences>(), same(preferences));
   });
 }

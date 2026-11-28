@@ -28,8 +28,6 @@ lib/
   app/                                 (A)
     app.dart                           MaterialApp.router, themes, l10n delegates, MultiRepositoryProvider
     app_repositories.dart              repositoryProvidersOf(Dependencies): one provider per interface + Clock
-    preferences/app_preferences.dart   interface + shared_preferences impl (theme mode, onboarding done)
-    theme_mode/theme_mode_cubit.dart
     router/
       route_paths.dart                 every path constant (all 54 screens): RoutePaths + RouteSegments
       app_redirect.dart                AppAccess + appRedirect(path, access), pure
@@ -37,6 +35,8 @@ lib/
       app_shell.dart                   bottom nav + centre create button + offline banner
   core/                                (A)
     clock.dart                         Clock interface, SystemClock, FixedClock (tests)
+    preferences/app_preferences.dart   AppPreferences interface + SharedAppPreferences (theme mode, onboarding done)
+    theme_mode/theme_mode_cubit.dart   ThemeModeCubit (System, Light, Dark), provided by PushItApp
     failures.dart                      sealed AppFailure
     view_status.dart                   enum ViewStatus { initial, loading, ready, empty, failure }
     l10n/
