@@ -23,3 +23,8 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
   - `AppSpacing.screenMargin`/`cardPadding`
   - `AppSizes.ringWidth`, `galleryColumns`/`galleryGap`, `platformGlyph*`
   - `AppDurations.fakeLatencySlow`
+2026-11-28 · #3 · Shared widgets, part 1, plus the `/dev/components` gallery · Widgets: `PrimaryButton`, `SecondaryButton`, `TextActionButton` (`AppButtonSize.full` 56 / `small` 40, 48 dp tap target), `AppTopBar`, `AppCard`, `AppListRow` · Decisions:
+- Disabled primary buttons are `block` with `sub` text.
+- Small text actions have no side padding, so they align with the text around them.
+- `AppListRow` caps its value/trailing group at 60% of the width.
+- The gallery has no cubit (stateless), so `ComponentsPage` holds its layout.

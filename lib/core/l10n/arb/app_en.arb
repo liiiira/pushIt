@@ -4,6 +4,14 @@
   "@commonAppName": {
     "description": "The product name, shown on the splash screen and in the app switcher."
   },
+  "commonBack": "Back",
+  "@commonBack": {
+    "description": "Tooltip of the back arrow in the top bar."
+  },
+  "commonClose": "Close",
+  "@commonClose": {
+    "description": "Tooltip of the close cross in the top bar."
+  },
   "commonNavAccounts": "Accounts",
   "@commonNavAccounts": {
     "description": "Bottom nav tab: connected accounts."
@@ -29,5 +37,45 @@
         "example": "F1"
       }
     }
+  },
+  "devComponentsButtons": "Buttons",
+  "@devComponentsButtons": {
+    "description": "Debug gallery section: buttons."
+  },
+  "devComponentsCards": "Cards and rows",
+  "@devComponentsCards": {
+    "description": "Debug gallery section: cards and list rows."
+  },
+  "devComponentsDark": "Dark",
+  "@devComponentsDark": {
+    "description": "Debug gallery: the dark theme sample."
+  },
+  "devComponentsLight": "Light (Fog)",
+  "@devComponentsLight": {
+    "description": "Debug gallery: the light theme sample."
+  },
+  "devComponentsSampleLabel": "Label",
+  "@devComponentsSampleLabel": {
+    "description": "Debug gallery: sample button label."
+  },
+  "devComponentsSampleSubtitle": "Secondary line",
+  "@devComponentsSampleSubtitle": {
+    "description": "Debug gallery: sample row subtitle."
+  },
+  "devComponentsSampleTitle": "Title",
+  "@devComponentsSampleTitle": {
+    "description": "Debug gallery: sample row or bar title."
+  },
+  "devComponentsSampleValue": "Value",
+  "@devComponentsSampleValue": {
+    "description": "Debug gallery: sample row value."
+  },
+  "devComponentsTitle": "Components",
+  "@devComponentsTitle": {
+    "description": "Debug gallery: page title."
+  },
+  "devComponentsTopBars": "Top bars",
+  "@devComponentsTopBars": {
+    "description": "Debug gallery section: top bars."
   }
 }

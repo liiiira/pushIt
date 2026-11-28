@@ -7,6 +7,7 @@ import 'package:pushit/app/router/app_router.dart';
 import 'package:pushit/app/router/route_paths.dart';
 import 'package:pushit/core/design_system/widgets/placeholder_page.dart';
 import 'package:pushit/core/l10n/l10n.dart';
+import 'package:pushit/features/dev/presentation/pages/components_page.dart';
 
 const _newUser = AppAccess(isOnboarded: false, isSignedIn: false);
 const _signedOut = AppAccess(isOnboarded: true, isSignedIn: false);
@@ -100,12 +101,15 @@ void main() {
       RoutePaths.feedback: 'H6',
       RoutePaths.appearance: 'appearance',
       RoutePaths.developer: 'developer',
-      RoutePaths.devComponents: 'components',
     };
 
     for (final MapEntry(key: location, value: screenId) in screens.entries) {
       await _expectScreen(tester, router, location, screenId);
     }
+
+    router.go(RoutePaths.devComponents);
+    await tester.pumpAndSettle();
+    expect(find.byType(ComponentsPage), findsOneWidget);
   });
 
   testWidgets('applies the redirects', (tester) async {
