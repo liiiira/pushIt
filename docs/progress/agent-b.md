@@ -45,3 +45,8 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - Rows follow the post's real targets; F5's Facebook row for "Morning b-roll" is not shown (the fixture has no Facebook target).
 - Platforms not posted yet take the whole edit before they go out; published ones follow the capability table.
 - The form loads the post once; cubits avoid `Stream.first` on the fakes, which hangs widget tests (the cancel completes outside the test's fake clock).
+
+2026-11-28 · #20 · F6 delete confirmation, F7 live delete result, and the library routes serving the real F1–F7 pages · Decisions:
+- Rows follow the post's targets and the capability table: Instagram and TikTok deletes are assisted (F6 shows Instagram automatic and a Facebook row).
+- F7 Retry runs `deleteEverywhere` again: failed automatic platforms retry, assisted ones keep waiting.
+- "Open <platform>" pushes G3 (`assistedDeleteFor`); Done and close go to `/library`.

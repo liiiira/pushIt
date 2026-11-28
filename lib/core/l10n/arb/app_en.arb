@@ -305,6 +305,99 @@
   "@devComponentsTopBars": {
     "description": "Debug gallery section: top bars and the bottom nav."
   },
+  "libraryDeleteAssisted": "You delete it in {platform}. We open the video for you.",
+  "@libraryDeleteAssisted": {
+    "description": "F6 row: the platform's API cannot delete, so the creator does it.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "libraryDeleteAutomatic": "Deleted automatically",
+  "@libraryDeleteAutomatic": {
+    "description": "F6 row: pushIt deletes it on this platform."
+  },
+  "libraryDeleteCancel": "Cancel",
+  "@libraryDeleteCancel": {
+    "description": "F6: goes back without deleting."
+  },
+  "libraryDeleteConfirm": "{count, plural, =0{Delete from pushIt} =1{Delete from 1 platform} other{Delete from {count} platforms}}",
+  "@libraryDeleteConfirm": {
+    "description": "F6: the delete button, with how many platforms.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryDeleteIntro": "This removes \"{title}\" from pushIt and from every platform below. It cannot be undone.",
+  "@libraryDeleteIntro": {
+    "description": "F6: what deleting does.",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "Morning b-roll"
+      }
+    }
+  },
+  "libraryDeletingAttention": "{count, plural, =1{1 needs your attention.} other{{count} need your attention.}}",
+  "@libraryDeletingAttention": {
+    "description": "F7: how many platforms wait for the creator or failed.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryDeletingComplete": "Removed from every platform.",
+  "@libraryDeletingComplete": {
+    "description": "F7: everything was deleted."
+  },
+  "libraryDeletingDone": "Done",
+  "@libraryDeletingDone": {
+    "description": "F7: back to the Library."
+  },
+  "libraryDeletingRemoved": "{removed} of {total} removed.",
+  "@libraryDeletingRemoved": {
+    "description": "F7: how many platforms are done.",
+    "placeholders": {
+      "removed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryDeletingRunning": "{count, plural, =1{Deleting from 1 platform…} other{Deleting from {count} platforms…}}",
+  "@libraryDeletingRunning": {
+    "description": "F7: the deletion is still running.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryDeletingSummary": "{removed} {attention}",
+  "@libraryDeletingSummary": {
+    "description": "F7: the removed count followed by what needs attention.",
+    "placeholders": {
+      "removed": {
+        "type": "String",
+        "example": "1 of 3 removed."
+      },
+      "attention": {
+        "type": "String",
+        "example": "2 need your attention."
+      }
+    }
+  },
+  "libraryDeletingTitle": "Deleting",
+  "@libraryDeletingTitle": {
+    "description": "F7: top bar title."
+  },
   "libraryDetailActionFailed": "That did not work. Try again.",
   "@libraryDetailActionFailed": {
     "description": "F3/F4: a retry or reconnect failed."
@@ -625,6 +718,28 @@
         "example": "today 19:00"
       }
     }
+  },
+  "libraryStepFailed": "Failed",
+  "@libraryStepFailed": {
+    "description": "F7 row: deleting on this platform failed."
+  },
+  "libraryStepOpen": "Open {platform}",
+  "@libraryStepOpen": {
+    "description": "F7: opens the assisted delete steps for the platform (G3).",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "libraryStepPending": "Deleting…",
+  "@libraryStepPending": {
+    "description": "F7 row: deleting right now."
+  },
+  "libraryStepRemoved": "Removed",
+  "@libraryStepRemoved": {
+    "description": "F7 row: deleted on this platform."
   },
   "libraryTargetFailed": "Failed",
   "@libraryTargetFailed": {
