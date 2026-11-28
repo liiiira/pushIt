@@ -28,6 +28,12 @@ class PostDetailCubit extends Cubit<PostDetailState> {
     unawaited(_cancelSubscriptions());
     _subscriptions
       ..add(
+        _accounts.watchAccounts().listen(
+          (accounts) => emit(state.copyWith(accounts: accounts)),
+          onError: (Object _) {},
+        ),
+      )
+      ..add(
         _subscription.watchSubscription().listen(
           (subscription) => emit(
             state.copyWith(showsStatistics: subscription.plan.hasStatistics),

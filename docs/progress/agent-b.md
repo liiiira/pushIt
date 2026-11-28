@@ -50,3 +50,6 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - Rows follow the post's targets and the capability table: Instagram and TikTok deletes are assisted (F6 shows Instagram automatic and a Facebook row).
 - F7 Retry runs `deleteEverywhere` again: failed automatic platforms retry, assisted ones keep waiting.
 - "Open <platform>" pushes G3 (`assistedDeleteFor`); Done and close go to `/library`.
+
+2026-11-28 · #21 · F4 opens A's reconnect prompt (C5) before reconnecting and retrying · Decisions:
+- The account is the failed target's, else any account on that platform; without one it reconnects and retries directly.
