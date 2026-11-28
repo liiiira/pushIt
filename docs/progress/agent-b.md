@@ -40,3 +40,8 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - F4 header reads "Failed Thu 12 Nov, 13:30" (F3's absolute style) instead of "Today, 13:30".
 - "Reconnect and retry" reconnects directly until A exports `showReconnectDialog` (C5, issue #9).
 - The "···" button opens a sheet with Edit everywhere and Delete everywhere.
+
+2026-11-28 · #17 · F5 edit everywhere (title, caption, per-platform scope, apply count) · Decisions:
+- Rows follow the post's real targets; F5's Facebook row for "Morning b-roll" is not shown (the fixture has no Facebook target).
+- Platforms not posted yet take the whole edit before they go out; published ones follow the capability table.
+- The form loads the post once; cubits avoid `Stream.first` on the fakes, which hangs widget tests (the cancel completes outside the test's fake clock).
