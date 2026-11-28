@@ -54,6 +54,7 @@ export 'rules/draft_from_post.dart';
 export 'rules/elapsed.dart';
 export 'rules/plans.dart';
 export 'rules/platform_capabilities.dart';
+export 'rules/platform_links.dart';
 export 'rules/post_status.dart';
 export 'rules/relative_day.dart';
 export 'rules/schedule_rules.dart';
