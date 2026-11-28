@@ -15,6 +15,7 @@ import 'package:pushit/core/design_system/widgets/app_top_bar.dart';
 import 'package:pushit/core/design_system/widgets/empty_state_view.dart';
 import 'package:pushit/core/design_system/widgets/error_state_view.dart';
 import 'package:pushit/core/design_system/widgets/initials_avatar.dart';
+import 'package:pushit/core/design_system/widgets/inline_error.dart';
 import 'package:pushit/core/design_system/widgets/offline_banner.dart';
 import 'package:pushit/core/design_system/widgets/page_indicator.dart';
 import 'package:pushit/core/design_system/widgets/platform_logo.dart';
@@ -79,6 +80,7 @@ void main() {
       EmptyStateView,
       ErrorStateView,
       OfflineBanner,
+      InlineError,
       SkeletonList,
     ]) {
       for (final sample in [light, dark]) {

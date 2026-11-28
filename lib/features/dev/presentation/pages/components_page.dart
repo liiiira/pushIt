@@ -19,6 +19,7 @@ import 'package:pushit/core/design_system/widgets/app_top_bar.dart';
 import 'package:pushit/core/design_system/widgets/empty_state_view.dart';
 import 'package:pushit/core/design_system/widgets/error_state_view.dart';
 import 'package:pushit/core/design_system/widgets/initials_avatar.dart';
+import 'package:pushit/core/design_system/widgets/inline_error.dart';
 import 'package:pushit/core/design_system/widgets/offline_banner.dart';
 import 'package:pushit/core/design_system/widgets/page_indicator.dart';
 import 'package:pushit/core/design_system/widgets/platform_logo.dart';
@@ -528,6 +529,10 @@ class _StatesSection extends StatelessWidget {
           child: ErrorStateView(onRetry: () {}),
         ),
         const OfflineBanner(),
+        Padding(
+          padding: const EdgeInsets.all(AppSpacing.screenMargin),
+          child: InlineError(l10n.devComponentsSampleError),
+        ),
         const SizedBox(height: _stateHeight, child: SkeletonList()),
       ],
     );
