@@ -27,6 +27,7 @@ lib/
   main.dart                            reads SCENARIO (dart-define), builds Dependencies, runs PushItApp
   app/                                 (A)
     app.dart                           MaterialApp.router, themes, l10n delegates, MultiRepositoryProvider
+    app_repositories.dart              repositoryProvidersOf(Dependencies): one provider per interface + Clock
     preferences/app_preferences.dart   interface + shared_preferences impl (theme mode, onboarding done)
     theme_mode/theme_mode_cubit.dart
     router/
@@ -67,7 +68,8 @@ lib/
       views/<name>_view.dart           layout, BlocBuilder/BlocListener
       widgets/                         feature-only widgets
 test/                                  mirrors lib/
-  helpers/helpers.dart (barrel), pump_app.dart, test_across_layouts.dart, fakes.dart   (A)
+  helpers/helpers.dart (barrel), pump_app.dart, test_across_layouts.dart, fakes.dart,
+          test_dependencies.dart (testNow, testDependencies({scenario}): B's fakes, no latency) (A)
   architecture/conventions.dart (rules), conventions_test.dart                         (A)
 assets/
   fonts/                               Hanken Grotesk (OFL) + OFL.txt
