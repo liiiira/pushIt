@@ -233,9 +233,53 @@
       }
     }
   },
+  "composerCaptionField": "Caption",
+  "@composerCaptionField": {
+    "description": "D4: label of the main caption."
+  },
+  "composerCaptionHint": "Say what the video is about",
+  "@composerCaptionHint": {
+    "description": "D4: placeholder of the empty caption."
+  },
+  "composerChoose": "Choose",
+  "@composerChoose": {
+    "description": "D4 row value when nothing is chosen yet."
+  },
   "composerContinue": "Continue",
   "@composerContinue": {
     "description": "D2/D3: goes on to the composer (D4) while the upload runs."
+  },
+  "composerCoverFrame": "Frame at {time}",
+  "@composerCoverFrame": {
+    "description": "D4 row value and D6 frame label.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "0:04"
+      }
+    }
+  },
+  "composerCoverHint": "Frame at {time}. Used as the cover where the platform allows one.",
+  "@composerCoverHint": {
+    "description": "D6: the chosen frame.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "0:04"
+      }
+    }
+  },
+  "composerCoverTitle": "Cover",
+  "@composerCoverTitle": {
+    "description": "D4 row and D6 top bar title."
+  },
+  "composerCoverUse": "Use this frame",
+  "@composerCoverUse": {
+    "description": "D6: keeps the chosen frame."
+  },
+  "composerDone": "Done",
+  "@composerDone": {
+    "description": "D5/D7: back to the composer."
   },
   "composerDraftActions": "Draft actions",
   "@composerDraftActions": {
@@ -276,6 +320,10 @@
   "composerDraftResume": "Resume",
   "@composerDraftResume": {
     "description": "D12 menu: opens the draft in the composer."
+  },
+  "composerDraftsButton": "Drafts",
+  "@composerDraftsButton": {
+    "description": "D4 top bar: opens the drafts (D12)."
   },
   "composerDraftsEmptyBody": "Unfinished posts are kept here.",
   "@composerDraftsEmptyBody": {
@@ -355,9 +403,97 @@
       }
     }
   },
+  "composerMinutes": "{count} min",
+  "@composerMinutes": {
+    "description": "A duration limit in minutes.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "composerNewPost": "New post",
   "@composerNewPost": {
     "description": "D1–D4: top bar title."
+  },
+  "composerNoAccountsAction": "Connect an account",
+  "@composerNoAccountsAction": {
+    "description": "D4 without accounts: opens Add account."
+  },
+  "composerNoAccountsBody": "Posts go to the accounts you connect.",
+  "@composerNoAccountsBody": {
+    "description": "D4 without accounts."
+  },
+  "composerNoAccountsTitle": "Connect an account first",
+  "@composerNoAccountsTitle": {
+    "description": "D4 without accounts."
+  },
+  "composerPlatformNotSelected": "{platform}, not selected",
+  "@composerPlatformNotSelected": {
+    "description": "D4: screen reader label of a platform toggle.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "Facebook"
+      }
+    }
+  },
+  "composerPlatformSelected": "{platform}, selected",
+  "@composerPlatformSelected": {
+    "description": "D4: screen reader label of a platform toggle.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "YouTube"
+      }
+    }
+  },
+  "composerRowCaptions": "Text per platform",
+  "@composerRowCaptions": {
+    "description": "D4 row: opens D5."
+  },
+  "composerRowCaptionsValue": "{count, plural, =0{None} =1{1 change} other{{count} changes}}",
+  "@composerRowCaptionsValue": {
+    "description": "D4 row value: how many platforms have their own text.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composerRowTikTok": "TikTok settings",
+  "@composerRowTikTok": {
+    "description": "D4 row and D7 top bar title."
+  },
+  "composerRowWhen": "When",
+  "@composerRowWhen": {
+    "description": "D4 row: the schedule (D9/D10)."
+  },
+  "composerSavedDraft": "Saved to drafts",
+  "@composerSavedDraft": {
+    "description": "Shown after closing the composer with a video."
+  },
+  "composerSchedule": "Schedule",
+  "@composerSchedule": {
+    "description": "D4: checks the post, then schedules it."
+  },
+  "composerScheduleTimes": "{count, plural, =1{1 time} other{{count} times}}",
+  "@composerScheduleTimes": {
+    "description": "D4 row value for a time per platform.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composerSeconds": "{count} s",
+  "@composerSeconds": {
+    "description": "A duration limit in seconds.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "composerTabDrafts": "{count, plural, =0{Drafts} other{Drafts · {count}}}",
   "@composerTabDrafts": {
@@ -371,6 +507,76 @@
   "composerTabGallery": "Gallery",
   "@composerTabGallery": {
     "description": "D1 tab: videos on the phone."
+  },
+  "composerTikTokAllow": "Allow",
+  "@composerTikTokAllow": {
+    "description": "D7: heading of the permission switches."
+  },
+  "composerTikTokComments": "Comments",
+  "@composerTikTokComments": {
+    "description": "D7 switch."
+  },
+  "composerTikTokCommercial": "Commercial content",
+  "@composerTikTokCommercial": {
+    "description": "D7: heading of the disclosure."
+  },
+  "composerTikTokDuet": "Duet",
+  "@composerTikTokDuet": {
+    "description": "D7 switch."
+  },
+  "composerTikTokEveryone": "Everyone",
+  "@composerTikTokEveryone": {
+    "description": "D7 privacy choice."
+  },
+  "composerTikTokFriends": "Friends",
+  "@composerTikTokFriends": {
+    "description": "D7 privacy choice."
+  },
+  "composerTikTokOnlyMe": "Only me",
+  "@composerTikTokOnlyMe": {
+    "description": "D7 privacy choice."
+  },
+  "composerTikTokPromotes": "Promotes a brand or product",
+  "@composerTikTokPromotes": {
+    "description": "D7: commercial content switch."
+  },
+  "composerTikTokPromotesHint": "Turn on if this video is an ad or paid partnership.",
+  "@composerTikTokPromotesHint": {
+    "description": "D7: when to disclose."
+  },
+  "composerTikTokStitch": "Stitch",
+  "@composerTikTokStitch": {
+    "description": "D7 switch."
+  },
+  "composerTikTokWho": "Who can see this video",
+  "@composerTikTokWho": {
+    "description": "D7: heading of the privacy choice."
+  },
+  "composerTikTokWhoHint": "Choose one. TikTok does not allow us to pick for you.",
+  "@composerTikTokWhoHint": {
+    "description": "D7: why there is no default."
+  },
+  "composerTooLong": "{platform}: {limit} at most. This video is {actual}.",
+  "@composerTooLong": {
+    "description": "D4: the video is too long for a platform.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "Facebook Reels"
+      },
+      "limit": {
+        "type": "String",
+        "example": "90 s"
+      },
+      "actual": {
+        "type": "String",
+        "example": "1:42"
+      }
+    }
+  },
+  "composerTooLongFacebook": "Facebook Reels",
+  "@composerTooLongFacebook": {
+    "description": "Facebook's short-video product, in the too-long warning."
   },
   "composerUploadAmount": "{sent} of {total} MB",
   "@composerUploadAmount": {

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:pushit/domain/domain.dart';
+import 'package:pushit/features/composer/domain/composer_rules.dart';
 
 part 'composer_state.dart';
 
@@ -11,10 +12,36 @@ part 'composer_state.dart';
 /// Provided by the composer shell route, so it lives while any
 /// `/compose/*` screen is open.
 class ComposerCubit extends Cubit<ComposerState> {
-  new({required this._media}) : super(const ComposerState());
+  new({
+    required this._media,
+    required this._posts,
+    required this._accounts,
+    required this._subscription,
+  }) : super(const ComposerState());
 
   final MediaRepository _media;
+  final PostsRepository _posts;
+  final AccountsRepository _accounts;
+  final SubscriptionRepository _subscription;
   StreamSubscription<UploadProgress>? _upload;
+  final List<StreamSubscription<Object?>> _watches = [];
+
+  /// Follows the connected accounts and the plan.
+  void started() {
+    _watches
+      ..add(
+        _accounts.watchAccounts().listen(
+          (accounts) => _emitWithDefaults(state.copyWith(accounts: accounts)),
+          onError: (Object _) {},
+        ),
+      )
+      ..add(
+        _subscription.watchSubscription().listen(
+          (subscription) => emit(state.copyWith(plan: subscription.plan)),
+          onError: (Object _) {},
+        ),
+      );
+  }
 
   /// Uploads [item] and keeps the video once uploaded (D1 → D2).
   void uploadStarted(GalleryItem item) {
@@ -29,7 +56,7 @@ class ComposerCubit extends Cubit<ComposerState> {
     _upload = _media
         .upload(item.id)
         .listen(
-          (progress) => emit(
+          (progress) => _emitWithDefaults(
             state.copyWith(
               upload: () => progress,
               draft: progress is Uploaded
@@ -66,7 +93,7 @@ class ComposerCubit extends Cubit<ComposerState> {
     );
   }
 
-  /// Continues a saved draft (D12).
+  /// Continues a saved draft (D12), keeping its platforms.
   void draftResumed(Post draft) {
     unawaited(_upload?.cancel());
     _upload = null;
@@ -75,6 +102,61 @@ class ComposerCubit extends Cubit<ComposerState> {
         draft: draftFromPost(draft),
         draftId: draft.id,
         upload: Uploaded(draft.video),
+        accounts: state.accounts,
+        plan: state.plan,
+        hasPlatformChoice: true,
+      ),
+    );
+  }
+
+  void captionChanged(String caption) =>
+      emit(state.copyWith(draft: state.draft.copyWith(caption: caption)));
+
+  void platformToggled(PlatformId platform) {
+    final platforms = {...state.draft.platforms};
+    if (!platforms.remove(platform)) platforms.add(platform);
+    emit(
+      state.copyWith(
+        draft: state.draft.copyWith(platforms: platforms),
+        hasPlatformChoice: true,
+      ),
+    );
+  }
+
+  void coverChanged(Duration at) =>
+      emit(state.copyWith(draft: state.draft.copyWith(coverAt: at)));
+
+  void tiktokChanged(TikTokSettings settings) =>
+      emit(state.copyWith(draft: state.draft.copyWith(tiktok: settings)));
+
+  /// Saves the post as a draft when it has a video ("Drafts are saved
+  /// automatically"). Resolves to whether a draft was saved; closing never
+  /// waits on a failure.
+  Future<bool> closeTapped() async {
+    if (state.draft.video == null) return false;
+    try {
+      final saved = await _posts.saveDraft(state.draft, draftId: state.draftId);
+      emit(state.copyWith(draftId: () => saved.id));
+      return true;
+    } on Object {
+      return false;
+    }
+  }
+
+  /// Applies the default platforms once the video and the accounts are
+  /// known, unless they were already chosen.
+  void _emitWithDefaults(ComposerState next) {
+    final video = next.draft.video;
+    if (next.hasPlatformChoice || video == null || next.accounts.isEmpty) {
+      emit(next);
+      return;
+    }
+    emit(
+      next.copyWith(
+        draft: next.draft.copyWith(
+          platforms: defaultPlatforms(next.accounts, video, next.plan),
+        ),
+        hasPlatformChoice: true,
       ),
     );
   }
@@ -82,6 +164,9 @@ class ComposerCubit extends Cubit<ComposerState> {
   @override
   Future<void> close() async {
     await _upload?.cancel();
+    for (final watch in _watches) {
+      await watch.cancel();
+    }
     await super.close();
   }
 }

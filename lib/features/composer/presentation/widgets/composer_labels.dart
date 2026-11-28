@@ -19,6 +19,15 @@ extension ComposerLabels on BuildContext {
     );
   }
 
+  /// A platform's duration limit: "90 s", "3 min" or "140 s".
+  String limitLabel(Duration limit) {
+    final seconds = limit.inSeconds;
+    return seconds < Duration.secondsPerMinute * 2 ||
+            seconds % Duration.secondsPerMinute != 0
+        ? l10n.composerSeconds(seconds)
+        : l10n.composerMinutes(limit.inMinutes);
+  }
+
   String _editedAgo(DateTime at, {required DateTime now}) {
     if (relativeDayOf(at, now: now) == RelativeDay.yesterday) {
       return l10n.composerEditedYesterday;

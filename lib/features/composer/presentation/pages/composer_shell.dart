@@ -11,7 +11,12 @@ class ComposerShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-    create: (context) => ComposerCubit(media: context.read<MediaRepository>()),
+    create: (context) => ComposerCubit(
+      media: context.read<MediaRepository>(),
+      posts: context.read<PostsRepository>(),
+      accounts: context.read<AccountsRepository>(),
+      subscription: context.read<SubscriptionRepository>(),
+    )..started(),
     child: child,
   );
 }

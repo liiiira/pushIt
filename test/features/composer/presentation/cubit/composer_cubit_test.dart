@@ -8,6 +8,12 @@ import 'package:pushit/features/composer/presentation/cubit/composer_cubit.dart'
 
 class _MockMedia extends Mock implements MediaRepository;
 
+class _MockPosts extends Mock implements PostsRepository;
+
+class _MockAccounts extends Mock implements AccountsRepository;
+
+class _MockSubscription extends Mock implements SubscriptionRepository;
+
 const _item = GalleryItem(
   id: 'g1',
   fileName: 'studio_tour_p2.mp4',
@@ -42,7 +48,12 @@ void main() {
   // close() only completes once a listener got the done event.
   tearDown(() => unawaited(upload.close()));
 
-  ComposerCubit build() => ComposerCubit(media: media);
+  ComposerCubit build() => ComposerCubit(
+    media: media,
+    posts: _MockPosts(),
+    accounts: _MockAccounts(),
+    subscription: _MockSubscription(),
+  );
 
   const started = ComposerState(
     uploadItem: _item,
@@ -146,6 +157,7 @@ void main() {
         ),
         draftId: 'draft-1',
         upload: Uploaded(_video),
+        hasPlatformChoice: true,
       ),
     ],
   );
