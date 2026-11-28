@@ -75,6 +75,35 @@ void main() {
     expect(router.state.uri.path, RoutePaths.signIn);
   });
 
+  testWidgets('a first launch goes from the onboarding to sign-in', (
+    tester,
+  ) async {
+    final preferences = InMemoryAppPreferences();
+    final dependencies = testDependencies();
+    final access = AppAccessNotifier(
+      preferences: preferences,
+      auth: dependencies.auth,
+    );
+    addTearDown(access.dispose);
+    final router = buildAppRouter(access: access);
+    addTearDown(router.dispose);
+    await tester.pumpWidget(
+      PushItApp(
+        dependencies: dependencies,
+        preferences: preferences,
+        router: router,
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(router.state.uri.path, RoutePaths.onboarding);
+
+    await tester.tap(find.text('Skip'));
+    await tester.pumpAndSettle();
+
+    expect(router.state.uri.path, RoutePaths.signIn);
+    expect(preferences.isOnboarded, isTrue);
+  });
+
   testWidgets('uses the light and dark app themes', (tester) async {
     final router = buildAppRouter(
       access: ValueNotifier(

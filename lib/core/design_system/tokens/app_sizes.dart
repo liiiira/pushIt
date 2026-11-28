@@ -63,4 +63,10 @@ abstract final class AppSizes {
   /// Onboarding page dots; the current one stretches to the active width.
   static const double pageDot = 8;
   static const double pageDotActiveWidth = 24;
+
+  /// The line icon in an onboarding illustration card (A2–A4).
+  static const double illustrationIcon = 48;
+
+  /// Width over height of an onboarding illustration card (364 × 330).
+  static const double illustrationAspectRatio = 364 / 330;
 }

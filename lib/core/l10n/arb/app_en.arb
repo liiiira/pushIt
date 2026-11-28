@@ -1094,6 +1094,42 @@
       }
     }
   },
+  "onboardingConnect": "Connect an account",
+  "@onboardingConnect": {
+    "description": "A4: finishes the onboarding."
+  },
+  "onboardingNext": "Next",
+  "@onboardingNext": {
+    "description": "A2, A3: the next onboarding page."
+  },
+  "onboardingPage1Body": "Upload once and schedule it for YouTube, Instagram, TikTok and Facebook together.",
+  "@onboardingPage1Body": {
+    "description": "A2 text."
+  },
+  "onboardingPage1Title": "One video, every platform",
+  "@onboardingPage1Title": {
+    "description": "A2 title."
+  },
+  "onboardingPage2Body": "At the time you choose, pushIt publishes for you. Where a platform does not allow that yet, we remind you and open the app with the video ready.",
+  "@onboardingPage2Body": {
+    "description": "A3 text."
+  },
+  "onboardingPage2Title": "It posts while your phone is off",
+  "@onboardingPage2Title": {
+    "description": "A3 title."
+  },
+  "onboardingPage3Body": "Every video keeps a record of where it went, so you can change it or remove it everywhere at once.",
+  "@onboardingPage3Body": {
+    "description": "A4 text."
+  },
+  "onboardingPage3Title": "One place to edit or delete",
+  "@onboardingPage3Title": {
+    "description": "A4 title."
+  },
+  "onboardingSkip": "Skip",
+  "@onboardingSkip": {
+    "description": "A2–A4: finishes the onboarding at once."
+  },
   "onboardingSplashTagline": "Schedule once, post everywhere.",
   "@onboardingSplashTagline": {
     "description": "A1: the promise under the wordmark."

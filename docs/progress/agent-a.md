@@ -70,3 +70,9 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 - The splash has no cubit and does not "decide", as SCREENS.md said: the redirect does, so nothing races the router. ARCHITECTURE.md and SCREENS.md are updated.
 - An auth error counts as signed out, so the splash never hangs.
 - `AppAccess.isEmailVerified`: a signed-in user who has not verified their email is sent from sign-in, register and reset to `/verify-email`, not home. The app is not gated on it, because `AuthRepository` has no way to verify, so the fake would be stuck.
+2026-11-28 · #24 · A2–A4 onboarding pager: `OnboardingCubit` (page, Next, Skip), `OnboardingView` (Skip on top, `PageView` of `OnboardingSlide`s, Next / "Connect an account" pinned at the bottom) · Decisions:
+- Finishing (Skip, or Connect on A4) only calls `AppPreferences.setOnboarded()`. The `AppAccessNotifier` sees it and the redirect moves to sign-in, so the view never navigates. An app test covers onboarding → Skip → sign-in.
+- "Connect an account" goes to sign-in, like Skip: a signed-out user cannot connect an account yet.
+- The page dots sit inside each page (between the card and the title, as on the PDF), so they slide with the page.
+- Icons: Lucide `layers2`, `power`, `galleryVerticalEnd`.
+- New tokens: `AppSizes.illustrationIcon` 48 and `illustrationAspectRatio` 364 / 330, also added to DESIGN_TOKENS.md. The card uses the `sheet` radius (28).

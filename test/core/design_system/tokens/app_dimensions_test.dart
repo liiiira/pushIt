@@ -66,6 +66,8 @@ void main() {
     expect(AppSizes.galleryGap, 8);
     expect(AppSizes.progressBar, 6);
     expect(AppSizes.pageDot, 8);
+    expect(AppSizes.illustrationIcon, 48);
+    expect(AppSizes.illustrationAspectRatio, 364 / 330);
     expect(AppSizes.pageDotActiveWidth, 24);
   });
 

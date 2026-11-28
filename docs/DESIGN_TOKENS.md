@@ -90,6 +90,8 @@ Font: **Hanken Grotesk**, bundled under `assets/fonts` (OFL). The colour comes f
 | `progressBar` | 6 high |
 | `selectionRingWidth` | 2.5 (selected video thumbnail) |
 | `pageDot` / `pageDotActiveWidth` | 8 / 24 (onboarding pager) |
+| `illustrationIcon` | 48 (line icon of an onboarding illustration card) |
+| `illustrationAspectRatio` | 364 / 330 (onboarding illustration card, `sheet` radius) |
 
 ## Platform logo states
 
