@@ -123,6 +123,41 @@ class ComposerCubit extends Cubit<ComposerState> {
     );
   }
 
+  /// Sets [platform]'s own title (YouTube) or text (D5). A copy that is
+  /// back to the main caption, without a title, is dropped.
+  void copyChanged(PlatformId platform, {String? title, String? text}) {
+    final draft = state.draft;
+    final existing = draft.copies
+        .where((c) => c.platform == platform)
+        .firstOrNull;
+    final nextTitle = title ?? existing?.title;
+    final copy = PlatformCopy(
+      platform: platform,
+      title: nextTitle == null || nextTitle.trim().isEmpty ? null : nextTitle,
+      text: text ?? existing?.text ?? draft.caption,
+    );
+    final others = draft.copies.where((c) => c.platform != platform);
+    final isMain = copy.title == null && copy.text == draft.caption;
+    emit(
+      state.copyWith(
+        draft: draft.copyWith(copies: [...others, if (!isMain) copy]),
+      ),
+    );
+  }
+
+  /// [platform] goes back to the main caption.
+  void copyReset(PlatformId platform) => emit(
+    state.copyWith(
+      draft: state.draft.copyWith(
+        copies: [...state.draft.copies.where((c) => c.platform != platform)],
+      ),
+    ),
+  );
+
+  /// Uses a suggested caption (D11) as [suggestion]'s platform text.
+  void suggestionUsed(CaptionSuggestion suggestion) =>
+      copyChanged(suggestion.platform, text: suggestion.text);
+
   void coverChanged(Duration at) =>
       emit(state.copyWith(draft: state.draft.copyWith(coverAt: at)));
 
