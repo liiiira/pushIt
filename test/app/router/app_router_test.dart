@@ -1,9 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:pushit/app/app_repositories.dart';
+import 'package:pushit/app/app.dart';
 import 'package:pushit/app/router/app_redirect.dart';
 import 'package:pushit/app/router/app_router.dart';
 import 'package:pushit/app/router/route_paths.dart';
@@ -22,10 +21,20 @@ const _newUser = AppAccess(isOnboarded: false, isSignedIn: false);
 const _signedOut = AppAccess(isOnboarded: true, isSignedIn: false);
 const _signedIn = AppAccess(isOnboarded: true, isSignedIn: true);
 
-Finder _placeholder(String screenId) => find.byWidgetPredicate(
-  (widget) => widget is PlaceholderPage && widget.screenId == screenId,
-  description: 'PlaceholderPage($screenId)',
-);
+/// Checks that the router shows [screenId] at [path], whether the screen is
+/// built yet or still a `PlaceholderPage`: the path must match, and any
+/// placeholder on screen must name [screenId]. Real pages replace the
+/// placeholders one by one without touching this test.
+void _expectAt(GoRouter router, String path, String screenId) {
+  expect(router.state.uri.path, path, reason: screenId);
+  for (final placeholder
+      in find
+          .byType(PlaceholderPage)
+          .evaluate()
+          .map((element) => element.widget as PlaceholderPage)) {
+    expect(placeholder.screenId, screenId, reason: path);
+  }
+}
 
 Future<GoRouter> _pumpRouter(
   WidgetTester tester, {
@@ -36,38 +45,34 @@ Future<GoRouter> _pumpRouter(
   final router = buildAppRouter(access: access);
   addTearDown(router.dispose);
   await tester.pumpWidget(
-    MultiRepositoryProvider(
-      providers: repositoryProvidersOf(
-        dependencies ?? testDependencies(scenario: scenario),
-      ),
-      child: MaterialApp.router(
-        routerConfig: router,
-        localizationsDelegates: appLocalizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-      ),
+    PushItApp(
+      dependencies: dependencies ?? testDependencies(scenario: scenario),
+      preferences: InMemoryAppPreferences(),
+      router: router,
     ),
   );
   await tester.pumpAndSettle();
   return router;
 }
 
+/// Goes to [location] and expects [screenId] there, or at [redirectedTo].
 Future<void> _expectScreen(
   WidgetTester tester,
   GoRouter router,
   String location,
-  String screenId,
-) async {
+  String screenId, {
+  String? redirectedTo,
+}) async {
   router.go(location);
   await tester.pumpAndSettle();
-  expect(_placeholder(screenId), findsOneWidget, reason: location);
-  expect(find.byType(PlaceholderPage), findsOneWidget, reason: location);
+  _expectAt(router, redirectedTo ?? location, screenId);
 }
 
 void main() {
   testWidgets('starts on the splash', (tester) async {
-    await _pumpRouter(tester, access: ValueNotifier(_newUser));
+    final router = await _pumpRouter(tester, access: ValueNotifier(_newUser));
 
-    expect(_placeholder('A1'), findsOneWidget);
+    _expectAt(router, RoutePaths.splash, 'A1');
   });
 
   testWidgets('serves the onboarding to a new user', (tester) async {
@@ -131,8 +136,20 @@ void main() {
   testWidgets('applies the redirects', (tester) async {
     final router = await _pumpRouter(tester, access: ValueNotifier(_signedOut));
 
-    await _expectScreen(tester, router, RoutePaths.root, 'A1');
-    await _expectScreen(tester, router, RoutePaths.libraryPostFor('p1'), 'A5');
+    await _expectScreen(
+      tester,
+      router,
+      RoutePaths.root,
+      'A1',
+      redirectedTo: RoutePaths.splash,
+    );
+    await _expectScreen(
+      tester,
+      router,
+      RoutePaths.libraryPostFor('p1'),
+      'A5',
+      redirectedTo: RoutePaths.signIn,
+    );
   });
 
   testWidgets('follows access changes', (tester) async {
@@ -144,7 +161,7 @@ void main() {
     access.value = _signedIn;
     await tester.pumpAndSettle();
 
-    expect(_placeholder('B1'), findsOneWidget);
+    _expectAt(router, RoutePaths.home, 'B1');
   });
 
   group('shell', () {
@@ -189,19 +206,19 @@ void main() {
 
       await tester.tap(find.text(l10n.commonNavLibrary));
       await tester.pumpAndSettle();
-      expect(_placeholder('F1'), findsOneWidget);
+      _expectAt(router, RoutePaths.library, 'F1');
 
       await tester.tap(find.text(l10n.commonNavCalendar));
       await tester.pumpAndSettle();
-      expect(_placeholder('E1'), findsOneWidget);
+      _expectAt(router, RoutePaths.calendar, 'E1');
 
       await tester.tap(find.text(l10n.commonNavAccounts));
       await tester.pumpAndSettle();
-      expect(_placeholder('C1'), findsOneWidget);
+      _expectAt(router, RoutePaths.accounts, 'C1');
 
       await tester.tap(find.text(l10n.commonNavHome));
       await tester.pumpAndSettle();
-      expect(_placeholder('B1'), findsOneWidget);
+      _expectAt(router, RoutePaths.home, 'B1');
     });
 
     testWidgets('opens the composer full screen from the create button', (
@@ -217,12 +234,12 @@ void main() {
       await tester.tap(find.byKey(AppBottomNav.createKey));
       await tester.pumpAndSettle();
 
-      expect(_placeholder('D1'), findsOneWidget);
+      _expectAt(router, RoutePaths.compose, 'D1');
       expect(find.byType(AppBottomNav), findsNothing);
 
       router.pop();
       await tester.pumpAndSettle();
-      expect(_placeholder('F1'), findsOneWidget);
+      _expectAt(router, RoutePaths.library, 'F1');
       expect(find.byType(AppBottomNav), findsOneWidget);
     });
 
@@ -240,10 +257,10 @@ void main() {
       expect(find.byType(OfflineBanner), findsOneWidget);
       expect(
         tester.getTopLeft(find.byType(OfflineBanner)).dy,
-        lessThan(tester.getTopLeft(find.byType(PlaceholderPage)).dy),
+        lessThan(tester.getTopLeft(find.byType(StatefulNavigationShell)).dy),
       );
       expect(
-        tester.getRect(find.byType(PlaceholderPage)).bottom,
+        tester.getRect(find.byType(StatefulNavigationShell)).bottom,
         lessThanOrEqualTo(tester.getTopLeft(find.byType(AppBottomNav)).dy),
       );
     });
@@ -269,7 +286,7 @@ void main() {
 
       expect(find.byType(OfflineBanner), findsNothing);
       expect(tester.state(find.byType(StatefulNavigationShell)), same(tabs));
-      expect(_placeholder('F1'), findsOneWidget);
+      _expectAt(router, RoutePaths.library, 'F1');
     });
 
     testWidgets('shows no offline banner while online', (tester) async {
