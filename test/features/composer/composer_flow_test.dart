@@ -5,13 +5,9 @@ import 'package:pushit/app/app.dart';
 import 'package:pushit/app/router/app_redirect.dart';
 import 'package:pushit/app/router/app_router.dart';
 import 'package:pushit/app/router/route_paths.dart';
-import 'package:pushit/core/design_system/widgets/placeholder_page.dart';
 import 'package:pushit/data/fake/scenario.dart';
 
 import '../../helpers/helpers.dart';
-
-Finder _screen(String id) =>
-    find.byWidgetPredicate((w) => w is PlaceholderPage && w.screenId == id);
 
 const _signedIn = AppAccess(isOnboarded: true, isSignedIn: true);
 
@@ -53,7 +49,7 @@ void main() {
 
     await tester.tap(find.text('Continue'));
     await tester.pumpAndSettle();
-    expect(_screen('D4'), findsOneWidget);
+    expect(find.text('Text per platform'), findsOneWidget);
   });
 
   testWidgets('offline: the upload pauses (D3)', (tester) async {
@@ -71,6 +67,20 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Unboxing the lav mic'));
     await tester.pumpAndSettle();
-    expect(_screen('D4'), findsOneWidget);
+    expect(find.text('Text per platform'), findsOneWidget);
+  });
+
+  testWidgets('D4: closing saves the post as a draft', (tester) async {
+    await _pumpApp(tester);
+    await tester.tap(find.text('Use this video'));
+    await tester.pump(const Duration(seconds: 2));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Continue'));
+    await tester.pumpAndSettle();
+    expect(find.text('Text per platform'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('Close'));
+    await tester.pumpAndSettle();
+    expect(find.text('Saved to drafts'), findsOneWidget);
   });
 }

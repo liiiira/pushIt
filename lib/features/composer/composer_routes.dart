@@ -4,6 +4,9 @@ import 'package:pushit/core/design_system/widgets/placeholder_page.dart';
 import 'package:pushit/features/composer/presentation/pages/composer_shell.dart';
 import 'package:pushit/features/composer/presentation/pages/drafts_page.dart';
 import 'package:pushit/features/composer/presentation/pages/pick_video_page.dart';
+import 'package:pushit/features/composer/presentation/views/composer_view.dart';
+import 'package:pushit/features/composer/presentation/views/cover_view.dart';
+import 'package:pushit/features/composer/presentation/views/tiktok_settings_view.dart';
 import 'package:pushit/features/composer/presentation/views/upload_view.dart';
 
 /// D1–D13, full screen on the root navigator. D9–D11 are sheets.
@@ -23,7 +26,7 @@ List<RouteBase> composerRoutes() => [
           ),
           GoRoute(
             path: RouteSegments.post,
-            builder: (_, _) => const PlaceholderPage(screenId: 'D4'),
+            builder: (_, _) => const ComposerView(),
             routes: [
               GoRoute(
                 path: RouteSegments.captions,
@@ -31,11 +34,11 @@ List<RouteBase> composerRoutes() => [
               ),
               GoRoute(
                 path: RouteSegments.cover,
-                builder: (_, _) => const PlaceholderPage(screenId: 'D6'),
+                builder: (_, _) => const CoverView(),
               ),
               GoRoute(
                 path: RouteSegments.tiktok,
-                builder: (_, _) => const PlaceholderPage(screenId: 'D7'),
+                builder: (_, _) => const TikTokSettingsView(),
               ),
               GoRoute(
                 path: RouteSegments.check,
