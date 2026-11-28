@@ -176,6 +176,171 @@
   "@devComponentsTopBars": {
     "description": "Debug gallery section: top bars."
   },
+  "libraryDetailActionFailed": "That did not work. Try again.",
+  "@libraryDetailActionFailed": {
+    "description": "F3/F4: a retry or reconnect failed."
+  },
+  "libraryDetailComments": "Comments",
+  "@libraryDetailComments": {
+    "description": "F3: label under the total comments."
+  },
+  "libraryDetailDelete": "Delete everywhere",
+  "@libraryDetailDelete": {
+    "description": "F3: opens the delete-everywhere confirmation (F6)."
+  },
+  "libraryDetailEdit": "Edit everywhere",
+  "@libraryDetailEdit": {
+    "description": "F3: opens edit everywhere (F5)."
+  },
+  "libraryDetailFailedOther": "{platform} did not take the video. Retry, and it will not be posted twice.",
+  "@libraryDetailFailedOther": {
+    "description": "F4: why a platform failed, for reasons other than a signed-out account.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "libraryDetailFailedSignedOut": "{platform} signed this account out. Reconnect it, then retry. The video will not be posted twice.",
+  "@libraryDetailFailedSignedOut": {
+    "description": "F4: the platform's sign-in expired.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "libraryDetailFailedTitle": "Failed on {platform}",
+  "@libraryDetailFailedTitle": {
+    "description": "F4: title of the failure card.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "libraryDetailHeaderFailed": "Failed {when}",
+  "@libraryDetailHeaderFailed": {
+    "description": "F4 header: when the post failed.",
+    "placeholders": {
+      "when": {
+        "type": "String",
+        "example": "Thu 12 Nov, 13:30"
+      }
+    }
+  },
+  "libraryDetailHeaderPublished": "Published {when}",
+  "@libraryDetailHeaderPublished": {
+    "description": "F3 header: when the post was published.",
+    "placeholders": {
+      "when": {
+        "type": "String",
+        "example": "Thu 12 Nov, 09:00"
+      }
+    }
+  },
+  "libraryDetailHeaderPublishing": "Publishing since {when}",
+  "@libraryDetailHeaderPublishing": {
+    "description": "F3 header: the post is going out.",
+    "placeholders": {
+      "when": {
+        "type": "String",
+        "example": "Thu 12 Nov, 13:30"
+      }
+    }
+  },
+  "libraryDetailHeaderScheduled": "Scheduled {when}",
+  "@libraryDetailHeaderScheduled": {
+    "description": "F3 header: when the post goes out.",
+    "placeholders": {
+      "when": {
+        "type": "String",
+        "example": "Thu 12 Nov, 19:00"
+      }
+    }
+  },
+  "libraryDetailLikes": "Likes",
+  "@libraryDetailLikes": {
+    "description": "F3: label under the total likes."
+  },
+  "libraryDetailMore": "More actions",
+  "@libraryDetailMore": {
+    "description": "F3: tooltip of the ··· button in the top bar."
+  },
+  "libraryDetailNotFound": "This post no longer exists.",
+  "@libraryDetailNotFound": {
+    "description": "F3: the post was deleted."
+  },
+  "libraryDetailOpenOn": "Open on {platform}",
+  "@libraryDetailOpenOn": {
+    "description": "F3: tooltip of the link button of one platform.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "YouTube"
+      }
+    }
+  },
+  "libraryDetailReconnectAndRetry": "Reconnect and retry",
+  "@libraryDetailReconnectAndRetry": {
+    "description": "F4: reconnects the account, then posts again."
+  },
+  "libraryDetailRefreshedDays": "{count, plural, =1{Statistics refreshed 1 day ago.} other{Statistics refreshed {count} days ago.}}",
+  "@libraryDetailRefreshedDays": {
+    "description": "F3: age of the statistics.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryDetailRefreshedHours": "{count, plural, other{Statistics refreshed {count} h ago.}}",
+  "@libraryDetailRefreshedHours": {
+    "description": "F3: age of the statistics.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryDetailRefreshedJustNow": "Statistics refreshed just now.",
+  "@libraryDetailRefreshedJustNow": {
+    "description": "F3: the statistics are less than a minute old."
+  },
+  "libraryDetailRefreshedMinutes": "{count, plural, other{Statistics refreshed {count} min ago.}}",
+  "@libraryDetailRefreshedMinutes": {
+    "description": "F3: age of the statistics.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryDetailRetry": "Retry",
+  "@libraryDetailRetry": {
+    "description": "F4: posts again on the failed platform."
+  },
+  "libraryDetailRetryOn": "Retry on {platform}",
+  "@libraryDetailRetryOn": {
+    "description": "F4: tooltip of the retry button of one platform.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "libraryDetailTitle": "Post",
+  "@libraryDetailTitle": {
+    "description": "F3: top bar title."
+  },
+  "libraryDetailViews": "Views",
+  "@libraryDetailViews": {
+    "description": "F3: label under the total views."
+  },
   "libraryEmptyAction": "New post",
   "@libraryEmptyAction": {
     "description": "F2: button that opens the composer from the empty library."
@@ -191,6 +356,22 @@
   "libraryErrorBody": "We could not load your library. Your scheduled posts are not affected.",
   "@libraryErrorBody": {
     "description": "I3 on the Library: what failed, and that nothing is lost."
+  },
+  "libraryFailureNetwork": "no connection",
+  "@libraryFailureNetwork": {
+    "description": "Why a platform failed, after 'Failed · '."
+  },
+  "libraryFailureRejected": "rejected by the platform",
+  "@libraryFailureRejected": {
+    "description": "Why a platform failed, after 'Failed · '."
+  },
+  "libraryFailureSignInExpired": "session expired",
+  "@libraryFailureSignInExpired": {
+    "description": "Why a platform failed, after 'Failed · '."
+  },
+  "libraryFailureUnknown": "unknown error",
+  "@libraryFailureUnknown": {
+    "description": "Why a platform failed, after 'Failed · '."
   },
   "libraryFilterAll": "All",
   "@libraryFilterAll": {
@@ -269,6 +450,60 @@
         "example": "today 19:00"
       }
     }
+  },
+  "libraryTargetFailed": "Failed",
+  "@libraryTargetFailed": {
+    "description": "F3 platform row: posting failed."
+  },
+  "libraryTargetLikes": "{count, plural, =1{1 like} other{{likes} likes}}",
+  "@libraryTargetLikes": {
+    "description": "F3 platform row: likes; 'likes' is the formatted count.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "likes": {
+        "type": "String",
+        "example": "702"
+      }
+    }
+  },
+  "libraryTargetProcessing": "Processing",
+  "@libraryTargetProcessing": {
+    "description": "F3 platform row: the platform is processing the video."
+  },
+  "libraryTargetPublished": "Published",
+  "@libraryTargetPublished": {
+    "description": "F3 platform row: published."
+  },
+  "libraryTargetRemoved": "Removed",
+  "@libraryTargetRemoved": {
+    "description": "F3 platform row: deleted from the platform."
+  },
+  "libraryTargetScheduled": "Scheduled",
+  "@libraryTargetScheduled": {
+    "description": "F3 platform row: still to go out."
+  },
+  "libraryTargetUploading": "Uploading",
+  "@libraryTargetUploading": {
+    "description": "F3 platform row: being uploaded."
+  },
+  "libraryTargetViews": "{count, plural, =1{1 view} other{{views} views}}",
+  "@libraryTargetViews": {
+    "description": "F3 platform row: views; 'views' is the formatted count.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "views": {
+        "type": "String",
+        "example": "5,120"
+      }
+    }
+  },
+  "libraryTargetWaiting": "Waiting for you",
+  "@libraryTargetWaiting": {
+    "description": "F3 platform row: an assisted platform waits for the creator."
   },
   "libraryTitle": "Library",
   "@libraryTitle": {
