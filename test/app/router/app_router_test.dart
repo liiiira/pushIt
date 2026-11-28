@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
@@ -257,6 +259,37 @@ void main() {
       await tester.pumpAndSettle();
       _expectAt(router, RoutePaths.library, 'F1');
       expect(find.byType(AppBottomNav), findsOneWidget);
+    });
+
+    testWidgets("opens another tab's screens from Home and comes back", (
+      tester,
+    ) async {
+      final router = await _pumpRouter(
+        tester,
+        access: ValueNotifier(_signedIn),
+      );
+      router.go(RoutePaths.home);
+      await tester.pumpAndSettle();
+
+      for (final location in [
+        RoutePaths.libraryPostFor('p1'),
+        RoutePaths.addAccount,
+        RoutePaths.activity,
+        RoutePaths.settings,
+      ]) {
+        unawaited(router.push<void>(location));
+        await tester.pumpAndSettle();
+        expect(router.state.uri.path, location);
+
+        router.pop();
+        await tester.pumpAndSettle();
+        expect(router.state.uri.path, RoutePaths.home, reason: location);
+        expect(
+          tester.widget<AppBottomNav>(find.byType(AppBottomNav)).currentIndex,
+          0,
+          reason: location,
+        );
+      }
     });
 
     testWidgets('shows the offline banner on the tabs while offline', (
