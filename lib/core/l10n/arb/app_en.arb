@@ -367,6 +367,92 @@
   "@composerChangedFromMain": {
     "description": "D5: this platform has its own text."
   },
+  "composerCheckBack": "Back to post",
+  "@composerCheckBack": {
+    "description": "D8: back to the composer."
+  },
+  "composerCheckContinue": "{count, plural, =0{Nothing to schedule} =1{Continue with 1 platform} other{Continue with {count} platforms}}",
+  "@composerCheckContinue": {
+    "description": "D8: schedules on the ready platforms only.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composerCheckFileTooLarge": "The file is {actual}, over the {limit} limit. Pick a shorter or lighter video.",
+  "@composerCheckFileTooLarge": {
+    "description": "D8: the video file is too large for every platform.",
+    "placeholders": {
+      "actual": {
+        "type": "String",
+        "example": "320 MB"
+      },
+      "limit": {
+        "type": "String",
+        "example": "300 MB"
+      }
+    }
+  },
+  "composerCheckIntro": "Your video against each platform's limits.",
+  "@composerCheckIntro": {
+    "description": "D8: under the top bar."
+  },
+  "composerCheckNotConnected": "Sign in again to post",
+  "@composerCheckNotConnected": {
+    "description": "D8 row: no usable account (missing or signed out)."
+  },
+  "composerCheckPaidPlan": "On paid plans",
+  "@composerCheckPaidPlan": {
+    "description": "D8 row: the platform needs Pro or Studio (X)."
+  },
+  "composerCheckPrivacy": "Privacy not chosen",
+  "@composerCheckPrivacy": {
+    "description": "D8 row: TikTok needs a privacy choice."
+  },
+  "composerCheckProblems": "{count, plural, =1{1 problem to fix before scheduling.} other{{count} problems to fix before scheduling.}}",
+  "@composerCheckProblems": {
+    "description": "D8: how many problems remain.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "composerCheckReady": "Ready",
+  "@composerCheckReady": {
+    "description": "D8 row: nothing to fix."
+  },
+  "composerCheckReadyAll": "Ready to schedule.",
+  "@composerCheckReadyAll": {
+    "description": "D8: no problem left."
+  },
+  "composerCheckReconnect": "Reconnect",
+  "@composerCheckReconnect": {
+    "description": "D8 row action: reconnects the account (C5)."
+  },
+  "composerCheckRemove": "Remove",
+  "@composerCheckRemove": {
+    "description": "D8 row action: drops the platform from this post."
+  },
+  "composerCheckTitle": "Check",
+  "@composerCheckTitle": {
+    "description": "D8: top bar title."
+  },
+  "composerCheckTooLong": "Too long: {actual}, limit is {limit}",
+  "@composerCheckTooLong": {
+    "description": "D8 row: the video is too long for the platform.",
+    "placeholders": {
+      "actual": {
+        "type": "String",
+        "example": "1:42"
+      },
+      "limit": {
+        "type": "String",
+        "example": "1:30"
+      }
+    }
+  },
   "composerChoose": "Choose",
   "@composerChoose": {
     "description": "D4 row value when nothing is chosen yet."
@@ -520,6 +606,42 @@
       }
     }
   },
+  "composerListAnd": "{first} and {last}",
+  "@composerListAnd": {
+    "description": "Joins the last two names of a list.",
+    "placeholders": {
+      "first": {
+        "type": "String"
+      },
+      "last": {
+        "type": "String"
+      }
+    }
+  },
+  "composerListComma": "{first}, {next}",
+  "@composerListComma": {
+    "description": "Joins names of a list before the last two.",
+    "placeholders": {
+      "first": {
+        "type": "String"
+      },
+      "next": {
+        "type": "String"
+      }
+    }
+  },
+  "composerListSentences": "{first} {second}",
+  "@composerListSentences": {
+    "description": "Two sentences in a row.",
+    "placeholders": {
+      "first": {
+        "type": "String"
+      },
+      "second": {
+        "type": "String"
+      }
+    }
+  },
   "composerMegabytes": "{count} MB",
   "@composerMegabytes": {
     "description": "A file size in megabytes.",
@@ -617,12 +739,73 @@
   "@composerSchedule": {
     "description": "D4: checks the post, then schedules it."
   },
+  "composerScheduleFailed": "Scheduling did not work. Try again.",
+  "@composerScheduleFailed": {
+    "description": "D8: scheduling failed."
+  },
   "composerScheduleTimes": "{count, plural, =1{1 time} other{{count} times}}",
   "@composerScheduleTimes": {
     "description": "D4 row value for a time per platform.",
     "placeholders": {
       "count": {
         "type": "int"
+      }
+    }
+  },
+  "composerScheduledAssisted": "{count, plural, =1{{platforms} is assisted, so we will remind you at {time}.} other{{platforms} are assisted, so we will remind you at {time}.}}",
+  "@composerScheduledAssisted": {
+    "description": "D13: the platforms pushIt reminds the creator to post on.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "platforms": {
+        "type": "String",
+        "example": "TikTok"
+      },
+      "time": {
+        "type": "String",
+        "example": "19:00"
+      }
+    }
+  },
+  "composerScheduledNewPost": "New post",
+  "@composerScheduledNewPost": {
+    "description": "D13: starts another post."
+  },
+  "composerScheduledOn": "{when} on {platforms}.",
+  "@composerScheduledOn": {
+    "description": "D13: when the post goes out automatically, and where.",
+    "placeholders": {
+      "when": {
+        "type": "String",
+        "example": "Tue 17 Nov at 19:00"
+      },
+      "platforms": {
+        "type": "String",
+        "example": "YouTube and Instagram"
+      }
+    }
+  },
+  "composerScheduledTitle": "Scheduled",
+  "@composerScheduledTitle": {
+    "description": "D13: title."
+  },
+  "composerScheduledViewCalendar": "View in calendar",
+  "@composerScheduledViewCalendar": {
+    "description": "D13: opens the calendar (E1)."
+  },
+  "composerScheduledWhen": "{date} at {time}",
+  "@composerScheduledWhen": {
+    "description": "D13: the date and time, e.g. 'Tue 17 Nov at 19:00'.",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "Tue 17 Nov"
+      },
+      "time": {
+        "type": "String",
+        "example": "19:00"
       }
     }
   },
@@ -869,6 +1052,61 @@
         "example": "1:42"
       }
     }
+  },
+  "composerWhenDayLabel": "{day}, {selected, select, true{selected} other{not selected}}",
+  "@composerWhenDayLabel": {
+    "description": "D9: screen reader label of a day.",
+    "placeholders": {
+      "day": {
+        "type": "String",
+        "example": "Tue 17 Nov"
+      },
+      "selected": {
+        "type": "String"
+      }
+    }
+  },
+  "composerWhenEarlier": "15 minutes earlier",
+  "@composerWhenEarlier": {
+    "description": "D9: screen reader label of the earlier time."
+  },
+  "composerWhenLater": "15 minutes later",
+  "@composerWhenLater": {
+    "description": "D9: screen reader label of the later time."
+  },
+  "composerWhenLocalTime": "{date} · your local time",
+  "@composerWhenLocalTime": {
+    "description": "D9: the chosen day.",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "Tue 17 Nov"
+      }
+    }
+  },
+  "composerWhenOneTime": "One time",
+  "@composerWhenOneTime": {
+    "description": "D9 tab: one time for every platform."
+  },
+  "composerWhenPast": "Pick a time later than now.",
+  "@composerWhenPast": {
+    "description": "D9/D10: the chosen time has passed."
+  },
+  "composerWhenPerPlatform": "Per platform",
+  "@composerWhenPerPlatform": {
+    "description": "D10 tab: a time per platform."
+  },
+  "composerWhenSet": "Set time",
+  "@composerWhenSet": {
+    "description": "D9: keeps the time."
+  },
+  "composerWhenSetTimes": "Set times",
+  "@composerWhenSetTimes": {
+    "description": "D10: keeps the times."
+  },
+  "composerWhenTitle": "When",
+  "@composerWhenTitle": {
+    "description": "D9/D10: sheet title."
   },
   "composerYouTubeDescription": "YouTube description",
   "@composerYouTubeDescription": {

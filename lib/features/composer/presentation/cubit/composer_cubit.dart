@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:pushit/core/failures.dart';
 import 'package:pushit/domain/domain.dart';
 import 'package:pushit/features/composer/domain/composer_rules.dart';
 
@@ -38,6 +39,12 @@ class ComposerCubit extends Cubit<ComposerState> {
       ..add(
         _subscription.watchSubscription().listen(
           (subscription) => emit(state.copyWith(plan: subscription.plan)),
+          onError: (Object _) {},
+        ),
+      )
+      ..add(
+        _subscription.watchUsage().listen(
+          (usage) => emit(state.copyWith(usage: usage)),
           onError: (Object _) {},
         ),
       );
@@ -163,6 +170,62 @@ class ComposerCubit extends Cubit<ComposerState> {
 
   void tiktokChanged(TikTokSettings settings) =>
       emit(state.copyWith(draft: state.draft.copyWith(tiktok: settings)));
+
+  /// D8's "Continue with N platforms": drops the platforms with a
+  /// problem.
+  void keepReadyPlatforms() => emit(
+    state.copyWith(
+      draft: state.draft.copyWith(platforms: state.readyPlatforms),
+      hasPlatformChoice: true,
+    ),
+  );
+
+  /// D9/D10 set when the post goes out.
+  void scheduleChosen(ScheduleChoice choice) =>
+      emit(state.copyWith(draft: state.draft.copyWith(schedule: () => choice)));
+
+  /// Reconnects [platform]'s account from D8 (after the C5 prompt).
+  Future<void> reconnectTapped(PlatformId platform) async {
+    final account = state.accounts
+        .where((a) => a.platform == platform)
+        .firstOrNull;
+    if (account != null) await _accounts.reconnect(account.id);
+  }
+
+  /// Schedules the post (D8 → D13).
+  Future<void> scheduleTapped() async {
+    emit(state.copyWith(submission: Submission.submitting));
+    try {
+      final post = await _posts.schedule(state.draft, draftId: state.draftId);
+      emit(
+        state.copyWith(
+          submission: Submission.scheduled,
+          scheduledPost: () => post,
+          draftId: () => null,
+        ),
+      );
+    } on LimitReachedFailure {
+      emit(state.copyWith(submission: Submission.limitReached));
+    } on Object {
+      emit(state.copyWith(submission: Submission.failed));
+    }
+  }
+
+  /// The view handled a limit or failure.
+  void submissionShown() => emit(state.copyWith(submission: Submission.idle));
+
+  /// D13's "New post": a fresh composer, same accounts and plan.
+  void newPostStarted() {
+    unawaited(_upload?.cancel());
+    _upload = null;
+    emit(
+      ComposerState(
+        accounts: state.accounts,
+        plan: state.plan,
+        usage: state.usage,
+      ),
+    );
+  }
 
   /// Saves the post as a draft when it has a video ("Drafts are saved
   /// automatically"). Resolves to whether a draft was saved; closing never
