@@ -36,6 +36,9 @@ abstract final class AppSizes {
   static const double checkbox = 24;
   static const double radio = 24;
 
+  /// The dot of a selected radio.
+  static const double radioDot = 12;
+
   /// Width over height of every video preview (9:16).
   static const double videoAspectRatio = 9 / 16;
 

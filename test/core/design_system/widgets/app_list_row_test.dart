@@ -107,4 +107,17 @@ void main() {
 
     expect(find.byIcon(LucideIcons.check), findsOneWidget);
   });
+
+  testWidgets('takes a custom padding', (tester) async {
+    await tester.pumpApp(
+      const Scaffold(
+        body: AppListRow(
+          title: 'Weekly plan',
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        ),
+      ),
+    );
+
+    expect(tester.getTopLeft(find.text('Weekly plan')).dx, 24);
+  });
 }

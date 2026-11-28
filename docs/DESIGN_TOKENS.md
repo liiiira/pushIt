@@ -68,6 +68,7 @@ Font: **Hanken Grotesk**, bundled under `assets/fonts` (OFL). The colour comes f
 | `thumbnailSmall` | 8 | Small thumbnails in lists and calendar |
 | `pill` | 999 | Buttons, chips, segmented control, platform logos, switch |
 | `createButton` | 14 | Centre create button (56 × 40) |
+| `checkbox` | 6 | Checkbox corners |
 
 ## Sizes (`AppSizes`)
 
@@ -83,7 +84,7 @@ Font: **Hanken Grotesk**, bundled under `assets/fonts` (OFL). The colour comes f
 | `platformLogoLarge` / `Small` | 48 / 28 (glyph 24 / 14) |
 | `avatar` | 36 (settings 56) |
 | `switch` | 52 × 32, thumb 24 |
-| `checkbox` / `radio` | 24 |
+| `checkbox` / `radio` | 24 (radio dot 12) |
 | `videoPreview` | 9:16 aspect; composer 126 × 224, gallery tile width = (available − 2 × 8) / 3 |
 | `progressBar` | 6 high |
 

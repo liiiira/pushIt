@@ -50,9 +50,21 @@
   "@devComponentsDark": {
     "description": "Debug gallery: the dark theme sample."
   },
+  "devComponentsInputs": "Inputs",
+  "@devComponentsInputs": {
+    "description": "Debug gallery section: switches, checkboxes, radios, segmented control and text fields."
+  },
   "devComponentsLight": "Light (Fog)",
   "@devComponentsLight": {
     "description": "Debug gallery: the light theme sample."
+  },
+  "devComponentsSampleError": "Something is not right.",
+  "@devComponentsSampleError": {
+    "description": "Debug gallery: sample field error."
+  },
+  "devComponentsSampleHint": "Type here",
+  "@devComponentsSampleHint": {
+    "description": "Debug gallery: sample field hint."
   },
   "devComponentsSampleLabel": "Label",
   "@devComponentsSampleLabel": {

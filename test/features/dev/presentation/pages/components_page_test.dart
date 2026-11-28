@@ -2,7 +2,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:pushit/core/design_system/tokens/app_colors.dart';
 import 'package:pushit/core/design_system/widgets/app_card.dart';
+import 'package:pushit/core/design_system/widgets/app_checkbox.dart';
 import 'package:pushit/core/design_system/widgets/app_list_row.dart';
+import 'package:pushit/core/design_system/widgets/app_radio.dart';
+import 'package:pushit/core/design_system/widgets/app_segmented_control.dart';
+import 'package:pushit/core/design_system/widgets/app_switch.dart';
+import 'package:pushit/core/design_system/widgets/app_text_field.dart';
 import 'package:pushit/core/design_system/widgets/app_top_bar.dart';
 import 'package:pushit/core/design_system/widgets/primary_button.dart';
 import 'package:pushit/core/design_system/widgets/secondary_button.dart';
@@ -47,6 +52,11 @@ void main() {
       AppTopBar,
       AppCard,
       AppListRow,
+      AppSwitch,
+      AppCheckbox,
+      AppRadio<int>,
+      AppSegmentedControl<int>,
+      AppTextField,
     ]) {
       for (final sample in [light, dark]) {
         expect(

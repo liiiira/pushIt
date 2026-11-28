@@ -4,7 +4,12 @@ import 'package:pushit/core/design_system/theme/app_theme.dart';
 import 'package:pushit/core/design_system/tokens/app_spacing.dart';
 import 'package:pushit/core/design_system/widgets/app_button_size.dart';
 import 'package:pushit/core/design_system/widgets/app_card.dart';
+import 'package:pushit/core/design_system/widgets/app_checkbox.dart';
 import 'package:pushit/core/design_system/widgets/app_list_row.dart';
+import 'package:pushit/core/design_system/widgets/app_radio.dart';
+import 'package:pushit/core/design_system/widgets/app_segmented_control.dart';
+import 'package:pushit/core/design_system/widgets/app_switch.dart';
+import 'package:pushit/core/design_system/widgets/app_text_field.dart';
 import 'package:pushit/core/design_system/widgets/app_top_bar.dart';
 import 'package:pushit/core/design_system/widgets/primary_button.dart';
 import 'package:pushit/core/design_system/widgets/secondary_button.dart';
@@ -77,6 +82,7 @@ class _ThemeSample extends StatelessWidget {
                 const _ButtonsSection(),
                 const _TopBarsSection(),
                 const _CardsSection(),
+                const _InputsSection(),
               ],
             ),
           ),
@@ -248,6 +254,67 @@ class _CardsSection extends StatelessWidget {
             l10n.devComponentsSampleSubtitle,
             style: context.textStyles.body.copyWith(color: context.colors.text),
           ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Fixed values with no-op handlers: the gallery shows each state side by
+/// side instead of holding any.
+class _InputsSection extends StatelessWidget {
+  const new();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final label = l10n.devComponentsSampleLabel;
+    void ignore(Object? _) {}
+    return _Section(
+      title: l10n.devComponentsInputs,
+      children: [
+        Row(
+          children: [
+            AppSwitch(value: true, onChanged: ignore),
+            const SizedBox(width: AppSpacing.sm),
+            AppSwitch(value: false, onChanged: ignore),
+            const SizedBox(width: AppSpacing.sm),
+            AppCheckbox(value: true, onChanged: ignore),
+            AppCheckbox(value: false, onChanged: ignore),
+          ],
+        ),
+        AppCheckbox(value: true, label: label, onChanged: ignore),
+        for (final value in [0, 1])
+          AppRadio<int>(
+            value: value,
+            groupValue: 0,
+            label: label,
+            onChanged: ignore,
+          ),
+        AppSegmentedControl<int>(
+          segments: [
+            for (final value in [0, 1, 2])
+              AppSegment(value: value, label: label),
+          ],
+          selected: 0,
+          onChanged: ignore,
+        ),
+        AppTextField(
+          label: label,
+          hint: l10n.devComponentsSampleHint,
+          onChanged: ignore,
+        ),
+        AppTextField(
+          label: label,
+          initialValue: l10n.devComponentsSampleValue,
+          errorText: l10n.devComponentsSampleError,
+          onChanged: ignore,
+        ),
+        AppTextField(
+          label: label,
+          hint: l10n.devComponentsSampleHint,
+          isMultiline: true,
+          onChanged: ignore,
         ),
       ],
     );

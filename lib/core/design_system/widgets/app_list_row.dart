@@ -13,6 +13,8 @@ import 'package:pushit/core/design_system/tokens/app_spacing.dart';
 ///   [_trailingShare] of the width; long text ellipsises instead of
 ///   overflowing.
 /// - Tappable when [onTap] is given; always at least 48 dp high.
+/// - [padding] defaults to 16 × 12, for rows inside an `AppCard`; rows
+///   straight on the screen use the screen margin instead.
 class AppListRow extends StatelessWidget {
   const new({
     required this.title,
@@ -23,8 +25,14 @@ class AppListRow extends StatelessWidget {
     this.hasChevron = false,
     this.isTitleMuted = false,
     this.onTap,
+    this.padding = defaultPadding,
     super.key,
   });
+
+  static const defaultPadding = EdgeInsets.symmetric(
+    horizontal: AppSpacing.md,
+    vertical: AppSpacing.sm,
+  );
 
   static const _trailingShare = 0.6;
 
@@ -36,6 +44,7 @@ class AppListRow extends StatelessWidget {
   final bool hasChevron;
   final bool isTitleMuted;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +59,7 @@ class AppListRow extends StatelessWidget {
     final row = ConstrainedBox(
       constraints: const BoxConstraints(minHeight: AppSizes.minTapTarget),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.md,
-          vertical: AppSpacing.sm,
-        ),
+        padding: padding,
         child: LayoutBuilder(
           builder: (context, constraints) => Row(
             children: [
