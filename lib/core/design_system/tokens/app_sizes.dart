@@ -26,6 +26,9 @@ abstract final class AppSizes {
   /// Stroke of platform logo rings and other outlines.
   static const double ringWidth = 1.5;
 
+  /// Stroke around a selected video thumbnail.
+  static const double selectionRingWidth = 2.5;
+
   static const double avatar = 36;
 
   /// The avatar on Settings.
@@ -50,4 +53,8 @@ abstract final class AppSizes {
   static const double galleryGap = 8;
 
   static const double progressBar = 6;
+
+  /// Onboarding page dots; the current one stretches to the active width.
+  static const double pageDot = 8;
+  static const double pageDotActiveWidth = 24;
 }

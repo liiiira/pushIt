@@ -1,20 +1,28 @@
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:pushit/core/design_system/theme/app_theme.dart';
+import 'package:pushit/core/design_system/tokens/app_sizes.dart';
 import 'package:pushit/core/design_system/tokens/app_spacing.dart';
 import 'package:pushit/core/design_system/widgets/app_button_size.dart';
 import 'package:pushit/core/design_system/widgets/app_card.dart';
 import 'package:pushit/core/design_system/widgets/app_checkbox.dart';
 import 'package:pushit/core/design_system/widgets/app_list_row.dart';
+import 'package:pushit/core/design_system/widgets/app_progress_bar.dart';
 import 'package:pushit/core/design_system/widgets/app_radio.dart';
 import 'package:pushit/core/design_system/widgets/app_segmented_control.dart';
 import 'package:pushit/core/design_system/widgets/app_switch.dart';
 import 'package:pushit/core/design_system/widgets/app_text_field.dart';
 import 'package:pushit/core/design_system/widgets/app_top_bar.dart';
+import 'package:pushit/core/design_system/widgets/initials_avatar.dart';
+import 'package:pushit/core/design_system/widgets/page_indicator.dart';
+import 'package:pushit/core/design_system/widgets/platform_logo.dart';
 import 'package:pushit/core/design_system/widgets/primary_button.dart';
 import 'package:pushit/core/design_system/widgets/secondary_button.dart';
+import 'package:pushit/core/design_system/widgets/stat_tile.dart';
 import 'package:pushit/core/design_system/widgets/text_action_button.dart';
+import 'package:pushit/core/design_system/widgets/video_thumbnail.dart';
 import 'package:pushit/core/l10n/l10n.dart';
+import 'package:pushit/domain/domain.dart';
 
 /// The design-system gallery (`/dev/components`, debug builds only): every
 /// shared widget, once in light and once in dark.
@@ -83,6 +91,7 @@ class _ThemeSample extends StatelessWidget {
                 const _TopBarsSection(),
                 const _CardsSection(),
                 const _InputsSection(),
+                const _DisplaySection(),
               ],
             ),
           ),
@@ -315,6 +324,88 @@ class _InputsSection extends StatelessWidget {
           hint: l10n.devComponentsSampleHint,
           isMultiline: true,
           onChanged: ignore,
+        ),
+      ],
+    );
+  }
+}
+
+class _DisplaySection extends StatelessWidget {
+  const new();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    const clip = Duration(minutes: 1, seconds: 42);
+    return _Section(
+      title: l10n.devComponentsDisplay,
+      children: [
+        Wrap(
+          spacing: AppSpacing.xs,
+          runSpacing: AppSpacing.xs,
+          children: [
+            for (final platform in PlatformId.values)
+              PlatformLogo(platform: platform),
+          ],
+        ),
+        Wrap(
+          spacing: AppSpacing.xs,
+          runSpacing: AppSpacing.xs,
+          children: [
+            for (final platform in PlatformId.values)
+              PlatformLogo(
+                platform: platform,
+                isSelected: platform.index.isEven,
+                size: PlatformLogoSize.small,
+              ),
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Expanded(
+              child: VideoThumbnail(duration: clip, hasPlayIcon: true),
+            ),
+            const SizedBox(width: AppSizes.galleryGap),
+            Expanded(
+              child: VideoThumbnail(
+                duration: clip,
+                isSelected: true,
+                onTap: () {},
+              ),
+            ),
+            const SizedBox(width: AppSizes.galleryGap),
+            const Expanded(child: VideoThumbnail(isSmall: true)),
+          ],
+        ),
+        Row(
+          children: [
+            InitialsAvatar(name: l10n.devComponentsSampleTitle),
+            const SizedBox(width: AppSpacing.sm),
+            InitialsAvatar(
+              name: l10n.devComponentsSampleTitle,
+              size: InitialsAvatarSize.large,
+            ),
+            const SizedBox(width: AppSpacing.sm),
+            const PageIndicator(count: 3, index: 0),
+          ],
+        ),
+        const AppProgressBar(value: 0.61),
+        Row(
+          children: [
+            Expanded(
+              child: StatTile(
+                value: l10n.devComponentsSampleValue,
+                label: l10n.devComponentsSampleLabel,
+              ),
+            ),
+            Expanded(
+              child: StatTile(
+                value: l10n.devComponentsSampleValue,
+                label: l10n.devComponentsSampleLabel,
+              ),
+            ),
+          ],
         ),
       ],
     );

@@ -87,6 +87,8 @@ Font: **Hanken Grotesk**, bundled under `assets/fonts` (OFL). The colour comes f
 | `checkbox` / `radio` | 24 (radio dot 12) |
 | `videoPreview` | 9:16 aspect; composer 126 × 224, gallery tile width = (available − 2 × 8) / 3 |
 | `progressBar` | 6 high |
+| `selectionRingWidth` | 2.5 (selected video thumbnail) |
+| `pageDot` / `pageDotActiveWidth` | 8 / 24 (onboarding pager) |
 
 ## Platform logo states
 
