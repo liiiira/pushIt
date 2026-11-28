@@ -141,6 +141,18 @@
       }
     }
   },
+  "commonPlanFree": "Free",
+  "@commonPlanFree": {
+    "description": "Plan name."
+  },
+  "commonPlanPro": "Pro",
+  "@commonPlanPro": {
+    "description": "Plan name."
+  },
+  "commonPlanStudio": "Studio",
+  "@commonPlanStudio": {
+    "description": "Plan name."
+  },
   "commonPlatformBluesky": "Bluesky",
   "@commonPlatformBluesky": {
     "description": "Platform name."
@@ -713,6 +725,57 @@
       "time": {
         "type": "String",
         "example": "18:30"
+      }
+    }
+  },
+  "plansLimitReachedBody": "The {plan} plan schedules {limit, plural, =1{1 video} other{{limit} videos}} a month. It resets on {date}. {upgrade} removes the limit.",
+  "@plansLimitReachedBody": {
+    "description": "H3: the current plan's limit, when it resets, and the plan without a limit.",
+    "placeholders": {
+      "plan": {
+        "type": "String",
+        "example": "Free"
+      },
+      "limit": {
+        "type": "int"
+      },
+      "date": {
+        "type": "String",
+        "example": "1 December"
+      },
+      "upgrade": {
+        "type": "String",
+        "example": "Pro"
+      }
+    }
+  },
+  "plansLimitReachedSaveDraft": "Save as draft",
+  "@plansLimitReachedSaveDraft": {
+    "description": "H3: keeps the post as a draft instead of scheduling it."
+  },
+  "plansLimitReachedSeePlan": "See {plan}, {price} a month",
+  "@plansLimitReachedSeePlan": {
+    "description": "H3: opens the plans (H2).",
+    "placeholders": {
+      "plan": {
+        "type": "String",
+        "example": "Pro"
+      },
+      "price": {
+        "type": "String",
+        "example": "$6"
+      }
+    }
+  },
+  "plansLimitReachedTitle": "You have scheduled {used} of {limit, plural, =1{1 video} other{{limit} videos}} this month",
+  "@plansLimitReachedTitle": {
+    "description": "H3 title.",
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "limit": {
+        "type": "int"
       }
     }
   }

@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart' show GlobalMaterialLocalizations;
 import 'package:pushit/core/l10n/generated/app_localizations.dart';
 
 export 'package:pushit/core/l10n/generated/app_localizations.dart';
+export 'package:pushit/core/l10n/plan_names.dart';
 export 'package:pushit/core/l10n/platform_names.dart';
 
 extension BuildContextL10n on BuildContext {
