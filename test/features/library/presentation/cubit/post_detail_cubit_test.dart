@@ -57,6 +57,8 @@ void main() {
     when(() => posts.watchPost('p1')).thenAnswer((_) => post.stream);
     when(() => subscription.watchSubscription())
         .thenAnswer((_) => Stream.value(const Subscription(plan: proPlan)));
+    when(() => accounts.watchAccounts())
+        .thenAnswer((_) => const Stream.empty());
   });
 
   // close() only completes once a listener got the done event.
@@ -183,4 +185,31 @@ void main() {
     act: (cubit) => cubit.actionFailureShown(),
     expect: () => [PostDetailState(status: ViewStatus.ready, post: _post)],
   );
+
+  blocTest<PostDetailCubit, PostDetailState>(
+    'started also follows the accounts, for the reconnect prompt',
+    setUp: () =>
+        when(() => accounts.watchAccounts())
+            .thenAnswer((_) => Stream.value(const [_tiktokAccount])),
+    build: build,
+    act: (cubit) async {
+      cubit.started();
+      post.add(_post);
+    },
+    verify: (cubit) {
+      expect(cubit.state.accounts, const [_tiktokAccount]);
+      expect(cubit.state.accountFor(PlatformId.tiktok), _tiktokAccount);
+      expect(cubit.state.accountFor(PlatformId.youtube), isNull);
+    },
+  );
 }
+
+const _tiktokAccount = ConnectedAccount(
+  id: 'acc-tt',
+  platform: PlatformId.tiktok,
+  handle: '@lyes.makes',
+  label: 'Lyes makes',
+  accountType: 'creator',
+  mode: AccountMode.assisted,
+  health: AccountHealth.expired,
+);

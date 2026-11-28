@@ -20,6 +20,7 @@ import 'package:pushit/core/failures.dart';
 import 'package:pushit/core/l10n/l10n.dart';
 import 'package:pushit/core/view_status.dart';
 import 'package:pushit/domain/domain.dart';
+import 'package:pushit/features/accounts/accounts.dart';
 import 'package:pushit/features/library/presentation/cubit/post_detail_cubit.dart';
 import 'package:pushit/features/library/presentation/widgets/post_detail_header.dart';
 import 'package:pushit/features/library/presentation/widgets/post_failure_card.dart';
@@ -177,7 +178,7 @@ class _Content extends StatelessWidget {
                     isBusy: busyPlatform != null,
                     onRetry: () => cubit.retryTapped(failed.platform),
                     onReconnectAndRetry: () =>
-                        cubit.reconnectAndRetryTapped(failed.platform),
+                        unawaited(_reconnectAndRetry(context, failed)),
                   ),
                   const SizedBox(height: AppSpacing.md),
                 ],
@@ -236,4 +237,22 @@ class _Content extends StatelessWidget {
       ],
     );
   }
+}
+
+/// F4: asks with the reconnect prompt (C5), then reconnects and retries.
+/// Without a known account it reconnects and retries straight away.
+Future<void> _reconnectAndRetry(BuildContext context, PostTarget failed) async {
+  final cubit = context.read<PostDetailCubit>();
+  final state = cubit.state;
+  final account = state.accountFor(failed.platform);
+  final post = state.post;
+  if (account != null) {
+    final confirmed = await showReconnectDialog(
+      context: context,
+      account: account,
+      risk: reconnectRiskOf(account, [?post], now: context.read<Clock>().now()),
+    );
+    if (!confirmed) return;
+  }
+  await cubit.reconnectAndRetryTapped(failed.platform);
 }
