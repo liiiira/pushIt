@@ -13,6 +13,7 @@ class AuthFormLayout extends StatelessWidget {
     required this.subtitle,
     required this.fields,
     required this.actions,
+    this.icon,
     this.hasBack = false,
     this.onBack,
     super.key,
@@ -24,6 +25,9 @@ class AuthFormLayout extends StatelessWidget {
 
   /// Stacked full width; the first is the main one.
   final List<Widget> actions;
+
+  /// Shown in a round badge above the title (A7).
+  final IconData? icon;
 
   /// A back arrow on top (A7, A8); it pops unless [onBack] is given.
   final bool hasBack;
@@ -51,6 +55,25 @@ class AuthFormLayout extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    if (icon case final icon?) ...[
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Container(
+                          width: AppSizes.iconCircle,
+                          height: AppSizes.iconCircle,
+                          decoration: BoxDecoration(
+                            color: colors.surface,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            icon,
+                            size: AppSizes.icon,
+                            color: colors.text,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: AppSpacing.lg),
+                    ],
                     Semantics(
                       header: true,
                       child: Text(

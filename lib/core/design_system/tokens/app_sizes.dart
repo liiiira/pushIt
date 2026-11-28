@@ -64,6 +64,9 @@ abstract final class AppSizes {
   static const double pageDot = 8;
   static const double pageDotActiveWidth = 24;
 
+  /// A round `surface` badge holding an icon (A7: the mail icon).
+  static const double iconCircle = 64;
+
   /// The line icon in an onboarding illustration card (A2–A4).
   static const double illustrationIcon = 48;
 

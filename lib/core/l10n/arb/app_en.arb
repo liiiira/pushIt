@@ -69,6 +69,10 @@
       }
     }
   },
+  "authCheckEmailTitle": "Check your email",
+  "@authCheckEmailTitle": {
+    "description": "A7, and A8 once the link is sent."
+  },
   "authEmailEmpty": "Enter your email.",
   "@authEmailEmpty": {
     "description": "A5, A6, A8: the email field is empty."
@@ -104,6 +108,10 @@
   "authNewPasswordEmpty": "Enter a password.",
   "@authNewPasswordEmpty": {
     "description": "A6: the new password field is empty."
+  },
+  "authOpenEmailApp": "Open email app",
+  "@authOpenEmailApp": {
+    "description": "A7, A8: opens the phone's email app."
   },
   "authPasswordEmpty": "Enter your password.",
   "@authPasswordEmpty": {
@@ -167,6 +175,36 @@
   "@authRegisterTitle": {
     "description": "A6 title."
   },
+  "authResetBackToSignIn": "Back to sign in",
+  "@authResetBackToSignIn": {
+    "description": "A8, once sent: back to sign-in (A5)."
+  },
+  "authResetButton": "Send reset link",
+  "@authResetButton": {
+    "description": "A8: sends the link."
+  },
+  "authResetRejected": "We could not send a link to this email. Check it and try again.",
+  "@authResetRejected": {
+    "description": "A8: pushIt refused the email."
+  },
+  "authResetSentBody": "We sent a link to {email}. Open it to choose a new password.",
+  "@authResetSentBody": {
+    "description": "A8, once sent.",
+    "placeholders": {
+      "email": {
+        "type": "String",
+        "example": "lyes@example.com"
+      }
+    }
+  },
+  "authResetSubtitle": "Enter your email and we will send you a link to choose a new password.",
+  "@authResetSubtitle": {
+    "description": "A8 subtitle."
+  },
+  "authResetTitle": "Reset password",
+  "@authResetTitle": {
+    "description": "A8 title."
+  },
   "authSignInButton": "Sign in",
   "@authSignInButton": {
     "description": "A5: signs in."
@@ -190,6 +228,34 @@
   "authSignInTitle": "Sign in",
   "@authSignInTitle": {
     "description": "A5 title."
+  },
+  "authVerifyBody": "We sent a link to {email}. Open it on this phone to finish creating your account.",
+  "@authVerifyBody": {
+    "description": "A7 text.",
+    "placeholders": {
+      "email": {
+        "type": "String",
+        "example": "lyes@example.com"
+      }
+    }
+  },
+  "authVerifyBodyNoEmail": "We sent you a link. Open it on this phone to finish creating your account.",
+  "@authVerifyBodyNoEmail": {
+    "description": "A7 text, before the email is known."
+  },
+  "authVerifySendAgain": "Send again",
+  "@authVerifySendAgain": {
+    "description": "A7: sends the link again."
+  },
+  "authVerifySendAgainIn": "Send again in {time}",
+  "@authVerifySendAgainIn": {
+    "description": "A7: the countdown before the link can be sent again.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "0:42"
+      }
+    }
   },
   "commonAppName": "pushIt",
   "@commonAppName": {

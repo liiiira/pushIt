@@ -14,13 +14,6 @@ void main() {
   const unknown = AppAccess.unknown(isOnboarded: true);
   const everyone = [unknown, newUser, signedOut, signedIn, unverified];
 
-  const authPaths = [
-    RoutePaths.signIn,
-    RoutePaths.register,
-    RoutePaths.verifyEmail,
-    RoutePaths.resetPassword,
-  ];
-
   test('the root always goes to the splash', () {
     for (final access in everyone) {
       expect(appRedirect('/', access), RoutePaths.splash);
@@ -82,10 +75,18 @@ void main() {
   });
 
   group('onboarded and signed out', () {
-    test('may open every auth screen', () {
-      for (final path in authPaths) {
+    test('may open sign-in, register and reset', () {
+      for (final path in [
+        RoutePaths.signIn,
+        RoutePaths.register,
+        RoutePaths.resetPassword,
+      ]) {
         expect(appRedirect(path, signedOut), isNull, reason: path);
       }
+    });
+
+    test('is sent to sign-in from verify email, which needs an account', () {
+      expect(appRedirect(RoutePaths.verifyEmail, signedOut), RoutePaths.signIn);
     });
 
     test('is sent to sign-in from the app and the onboarding', () {

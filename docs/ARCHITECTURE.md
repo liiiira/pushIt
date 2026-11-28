@@ -112,7 +112,7 @@ tool/check.sh                          local gate
   - It starts as `AppAccess.unknown` and becomes known on the first auth event. An auth error counts as signed out.
   - The splash (A1) holds no logic. It shows while the access is unknown, and the redirect then leads away from it.
   - The dev routes are never redirected.
-  - Verify email stays reachable when signed in.
+  - Verify email is reachable only while signed in. Its back arrow signs out, so the redirect then leads to sign-in.
   - While the email is not verified, the signed-out auth screens lead to `/verify-email` instead of home. The rest of the app is not gated: the fake has no way to verify an email.
 - Debug-only routes (`/settings/developer`, `/dev/components`) are registered under `kDebugMode`.
 

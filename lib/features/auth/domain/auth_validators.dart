@@ -6,6 +6,9 @@ library;
 /// The shortest password a new account may have.
 const int minPasswordLength = 8;
 
+/// How long A7 waits before the verification email can be sent again.
+const Duration resendCooldown = Duration(seconds: 60);
+
 enum EmailError { empty, invalid }
 
 enum PasswordError { empty, tooShort }
