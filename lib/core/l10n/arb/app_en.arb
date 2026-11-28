@@ -1466,6 +1466,145 @@
   "@devComponentsTopBars": {
     "description": "Debug gallery section: top bars and the bottom nav."
   },
+  "homeActivity": "Activity",
+  "@homeActivity": {
+    "description": "B1: tooltip of the bell, which opens the activity (B3)."
+  },
+  "homeComments": "Comments",
+  "@homeComments": {
+    "description": "B1: label under the comment count."
+  },
+  "homeCountdownDays": "in {days} d {hours} h",
+  "@homeCountdownDays": {
+    "description": "B1: time until the next post, a day or more away.",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "homeCountdownHours": "in {hours} h {minutes} min",
+  "@homeCountdownHours": {
+    "description": "B1: time until the next post, e.g. 'in 3 h 12 min'.",
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "homeCountdownMinutes": "in {minutes} min",
+  "@homeCountdownMinutes": {
+    "description": "B1: time until the next post, under an hour away.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "homeFirstStepsTitle": "Three steps to your first post",
+  "@homeFirstStepsTitle": {
+    "description": "B2: the checklist title."
+  },
+  "homeFix": "Fix",
+  "@homeFix": {
+    "description": "B1: opens the reconnect prompt (C5)."
+  },
+  "homeLastSevenDays": "Last 7 days · {count, plural, =1{1 account} other{{count} accounts}}",
+  "@homeLastSevenDays": {
+    "description": "B1: over the statistics of the last 7 days.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeLikes": "Likes",
+  "@homeLikes": {
+    "description": "B1: label under the like count."
+  },
+  "homeNextPost": "Next post",
+  "@homeNextPost": {
+    "description": "B2: over the empty time when nothing is scheduled."
+  },
+  "homeNextPostOn": "Next post · {date}",
+  "@homeNextPostOn": {
+    "description": "B1: the next post is on another day.",
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "Tue 17 Nov"
+      }
+    }
+  },
+  "homeNextPostToday": "Next post · today",
+  "@homeNextPostToday": {
+    "description": "B1: the next post is today."
+  },
+  "homeNextPostTomorrow": "Next post · tomorrow",
+  "@homeNextPostTomorrow": {
+    "description": "B1: the next post is tomorrow."
+  },
+  "homeNoTime": "--:--",
+  "@homeNoTime": {
+    "description": "B2: the empty time, when nothing is scheduled."
+  },
+  "homeNothingScheduled": "Nothing scheduled yet",
+  "@homeNothingScheduled": {
+    "description": "B1, B2: nothing is to come."
+  },
+  "homePostDetails": "{duration} · {count, plural, =1{1 platform} other{{count} platforms}}",
+  "@homePostDetails": {
+    "description": "B1: the next post's length and platform count.",
+    "placeholders": {
+      "duration": {
+        "type": "String",
+        "example": "1:42"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeReconnectFailed": "Could not reconnect. Please try again.",
+  "@homeReconnectFailed": {
+    "description": "B1: the reconnect failed."
+  },
+  "homeReconnectNeeded": "{platform} needs reconnecting",
+  "@homeReconnectNeeded": {
+    "description": "B1: an account was signed out.",
+    "placeholders": {
+      "platform": {
+        "type": "String",
+        "example": "TikTok"
+      }
+    }
+  },
+  "homeSettings": "Settings",
+  "@homeSettings": {
+    "description": "B1: label of the avatar, which opens Settings (H1)."
+  },
+  "homeStepConnect": "Connect an account",
+  "@homeStepConnect": {
+    "description": "B2: the second step, and its button."
+  },
+  "homeStepCreateAccount": "Create your account",
+  "@homeStepCreateAccount": {
+    "description": "B2: the first step, always done."
+  },
+  "homeStepSchedule": "Schedule a video",
+  "@homeStepSchedule": {
+    "description": "B2: the third step, and its button."
+  },
+  "homeViews": "Views",
+  "@homeViews": {
+    "description": "B1: label under the view count."
+  },
   "libraryDeleteAssisted": "You delete it in {platform}. We open the video for you.",
   "@libraryDeleteAssisted": {
     "description": "F6 row: the platform's API cannot delete, so the creator does it.",
