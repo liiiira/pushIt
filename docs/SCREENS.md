@@ -57,7 +57,7 @@ Navigation: bottom tabs Home, Calendar, [create], Library, Accounts. Settings op
 | 49 | H5 | Invite a creator | `/settings/invite` | A | F18 | Code; Share; Copy | 49 / 103 |
 | 50 | H6 | Feedback | `/settings/feedback` | A | F18 | Kind; message; device details switch | 50 / 104 |
 | 51 | H7 | Delete account | Dialog on H1 | A | F1 | Destructive confirmation | 51 / 105 |
-| 52 | I1 | Offline | OfflineBanner in the shell | A (widget); all pages | — | offline scenario | 52 / 106 |
+| 52 | I1 | Offline | OfflineBanner in the shell, at the top of the tab area | A (widget and shell) | — | offline scenario; pages do not add it | 52 / 106 |
 | 53 | I2 | Loading | SkeletonList in every list page | A (widget); all pages | — | slow scenario | 53 / 107 |
 | 54 | I3 | Error | ErrorStateView in every list page | A (widget); all pages | — | error scenario | 54 / 108 |
 

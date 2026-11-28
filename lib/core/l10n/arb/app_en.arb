@@ -32,6 +32,10 @@
   "@commonNavCalendar": {
     "description": "Bottom nav tab: the posting calendar."
   },
+  "commonNavCreate": "New post",
+  "@commonNavCreate": {
+    "description": "Screen-reader label of the centre create button in the bottom nav."
+  },
   "commonNavHome": "Home",
   "@commonNavHome": {
     "description": "Bottom nav tab: the dashboard."
@@ -172,9 +176,9 @@
   "@devComponentsTitle": {
     "description": "Debug gallery: page title."
   },
-  "devComponentsTopBars": "Top bars",
+  "devComponentsTopBars": "Bars and navigation",
   "@devComponentsTopBars": {
-    "description": "Debug gallery section: top bars."
+    "description": "Debug gallery section: top bars and the bottom nav."
   },
   "libraryDetailActionFailed": "That did not work. Try again.",
   "@libraryDetailActionFailed": {

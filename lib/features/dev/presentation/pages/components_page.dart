@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:pushit/core/design_system/theme/app_theme.dart';
 import 'package:pushit/core/design_system/tokens/app_sizes.dart';
 import 'package:pushit/core/design_system/tokens/app_spacing.dart';
+import 'package:pushit/core/design_system/widgets/app_bottom_nav.dart';
 import 'package:pushit/core/design_system/widgets/app_bottom_sheet.dart';
 import 'package:pushit/core/design_system/widgets/app_button_size.dart';
 import 'package:pushit/core/design_system/widgets/app_card.dart';
@@ -222,6 +223,30 @@ class _TopBarsSection extends StatelessWidget {
           title: l10n.devComponentsSampleTitle,
           leading: AppTopBarLeading.close,
           onLeadingPressed: () {},
+        ),
+        AppBottomNav(
+          currentIndex: 0,
+          createLabel: l10n.commonNavCreate,
+          onItemSelected: (_) {},
+          onCreatePressed: () {},
+          items: [
+            AppBottomNavItem(
+              icon: LucideIcons.house,
+              label: l10n.commonNavHome,
+            ),
+            AppBottomNavItem(
+              icon: LucideIcons.calendar,
+              label: l10n.commonNavCalendar,
+            ),
+            AppBottomNavItem(
+              icon: LucideIcons.galleryVerticalEnd,
+              label: l10n.commonNavLibrary,
+            ),
+            AppBottomNavItem(
+              icon: LucideIcons.user,
+              label: l10n.commonNavAccounts,
+            ),
+          ],
         ),
       ],
     );

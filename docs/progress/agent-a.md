@@ -46,3 +46,8 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 2026-11-28 · #11 · Theme mode: `AppPreferences` (`SharedAppPreferences`, theme mode and onboarded flag), `ThemeModeCubit`, provided by `PushItApp` · Decisions:
 - The default mode is light (Fog), not system.
 - Deviation from ARCHITECTURE.md: both live in `lib/core/` instead of `lib/app/`, so features (Appearance, onboarding, splash) can use them. The doc is updated.
+2026-11-28 · #13 · App shell: `AppBottomNav` (4 tabs plus a centre create button that pushes `/compose`), `ConnectivityCubit`, and the `OfflineBanner` in the shell while offline · Deviations and decisions:
+- The nav background is `bg`, as on the PDF, not `surface` as DESIGN_TOKENS.md said; the doc is updated.
+- The offline banner sits at the top of the tab area (shell), not under the page title as on the PDF, so it works on every tab with no per-page code. SCREENS.md and ARCHITECTURE.md are updated.
+- There is no active-tab indicator (the PDF has none): the current tab is `text`, the others `sub`.
+- Phase 1 (A) is complete with this PR.

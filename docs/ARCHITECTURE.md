@@ -32,7 +32,8 @@ lib/
       route_paths.dart                 every path constant (all 54 screens): RoutePaths + RouteSegments
       app_redirect.dart                AppAccess + appRedirect(path, access), pure
       app_router.dart                  buildAppRouter: composes <feature>_routes.dart; StatefulShellRoute (4 tabs)
-      app_shell.dart                   bottom nav + centre create button + offline banner
+      app_shell.dart                   bottom nav + centre create button + offline banner (top of the tab area)
+    connectivity/connectivity_cubit.dart   online or not, from ConnectivityRepository; drives the shell's banner
   core/                                (A)
     clock.dart                         Clock interface, SystemClock, FixedClock (tests)
     preferences/app_preferences.dart   AppPreferences interface + SharedAppPreferences (theme mode, onboarding done)

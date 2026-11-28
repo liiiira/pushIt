@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:pushit/core/design_system/tokens/app_colors.dart';
+import 'package:pushit/core/design_system/widgets/app_bottom_nav.dart';
 import 'package:pushit/core/design_system/widgets/app_bottom_sheet.dart';
 import 'package:pushit/core/design_system/widgets/app_card.dart';
 import 'package:pushit/core/design_system/widgets/app_checkbox.dart';
@@ -61,6 +62,7 @@ void main() {
       SecondaryButton,
       TextActionButton,
       AppTopBar,
+      AppBottomNav,
       AppCard,
       AppListRow,
       AppSwitch,
