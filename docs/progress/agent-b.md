@@ -53,3 +53,9 @@ One line per merged PR: `YYYY-MM-DD · #PR · what was merged · decisions or de
 
 2026-11-28 · #21 · F4 opens A's reconnect prompt (C5) before reconnecting and retrying · Decisions:
 - The account is the failed target's, else any account on that platform; without one it reconnects and retries directly.
+
+2026-11-28 · #23 · Composer part 1: D1 pick video (gallery and drafts tabs), D2/D3 upload, D12 drafts; a shell route shares one ComposerCubit across /compose · Decisions:
+- D1 preselects the first gallery video, as on the mock-up.
+- Continue (D2 → D4) stays available while uploading; it is disabled only after a failed upload.
+- D12 rows read "Edited <age> · <time or no time set>"; the mock-up's "3 platforms" variant is not used.
+- New domain rules: `draftFromPost` and `elapsedBetween` (moved from the library).
